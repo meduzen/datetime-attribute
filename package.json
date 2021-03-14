@@ -7,6 +7,11 @@
   "engines": {
     "node": ">=12.8"
   },
+  "scripts": {
+    "test": "jest",
+    "test:coverage": "c8 --all --include=src npm test",
+    "watch": "jest --watch"
+  },
   "files": [
     "src/"
   ],
@@ -27,4 +32,12 @@
   "publishConfig": {
     "access": "public",
     "cache": "~/.npm"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.8",
+    "@babel/preset-env": "^7.13.9",
+    "babel-jest": "^26.6.3",
+    "c8": "^7.6.0",
+    "jest": "^26.6.3"
+  }
 }
