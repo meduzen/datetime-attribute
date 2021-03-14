@@ -50,7 +50,7 @@ const durationAttr = datetimeDuration(duration) // 'P3W5DT10H43M2'
 All object keys are optional:
 
 ```js
-const durationAttrWithHours = datetimeDuration({ h : 17 }) // 'PT17H'
+const durationAttrWithHours = datetimeDuration({ h: 17 }) // 'PT17H'
 ```
 
 Values exceeding a unit are not thrown away:
@@ -93,7 +93,7 @@ const datetimeAttrWithTime = datetime(now, 'local') // '2021-03-14T:10:29'
 - `datetime(now, 'local') // '2021-03-14T:10:29'`: a local datetime (= date + time)
 - `datetime(now, 'local second') '2021-03-14T10:29:00' // `: same, with precision up to seconds
 - `datetime(now, 'local ms') // '2021-03-14T10:29:00.000'`: same, with precision up to milliseconds
-- `datetime(now, 'global ms') // 2021-03-14T09:29:00.000Z`: in UTC time: the same moment, shifted to the Greenwich timezone (1 hour behind Brussels).
+- `datetime(now, 'global ms') // 2021-03-14T09:29:00.000Z`: the same moment, but shifted to the UTC time.
 - (later: global time with less precision)
 
 ## Changelog
