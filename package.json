@@ -3,6 +3,7 @@
   "version": "0.1.4",
   "description": "Generate valid datetime attributes for the <time> HTML element.",
   "type": "module",
+  "sideEffects": false,
   "exports": "./index.js",
   "engines": {
     "node": ">=12.8"
