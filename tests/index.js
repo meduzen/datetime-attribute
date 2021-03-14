@@ -1,4 +1,4 @@
-import { datetime, datetimeDuration, daysBetween, weekNumber } from '../src'
+import { datetime, datetimeDuration, daysBetween, weekNumber } from '..'
 
 const togoIndependanceDay = new Date(1960, 3, 27)
 const date = togoIndependanceDay // alias for the sake of brevity
