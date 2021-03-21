@@ -12,57 +12,38 @@ export function datetime(date, precision = 'day') {
       throw new TypeError('Input date should be of type `Date`');
   }
 
-  if (precision == 'global ms') {
-    return date.toJSON()
+  // Local datetime at milliseconds precision (1960-04-27T00:00:00.123)
+  const localMs = date.getFullYear().toString()
+    + '-' + p(date.getMonth() + 1)
+    + '-' + date.getDate()
+    + 'T' + p(date.getHours())
+    + ':' + p(date.getMinutes())
+    + ':' + p(date.getSeconds())
+    + '.' + p(date.getMilliseconds(), 3)
+
+  // Extract substring from local date.
+  const local = (start, end) => localMs.substr(start, end)
+
+  const formats = {
+    'global ms': () => date.toJSON(),
+
+    'year': () => local(0, 4),          // 1960
+    'month': () => local(0, 7),         // 1960-04
+    'day': () => local(0, 10),          // 1960-04-27
+
+    'week': () => local(0, 5) + 'W' + p(weekNumber(date)), // 1960-W17
+    'yearless': () => local(5, 5),      // 04-27
+
+    'time': () => local(11, 5),         // 00:00
+    'second': () => local(11, 8),       // 00:00:00
+    'ms': () => local(11, 12),          // 00:00:00.123
+
+    'local': () => local(0, 16),        // 1960-04-27T00:00
+    'local second': () => local(0, 19), // 1960-04-27T00:00:00
+    'local ms': () => local(0, 23),     // 1960-04-27T00:00:00.123
   }
 
-  if (precision == 'time') {
-    return p(date.getHours()) + ":" + p(date.getMinutes())
-  }
-
-  if (precision == 'second') {
-    return datetime(date, 'time') + ":" + p(date.getSeconds())
-  }
-
-  if (precision == 'ms') {
-    return datetime(date, 'second') + "." + p(date.getMilliseconds(), 3)
-  }
-
-  if (precision == 'day') {
-    return datetime(date, 'year') + "-" + datetime(date, 'yearless')
-  }
-
-  if (precision == 'week') {
-    return date.getFullYear() + '-W' + p(weekNumber(date))
-  }
-
-  if (precision == 'year') {
-    return date.getFullYear().toString()
-  }
-
-  if (precision == 'yearless') {
-    return p(date.getMonth() + 1) + "-" + (date.getDate())
-  }
-
-  if (precision == 'month') {
-    return date.getFullYear() + "-" + p(date.getMonth() + 1)
-  }
-
-  const attr = datetime(date)
-
-  if (precision == 'local') {
-    return attr + "T" + datetime(date, 'time')
-  }
-
-  if (precision == 'local second') {
-    return attr + "T" + datetime(date, 'second')
-  }
-
-  if (precision == 'local ms') {
-    return attr + "T" + datetime(date, 'ms')
-  }
-
-  return datetime(date, 'day')
+  return (formats[precision] || formats.day)()
 }
 
 /**
