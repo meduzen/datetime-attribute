@@ -30,7 +30,7 @@ const now = new Date() // We’re 14 March 2021 and it’s 10:29 in Brussels.
 
 const datetimeAttr = datetime(now) // '2021-03-14'
 
-const datetimeAttrWithTime = datetime(now, 'local') // '2021-03-14T:10:29'
+const datetimeAttrWithTime = datetime(now, 'local') // '2021-03-14T10:29'
 ```
 
 `datetimeDuration` requires an object with keys for different levels of durations, from seconds to weeks.
@@ -71,7 +71,7 @@ Others will be added later. Feel free to open issues or pull requests!
 const now = new Date() // We’re 14 March 2021 and it’s 10:29 in Brussels.
 
 const datetimeAttr = datetime(now) // '2021-03-14'
-const datetimeAttrWithTime = datetime(now, 'local') // '2021-03-14T:10:29'
+const datetimeAttrWithTime = datetime(now, 'local') // '2021-03-14T10:29'
 ```
 
 ### Date precision
@@ -90,7 +90,7 @@ const datetimeAttrWithTime = datetime(now, 'local') // '2021-03-14T:10:29'
 
 ## Date + time precision
 
-- `datetime(now, 'local') // '2021-03-14T:10:29'`: a local datetime (= date + time)
+- `datetime(now, 'local') // '2021-03-14T10:29'`: a local datetime (= date + time)
 - `datetime(now, 'local second') '2021-03-14T10:29:00' // `: same, with precision up to seconds
 - `datetime(now, 'local ms') // '2021-03-14T10:29:00.000'`: same, with precision up to milliseconds
 - `datetime(now, 'global ms') // 2021-03-14T09:29:00.000Z`: the same moment, but shifted to the UTC time.
