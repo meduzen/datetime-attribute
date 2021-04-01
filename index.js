@@ -59,7 +59,8 @@ export function datetimeDuration(duration) {
   // Set default values for missing keys.
   let { w = 0, d = 0, h = 0, m = 0, s = 0 } = duration
 
-  if ([w, d, h, m, s].every(value => value == 0)) {
+  // At least one duration must be different than zero.
+  if (![w, d, h, m, s].some(value => value)) {
     return null
   }
 
@@ -122,7 +123,6 @@ export function datetimeDuration(duration) {
   // return 'P' + duration.w + duration.d
   //   + (duration.h || duration.m || duration.s ? 'T' : '') // separator
   //   + duration.h + duration.m + duration.s
-
 }
 
 /**
