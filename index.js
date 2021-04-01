@@ -47,6 +47,41 @@ export function datetime(date, precision = 'day') {
 }
 
 /**
+ * Create `datetime="+04:00"` timezone attribute for `<time>`.
+ * https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-time-datetime
+ * https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#concept-timezone
+ * https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/datetime
+ */
+export function datetimeTz(hours = 0, minutes = 0) {
+
+  // No arguments received: the local timezone offset is returned.
+  if (!('0' in arguments)) {
+    return datetimeTz(0, (new Date()).getTimezoneOffset() * -1)
+  }
+
+  if (typeof hours != 'number' || typeof minutes != 'number') {
+    throw new TypeError('hours and (optional) minutes must be numbers.');
+  }
+
+  // Convert given offset in minutes by merging parameters.
+  minutes = hours * 60 + minutes
+
+  // Offset sign: `+` (UTC ≥ 0) or `-` (UTC < 0).
+  const sign = minutes > 0 ? '+' : '-'
+
+  // Get hours and minutes.
+  hours = Math.trunc(minutes / 60)
+  minutes = minutes % 60
+
+  if (hours == 0 && minutes == 0 ) { return 'Z' }
+
+  // Remove sign (handled separately) and ignore the decimal part.
+  [hours, minutes] = [hours, minutes].map(value => Math.trunc(Math.abs(value)))
+
+  return sign + p(hours) + ':' + p(minutes)
+}
+
+/**
  * Create `datetime="P3DT2H8M32.541S"` duration attribute for `<time>`.
  * https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-time-datetime
  * https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#concept-duration

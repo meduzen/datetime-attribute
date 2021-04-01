@@ -1,4 +1,4 @@
-import { datetime, datetimeDuration, daysBetween, weekNumber } from '..'
+import { datetime, datetimeDuration, datetimeTz, daysBetween, weekNumber } from '..'
 
 const togoIndependanceDay = new Date(1960, 3, 27)
 const date = togoIndependanceDay // alias for the sake of brevity
@@ -50,6 +50,25 @@ describe('datetimeDuration', () => {
   test('complete object with too high values', () => expect(datetimeDuration(durationWithTooHighValues)).toBe('P5W6DT12H55M55.3S'))
   test('hours only', () => expect(datetimeDuration(durationInHours)).toBe('PT17H'))
   test('days only', () => expect(datetimeDuration(durationInDays)).toBe('P6W1D'))
+})
+
+describe('datetimeTz', () => {
+  test('is a function', () => expect(datetimeTz).toBeInstanceOf(Function))
+  test('0', () => expect(datetimeTz(0)).toBe('Z'))
+  test('-3', () => expect(datetimeTz(-3)).toBe('-03:00'))
+  test('0, -30', () => expect(datetimeTz(0, -30)).toBe('-00:30'))
+  test('0, 30', () => expect(datetimeTz(0, 30)).toBe('+00:30'))
+  test('1', () => expect(datetimeTz(1)).toBe('+01:00'))
+  test('-4.5', () => expect(datetimeTz(-4.5)).toBe('-04:30'))
+  test('4, 30', () => expect(datetimeTz(4, 30)).toBe('+04:30'))
+  test('12, 45', () => expect(datetimeTz(12, 45)).toBe('+12:45'))
+  test('12.75', () => expect(datetimeTz(12.75)).toBe('+12:45'))
+  test('-8', () => expect(datetimeTz(-8)).toBe('-08:00'))
+  test('2, -200', () => expect(datetimeTz(2, -200)).toBe('-01:20'))
+  test('non number', () => expect(() => datetimeTz('Z')).toThrow(TypeError))
+
+  // This one can’t be tested providing an exact value as the output depends on client timezone and daylight time saving.
+  test('()', () => expect(datetimeTz()).toBe(datetimeTz(0, (new Date()).getTimezoneOffset() * -1)))
 })
 
 describe('weekNumber', () => {
