@@ -6,6 +6,8 @@ Get a [valid HTML `datetime` attribute](https://developer.mozilla.org/en-US/docs
 - `datetimeDuration` for a duration
 - **(not available yet)** `datetimeTz` for a timezone offset
 
+The whole package is [< 1 KB compressed](https://bundlephobia.com/result?p=datetime-attribute) and tree-shakeable.
+
 ## Installation
 
 `npm install datetime-attribute`
