@@ -31,8 +31,7 @@
     "url": "https://github.com/meduzen/datetime-attribute/issues"
   },
   "publishConfig": {
-    "access": "public",
-    "cache": "~/.npm"
+    "access": "public"
   },
   "devDependencies": {
     "@babel/core": "^7.13.8",
