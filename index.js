@@ -87,9 +87,9 @@ export function datetimeDuration(duration) {
   d = time % 7
   w = divideRemainingTimeBy(7)
 
-  return 'P' + getStr(w, 'W') + getStr(d, 'D')
-    + (h || m || s ? 'T' : '')
-    + getStr(h, 'H') + getStr(m, 'M') + getStr(s, 'S')
+  return 'P' + getStr(w, 'W') + getStr(d, 'D') // weeks and days
+    + (h || m || s ? 'T' : '') // separator
+    + getStr(h, 'H') + getStr(m, 'M') + getStr(s, 'S') // hours, minutes, seconds
 
   // // Alternative implementation: 1848 bytes vs 1826 B for the active one.
   // Checked on: https://skalman.github.io/UglifyJS-online/
