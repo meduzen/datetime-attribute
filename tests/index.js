@@ -12,7 +12,8 @@ const december31th2021                = new Date(2021, 11, 31, 10, 10, 12)
 
 describe('datetime', () => {
   test('is a function', () => expect(datetime).toBeInstanceOf(Function))
-  test('()', () => expect(() => datetime()).toThrow(TypeError))
+  test('wrong type', () => expect(() => datetime(123)).toThrow(TypeError))
+  test('()', () => expect(datetime()).toBe(datetime((new Date()))))
   test('no precision', () => expect(datetime(date)).toBe('1960-04-27'))
   test('day', () => expect(datetime(date, 'day')).toBe('1960-04-27'))
   test('year', () => expect(datetime(date, 'year')).toBe('1960'))

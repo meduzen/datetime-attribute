@@ -7,7 +7,7 @@
  *
  * See also: https://www.brucelawson.co.uk/2012/best-of-time/
  */
-export function datetime(date, precision = 'day') {
+export function datetime(date = (new Date()), precision = 'day') {
   if (!(date instanceof Date)) {
       throw new TypeError('Input date should be of type `Date`');
   }
