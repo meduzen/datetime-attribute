@@ -54,6 +54,21 @@ export function datetime(date = (new Date()), precision = 'day') {
 }
 
 /**
+ * Create `datetime="2021-12-02T17:34-06:00"` attribute for `<time>`.
+ */
+ export function datetimeTz(date, precision = 'datetime', offsetHours = 0, offsetMinutes = 0) {
+  let timezoneOffset = ''
+
+  if (!precision.includes('utc')) { // ignore request for UTC conversion
+    timezoneOffset = ('2' in arguments) // see similar line in tzOffset()
+      ? tzOffset(offsetHours, offsetMinutes)
+      : tzOffset()
+  }
+
+  return datetime(date, precision) + timezoneOffset
+}
+
+/**
  * Create `datetime="+04:00"` timezone attribute for `<time>`.
  * https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-time-datetime
  * https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#concept-timezone

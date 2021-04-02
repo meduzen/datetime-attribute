@@ -1,4 +1,4 @@
-import { datetime, datetimeDuration, tzOffset, daysBetween, weekNumber } from '..'
+import { datetime, datetimeTz, datetimeDuration, tzOffset, daysBetween, weekNumber } from '..'
 
 const togoIndependanceDay = new Date(1960, 3, 27)
 const date = togoIndependanceDay // alias for the sake of brevity
@@ -77,6 +77,29 @@ describe('tzOffset', () => {
 
   // This one can’t be tested providing an exact value as the output depends on client timezone and daylight time saving.
   test('()', () => expect(tzOffset()).toBe(tzOffset(0, tzOffsetInMinutes)))
+})
+
+describe('datetimeTz', () => {
+  test('is a function', () => expect(datetimeTz).toBeInstanceOf(Function))
+  test('wrong type', () => expect(() => datetimeTz(123)).toThrow(TypeError))
+  test('()', () => expect(datetimeTz()).toBe(datetimeTz((new Date()))))
+  test('no precision', () => expect(datetimeTz(date)).toBe('1960-04-27T00:00' + tzOffset(0, tzOffsetInMinutes)))
+  test('no offset', () => expect(datetimeTz(date, 'time')).toBe('00:00' + tzOffset(0, tzOffsetInMinutes)))
+  test('time 0', () => expect(datetimeTz(date, 'time', 0)).toBe('00:00Z'))
+  test('time +4', () => expect(datetimeTz(date, 'time', 4)).toBe('00:00+04:00'))
+  test('second -3', () => expect(datetimeTz(date, 'second', -3)).toBe('00:00:00-03:00'))
+  test('ms +3.5', () => expect(datetimeTz(date, 'ms', 3.5)).toBe('00:00:00.000+03:30'))
+  test('datetime +12:45', () => expect(datetimeTz(date, 'datetime', 12, 45)).toBe('1960-04-27T00:00+12:45'))
+  test('datetime second -6', () => expect(datetimeTz(date, 'datetime second', -6)).toBe('1960-04-27T00:00:00-06:00'))
+  test('datetime ms +1', () => expect(datetimeTz(date, 'datetime ms', 1)).toBe('1960-04-27T00:00:00.000+01:00'))
+
+  // These ones can’t be tested providing an exact value as the output depends on client timezone.
+  test('time utc', () => expect(datetimeTz(date, 'time utc')).toBe(date.toJSON().substr(11, 5) + 'Z'))
+  test('second utc', () => expect(datetimeTz(date, 'second utc')).toBe(date.toJSON().substr(11, 8) + 'Z'))
+  test('ms utc', () => expect(datetimeTz(date, 'ms utc')).toBe(date.toJSON().substr(11, 12) + 'Z'))
+  test('datetime utc', () => expect(datetimeTz(date, 'datetime utc')).toBe(date.toJSON().substr(0, 16) + 'Z'))
+  test('datetime second utc', () => expect(datetimeTz(date, 'datetime second utc')).toBe(date.toJSON().substr(0, 19) + 'Z'))
+  test('datetime ms utc', () => expect(datetimeTz(date, 'datetime ms utc')).toBe(date.toJSON()))
 })
 
 describe('weekNumber', () => {

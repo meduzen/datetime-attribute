@@ -4,6 +4,16 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 Until it reaches 1.0.0, breaking changes will bump the _MINOR_ digit (the second one).
 
+## Unreleased
+
+### New
+
+- Add `datetimeTz()` to Indicate a `datetime` attribute belongs to the specified timezone offset.
+
+### Changed
+
+- Rename `datetimeTz()` to `tzOffset()`
+
 ## v0.3.0 (2021-04-02)
 
 Compare with [last version](https://github.com/meduzen/datetime-attribute/compare/0.2.1...main).

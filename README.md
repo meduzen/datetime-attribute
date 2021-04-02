@@ -20,7 +20,7 @@ import { datetime, datetimeDuration, tzOffset } from 'datetime-attribute'
 
 Not a NPM users? Copy/paste [the code](https://raw.githubusercontent.com/meduzen/datetime-attribute/main/index.js) in your project.
 
-## Expressing moments with `datetime()`
+## Expressing moments with `datetime()` and `datetimeTz()`
 
 `datetime()` accepts two optional arguments: a [Date object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date), and a [_precision_ keywords](#available-precision-keywords).
 
@@ -77,6 +77,65 @@ output. A lot of other values are accepted, covering most of the spec.
 `datetime ms utc` | `2021-03-14T09:29:00.000Z` | same as previous, shifted to UTC time
 
 💡 Basically, you get UTC datetime by adding ` utc` behind a datetime keyword.
+
+### Adding a timezone offset to a moment
+
+💡 It’s recommended to [read about `tzOffset`](#expressing-timezone-offsets-with-tzoffset) before continuing here.
+
+As `datetime()` doesn’t care about timezones, you can use `datetimeTz()` when you need to be explicit about the timezone of a moment.
+
+`datetimeTz()` is basically a concatenation of [`datetime(date, precision)`](#expressing-moments-with-datetime-and-datetimetz) and [`tzOffset(hours, minutes)`](#expressing-timezone-offsets-with-tzoffset).
+
+It accepts the same 4 parameters, all optional:
+
+```js
+datetimeTz(date, precision, offsetHours, offsetMinutes)
+```
+
+1. A date object (default: `new Date()`)
+2. A [precision keywords](#available-precision-keywords) among:
+	- `time`
+	- `second`
+	- `ms`
+	- `datetime` (default)
+	- `datetime second`
+	- `datetime ms`
+3. Hours offset like in [`tzOffset()`](#expressing-timezone-offsets-with-tzoffset)
+4. Minutes offset like in [`tzOffset()`](#expressing-timezone-offsets-with-tzoffset)
+
+When hours and minutes are not specified, the local timezone offset is used.
+
+```js
+const now = new Date() // We’re 2 April 2021 and it’s 23:51 in Brussels.
+
+datetime(now) 	// '2021-04-02'
+datetimeTz(now) // '2021-04-02T23:51+02:00'
+
+datetime(now, 'time') 		    // '23:51'
+datetime(now, 'time utc') 		// '21:51Z' (same as previous, converted to UTC)
+datetimeTz(now, 'time', 0) 		// '23:51Z' (datetimeTz does not convert)
+datetimeTz(now, 'time') 		// '23:51+02:00' (fall back on local timezone)
+datetimeTz(now, 'time', 9) 	    // '23:51+09:00'
+datetimeTz(now, 'time', -3, 30) // '23:51-03:30'
+```
+
+`datetimeTz()` **does not convert** your moment to another timezone: it **only adds the timezone** to the moment. Its purpose is to generate a valid `datetime` attribute saying “here’s a moment, it has this [hours, minutes] timezone offset”.
+
+Let’s take this sentence and its  HTML:
+
+> This week, I’ll wake up at 8 o’clock every day.
+
+```html
+<p>This week, I’ll wake up <time datetime="08:00+02:00">at 8 o’clock</time> every day.</p>
+```
+
+Here’s how you can get the `datetime` attribute fitting this sentence:
+
+```js
+// const awakeningAt = … // a date Object with 08:00 as time
+
+datetimeTz(awakeningAt, 'time', 2) // '08:00+02:00'
+```
 
 ## Expressing durations with `datetimeDuration()`
 
