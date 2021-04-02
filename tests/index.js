@@ -22,9 +22,9 @@ describe('datetime', () => {
   test('time', () => expect(datetime(date, 'time')).toBe('00:00'))
   test('second', () => expect(datetime(date, 'second')).toBe('00:00:00'))
   test('ms', () => expect(datetime(date, 'ms')).toBe('00:00:00.000'))
-  test('local', () => expect(datetime(date, 'local')).toBe('1960-04-27T00:00'))
-  test('local second', () => expect(datetime(date, 'local second')).toBe('1960-04-27T00:00:00'))
-  test('local ms', () => expect(datetime(date, 'local ms')).toBe('1960-04-27T00:00:00.000'))
+  test('datetime', () => expect(datetime(date, 'datetime')).toBe('1960-04-27T00:00'))
+  test('datetime second', () => expect(datetime(date, 'datetime second')).toBe('1960-04-27T00:00:00'))
+  test('datetime ms', () => expect(datetime(date, 'datetime ms')).toBe('1960-04-27T00:00:00.000'))
   test('week on 1960-04-27', () => expect(datetime(date, 'week')).toBe('1960-W17'))
   test('week on 2021-01-01', () => expect(datetime(january1st, 'week')).toBe('2021-W53'))
   test('week on 2021-01-11', () => expect(datetime(january11th, 'week')).toBe('2021-W02'))
@@ -32,13 +32,13 @@ describe('datetime', () => {
   test('week on 2020-12-31', () => expect(datetime(december31th2020, 'week')).toBe('2020-W53'))
   test('week on 2021-12-31', () => expect(datetime(december31th2021, 'week')).toBe('2021-W52'))
 
-  // This one can’t be tested providing an exact value as the output depends on client timezone.
-  test('global', () => expect(datetime(date, 'global')).toBe(date.toJSON().substr(0, 16) + 'Z'))
-  test('global ms', () => expect(datetime(date, 'global ms')).toBe(date.toJSON()))
-  test('global second', () => expect(datetime(date, 'global second')).toBe(date.toJSON().substr(0, 19) + 'Z'))
+  // These ones can’t be tested providing an exact value as the output depends on client timezone.
   test('time utc', () => expect(datetime(date, 'time utc')).toBe(date.toJSON().substr(11, 5) + 'Z'))
   test('second utc', () => expect(datetime(date, 'second utc')).toBe(date.toJSON().substr(11, 8) + 'Z'))
   test('ms utc', () => expect(datetime(date, 'ms utc')).toBe(date.toJSON().substr(11, 12) + 'Z'))
+  test('datetime utc', () => expect(datetime(date, 'datetime utc')).toBe(date.toJSON().substr(0, 16) + 'Z'))
+  test('datetime second utc', () => expect(datetime(date, 'datetime second utc')).toBe(date.toJSON().substr(0, 19) + 'Z'))
+  test('datetime ms utc', () => expect(datetime(date, 'datetime ms utc')).toBe(date.toJSON()))
 
   test('non supported precision', () => expect(datetime(date, 'n00t')).toBe('1960-04-27'))
 })
