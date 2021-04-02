@@ -10,6 +10,8 @@ const december31th2020                = new Date(2020, 11, 31, 10, 10, 12)
 const december31th2020OneMinuteLater  = new Date(2020, 11, 31, 10, 11, 12)
 const december31th2021                = new Date(2021, 11, 31, 10, 10, 12)
 
+const tzOffsetInMinutes = (new Date()).getTimezoneOffset() * -1
+
 describe('datetime', () => {
   test('is a function', () => expect(datetime).toBeInstanceOf(Function))
   test('wrong type', () => expect(() => datetime(123)).toThrow(TypeError))
@@ -74,7 +76,7 @@ describe('tzOffset', () => {
   test('non number', () => expect(() => tzOffset('Z')).toThrow(TypeError))
 
   // This one can’t be tested providing an exact value as the output depends on client timezone and daylight time saving.
-  test('()', () => expect(tzOffset()).toBe(tzOffset(0, (new Date()).getTimezoneOffset() * -1)))
+  test('()', () => expect(tzOffset()).toBe(tzOffset(0, tzOffsetInMinutes)))
 })
 
 describe('weekNumber', () => {
