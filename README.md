@@ -2,109 +2,134 @@
 
 Get a [valid HTML `datetime` attribute](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/datetime) for the HTML `<time>` element:
 
-- `datetime` for a specific moment
-- `datetimeDuration` for a duration
-- **(not available yet)** `datetimeTz` for a timezone offset
+- [`datetime()`](#expressing-moments-with-datetime) for a specific moment;
+- [`datetimeDuration()`](#expressing-durations-with-datetimeduration) for a duration;
+- [`datetimeTz()`](#expressing-timezone-offsets-with-datetimetz) for a timezone offset.
 
-The whole package is [< 1 KB compressed](https://bundlephobia.com/result?p=datetime-attribute) and tree-shakeable.
+The whole package is [< 1 KB compressed](https://bundlephobia.com/result?p=datetime-attribute) and tree-shakeable.
 
 ## Installation
 
 `npm install datetime-attribute`
 
-In your script:
+Import the functions you need in your script:
 
 ```js
-import { datetime, datetimeDuration } from 'datetime-attribute'
+import { datetime, datetimeDuration, datetimeTz } from 'datetime-attribute'
 ```
 
-This package is provided for modern usage with standard JavaScript syntax: it
-is up to you to transpile it for legacy browsers. Also, you can’t import it
-using `require('datetime-attribute')`. If it’s something you’d like, feel free
-to open an issue and/or a PR that won’t have any side effects.
+Not a NPM users? Copy/paste [the code](https://raw.githubusercontent.com/meduzen/datetime-attribute/main/index.js) in your project.
 
-## Usage
+## Expressing moments with `datetime()`
 
-`datetime()` accepts two optional arguments: a [Date object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date), and a _precision_ string ([view them all](#advanced-usage-for-datetime)).
+`datetime()` accepts two optional arguments: a [Date object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date), and a [_precision_ string](#available-precision-strings).
 
 ```js
 const now = new Date() // We’re 14 March 2021 and it’s 10:29 in Brussels.
 
-datetime(now) // '2021-03-14'
-
+datetime(now)          // '2021-03-14'
 datetime(now, 'local') // '2021-03-14T10:29'
 ```
 
 Without argument, it defaults to _today_:
 ```js
-datetime() // today as YYYY-mm-dd
-
+datetime() // today formatted in YYYY-mm-dd
 datetime((new Date()), 'day') // same
 ```
 
-`datetimeDuration` requires an object with keys for different levels of durations, from seconds to weeks.
+### Available precision strings
+
+By default, `datetime()` precision is `day`, resulting in a `YYYY-mm-dd`
+output. A lot of other values are accepted, covering most of the spec.
+
+Date:
+
+|  precision | example output | description
+|--|--|--|
+| `day` | `2021-03-14` | the default, fitting a calendar |
+| `year` | `2021` | only the year |
+| `yearless` | `03-14` | a day in a month |
+| `month` | `2021-03` | a month in a year |
+| `week` | `2021W10` | the week number ([ISO-8601 spec](https://en.wikipedia.org/wiki/ISO_week_date)) and its year |
+
+Time:
+
+|  precision | example output | description
+|--|--|--|
+| `time` | `10:29` | hours and minutes, like most clock
+| `second` | `10:29:00` | same, with precision up to seconds
+| `ms` | `10:29:00.000` | same, with precision up to milliseconds
+
+Date + time:
+
+|  precision | example output | description
+|--|--|--|
+`local` | `2021-03-14T10:29` | a local datetime (= date + time)
+`local second` | `2021-03-14T10:29:00` | same, with precision up to seconds
+`local ms` | `2021-03-14T10:29:00.000` | same, with precision up to milliseconds
+`global ms` | `2021-03-14T09:29:00.000Z` | the same moment shifted to UTC time
+
+(Not supported yet: global time with seconds and minutes precision.)
+
+## Expressing durations with `datetimeDuration()`
+
+`datetimeDuration()` requires an object with entries for different levels of durations, from seconds to weeks.
 
 ```js
 const duration = {
-  w: 3, // 3 weeks
-  d: 5, // 5 days
-  h: 10, // 10 hours
-  m: 43, // 43 minutes
+  w: 3,   //     3 weeks
+  d: 5,   //     5 days
+  h: 10,  //    10 hours
+  m: 43,  //    43 minutes
   s: 2.61 // 2.610 seconds
 }
 
-const durationAttr = datetimeDuration(duration) // 'P3W5DT10H43M2'
+datetimeDuration(duration) // 'P3W5DT10H43M2'
 ```
 
 All object keys are optional:
 
 ```js
-const durationAttrWithHours = datetimeDuration({ h: 17 }) // 'PT17H'
+datetimeDuration({ h: 17 }) // 'PT17H'
 ```
 
 Values exceeding a unit are not thrown away:
 
 ```js
-const durationAttrWithHours = datetimeDuration({ h: 31, m: 63, s: 175 }) // 'P1DT8H5M55S'
+datetimeDuration({ h: 31, m: 63, s: 175 }) // 'P1DT8H5M55S'
 ```
 
+## Expressing timezone offsets with `datetimeTz()`
 
-## Advanced usage
+Timezone offsets are a comparison against [UTC time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time). For example, `+01:00` means “one hour ahead of UTC time” and `-05:00` means “five hours behind UTC time”.
 
-By default, the `datetime` precision is `day`, resulting in a `YYYY-mm-dd`
-output. A lot of other values are accepted, covering almost the whole spec.
-
-Others will be added later. Feel free to open issues or pull requests!
+`datetimeTz()` accepts two optional arguments for hours and minutes. Without argument, the local timezone offset is returned (and may differ based on daylight saving time).
 
 ```js
-const now = new Date() // We’re 14 March 2021 and it’s 10:29 in Brussels.
+datetimeTz(3)      // '+03:00' (Moscow)
 
-const datetimeAttr = datetime(now) // '2021-03-14'
-const datetimeAttrWithTime = datetime(now, 'local') // '2021-03-14T10:29'
+datetimeTz(-9, 30) // '-09:30' (Marquesas Islands)
+datetimeTz(-9.5)   // '-09:30' (same with 1 parameter)
+
+datetimeTz(0)      //      'Z' (Ghana; 'Z' is equal to '+00:00')
+
+// when in Belgium
+datetimeTz()       // '+01:00'
+datetimeTz()       // '+02:00' (under daylight time saving)
 ```
 
-### Date precision
+Note: values outside the real-life range (`-12:00` to `+14:00`) are currently not adjusted to fit in it. This means `datetimeTz(26)` will output `+26:00` instead of `+02:00`.
 
-- `datetime(now, 'day')  // '2021-03-14'`: the default one, fitting a calendar
-- `datetime(now, 'year') // '2021'`: only the year
-- `datetime(now, 'yearless') // '03-14'`: a day in a month
-- `datetime(now, 'month') // '2021-03'`: a month in a year
-- `datetime(now, 'week') // '2021W10'`: the week number ([ISO-8601 spec](https://en.wikipedia.org/wiki/ISO_week_date)) and its year.
-
-## Time precision
-
-- `datetime(now, 'time') // '10:29'`: hours and minutes, like most clock
-- `datetime(now, 'second') // '10:29:00'`: same, with precision up to seconds
-- `datetime(now, 'ms') // '10:29:00.000'`: same, with precision up to milliseconds
-
-## Date + time precision
-
-- `datetime(now, 'local') // '2021-03-14T10:29'`: a local datetime (= date + time)
-- `datetime(now, 'local second') '2021-03-14T10:29:00' // `: same, with precision up to seconds
-- `datetime(now, 'local ms') // '2021-03-14T10:29:00.000'`: same, with precision up to milliseconds
-- `datetime(now, 'global ms') // 2021-03-14T09:29:00.000Z`: the same moment, but shifted to the UTC time.
-- (later: global time with less precision)
+Curious about timezones? Have a look at [the timezone map](https://fr.m.wikipedia.org/wiki/Fichier:World_Time_Zones_Map.png) and the [daylight time saving chaos](https://en.wikipedia.org/wiki/Daylight_saving_time_by_country).
 
 ## Changelog
 
 See [releases](https://github.com/meduzen/datetime-attribute/releases).
+
+## Browser and tooling support
+
+`datetime-attribute` is provided for [modern browsers usage](https://github.com/meduzen/datetime-attribute/blob/main/browserslist) with standard JavaScript syntax:
+- it is up to you to transpile it for legacy browsers;
+- you can’t import it using `require('datetime-attribute')`.
+
+If you’d like one of those features, feel free to open an issue and/or a PR that won’t have any side effects for modern usage.
