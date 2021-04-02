@@ -78,7 +78,7 @@ output. A lot of other values are accepted, covering most of the spec.
 
 💡 Basically, you get UTC datetime by adding ` utc` behind a datetime keyword.
 
-### Adding a timezone offset to a moment
+## Adding a timezone offset to a moment
 
 💡 It’s recommended to [read about `tzOffset`](#expressing-timezone-offsets-with-tzoffset) before continuing here.
 
