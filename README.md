@@ -124,7 +124,7 @@ Curious about timezones? Have a look at [the timezone map](https://fr.m.wikipedi
 
 ## Changelog
 
-See [releases](https://github.com/meduzen/datetime-attribute/releases).
+See [CHANGELOG.md](https://github.com/meduzen/datetime-attribute/blob/main/CHANGELOG.md) or the [releases](https://github.com/meduzen/datetime-attribute/releases).
 
 ## Browser and tooling support
 

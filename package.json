@@ -14,7 +14,8 @@
     "watch": "jest --watch"
   },
   "files": [
-    "index.js"
+    "index.js",
+    "CHANGELOG.md"
   ],
   "keywords": [
     "time",
