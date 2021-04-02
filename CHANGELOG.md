@@ -22,7 +22,7 @@ Compare with [previous version](https://github.com/meduzen/datetime-attribute/co
 
 ### New
 
-- [`datetimeTz()`](https://github.com/meduzen/datetime-attribute#expressing-timezone-offsets-with-datetimetz) to express timezone offsets
+- [`tzOffset()`](https://github.com/meduzen/datetime-attribute#expressing-timezone-offsets-with-tzOffset) to express timezone offsets
 
 ### Changed
 

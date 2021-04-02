@@ -4,7 +4,7 @@ Get a [valid HTML `datetime` attribute](https://developer.mozilla.org/en-US/docs
 
 - [`datetime()`](#expressing-moments-with-datetime) for a specific moment;
 - [`datetimeDuration()`](#expressing-durations-with-datetimeduration) for a duration;
-- [`datetimeTz()`](#expressing-timezone-offsets-with-datetimetz) for a timezone offset.
+- [`tzOffset()`](#expressing-timezone-offsets-with-tzOffset) for a timezone offset.
 
 The whole package is [~ 1 KB compressed](https://bundlephobia.com/result?p=datetime-attribute) and tree-shakeable. It aims to be [spec](https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-time-datetime) complete.
 
@@ -15,7 +15,7 @@ The whole package is [~ 1 KB compressed](https://bundlephobia.com/result?p=datet
 Import the functions you need in your script:
 
 ```js
-import { datetime, datetimeDuration, datetimeTz } from 'datetime-attribute'
+import { datetime, datetimeDuration, tzOffset } from 'datetime-attribute'
 ```
 
 Not a NPM users? Copy/paste [the code](https://raw.githubusercontent.com/meduzen/datetime-attribute/main/index.js) in your project.
@@ -106,26 +106,26 @@ Values exceeding a unit are not thrown away:
 datetimeDuration({ h: 31, m: 63, s: 175 }) // 'P1DT8H5M55S'
 ```
 
-## Expressing timezone offsets with `datetimeTz()`
+## Expressing timezone offsets with `tzOffset()`
 
 Timezone offsets are a comparison against [UTC time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time). For example, `+01:00` means “one hour ahead of UTC time” and `-05:00` means “five hours behind UTC time”.
 
-`datetimeTz()` accepts two optional arguments for hours and minutes. Without argument, the local timezone offset is returned (and may differ based on daylight saving time).
+`tzOffset()` accepts two optional arguments for hours and minutes. Without argument, the local timezone offset is returned (and may differ based on daylight saving time).
 
 ```js
-datetimeTz(3)      // '+03:00' (Moscow)
+tzOffset(3)      // '+03:00' (Moscow)
 
-datetimeTz(-9, 30) // '-09:30' (Marquesas Islands)
-datetimeTz(-9.5)   // '-09:30' (same with 1 parameter)
+tzOffset(-9, 30) // '-09:30' (Marquesas Islands)
+tzOffset(-9.5)   // '-09:30' (same with 1 parameter)
 
-datetimeTz(0)      //      'Z' (Ghana; 'Z' is equal to '+00:00')
+tzOffset(0)      //      'Z' (Ghana; 'Z' is equal to '+00:00')
 
 // when in Belgium
-datetimeTz()       // '+01:00'
-datetimeTz()       // '+02:00' (under daylight time saving)
+tzOffset()       // '+01:00'
+tzOffset()       // '+02:00' (under daylight time saving)
 ```
 
-Note: values outside the real-life range (`-12:00` to `+14:00`) are currently not adjusted to fit in it. This means `datetimeTz(26)` will output `+26:00` instead of `+02:00`.
+Note: values outside the real-life range (`-12:00` to `+14:00`) are currently not adjusted to fit in it. This means `tzOffset(26)` will output `+26:00` instead of `+02:00`.
 
 Curious about timezones? Have a look at [the timezone map](https://fr.m.wikipedia.org/wiki/Fichier:World_Time_Zones_Map.png) and the [daylight time saving chaos](https://en.wikipedia.org/wiki/Daylight_saving_time_by_country).
 
