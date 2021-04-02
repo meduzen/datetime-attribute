@@ -59,11 +59,11 @@ export function datetime(date = (new Date()), precision = 'day', offset = 'Z') {
  * https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#concept-timezone
  * https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/datetime
  */
-export function datetimeTz(hours = 0, minutes = 0) {
+export function tzOffset(hours = 0, minutes = 0) {
 
   // No arguments received: the local timezone offset is returned.
   if (!('0' in arguments)) {
-    return datetimeTz(0, (new Date()).getTimezoneOffset() * -1)
+    return tzOffset(0, (new Date()).getTimezoneOffset() * -1)
   }
 
   if (typeof hours != 'number' || typeof minutes != 'number') {
