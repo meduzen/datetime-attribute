@@ -1,13 +1,13 @@
 /**
- * Create `datetime="2021-12-02"` attribute for `<time>`, from a `Date` object.
+ * Create `datetime="2021-12-02"` attribute for `<time>`.
  *
- * Support all format from the spec aside from time-zone offset string.
+ * Support all format from the spec.
  * https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-time-datetime
  * https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/datetime
  *
  * See also: https://www.brucelawson.co.uk/2012/best-of-time/
  */
-export function datetime(date = (new Date()), precision = 'day', offset = 'Z') {
+export function datetime(date = (new Date()), precision = 'day') {
   if (!(date instanceof Date)) {
       throw new TypeError('Input date should be of type `Date`');
   }
@@ -43,7 +43,7 @@ export function datetime(date = (new Date()), precision = 'day', offset = 'Z') {
 
     'datetime utc': () => utc(0, 16) + 'Z',        // 1960-04-26T23:00Z
     'datetime second utc': () => utc(0, 19) + 'Z', // 1960-04-26T23:00:00Z
-    'datetime ms utc': () => date.toJSON(),                // 1960-04-26T23:00:00.000Z
+    'datetime ms utc': () => date.toJSON(),        // 1960-04-26T23:00:00.000Z
 
     'time utc': () => utc(11, 5) + 'Z',   // 23:00Z
     'second utc': () => utc(11, 8) + 'Z', // 23:00:00Z
@@ -63,7 +63,7 @@ export function tzOffset(hours = 0, minutes = 0) {
 
   // No arguments received: the local timezone offset is returned.
   if (!('0' in arguments)) {
-    return tzOffset(0, (new Date()).getTimezoneOffset() * -1)
+    return tzOffset(0, LOCAL_TZ_OFFSET)
   }
 
   if (typeof hours != 'number' || typeof minutes != 'number') {
@@ -214,3 +214,5 @@ const round = (number, precision = 0) => {
 
 // padStart a stringable variable by the provided number of 0.
 const p = (value, length = 2) => value.toString().padStart(length, '0')
+
+const LOCAL_TZ_OFFSET = (new Date()).getTimezoneOffset() * -1

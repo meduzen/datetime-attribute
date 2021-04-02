@@ -2,9 +2,9 @@
 
 Get a [valid HTML `datetime` attribute](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/datetime) for the HTML `<time>` element:
 
-- [`datetime()`](#expressing-moments-with-datetime) for a specific moment;
+- [`datetime()`](#expressing-moments-with-datetime-and-datetimetz) for a specific moment (and `datetimeTz()` to indicate its timezone);
 - [`datetimeDuration()`](#expressing-durations-with-datetimeduration) for a duration;
-- [`tzOffset()`](#expressing-timezone-offsets-with-tzOffset) for a timezone offset.
+- [`tzOffset()`](#expressing-timezone-offsets-with-tzoffset) for a timezone offset.
 
 The whole package is [~ 1 KB compressed](https://bundlephobia.com/result?p=datetime-attribute) and tree-shakeable. It aims to be [spec](https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-time-datetime) complete.
 
