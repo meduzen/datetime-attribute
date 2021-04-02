@@ -6,7 +6,7 @@ Get a [valid HTML `datetime` attribute](https://developer.mozilla.org/en-US/docs
 - [`datetimeDuration()`](#expressing-durations-with-datetimeduration) for a duration;
 - [`datetimeTz()`](#expressing-timezone-offsets-with-datetimetz) for a timezone offset.
 
-The whole package is [~ 1 KB compressed](https://bundlephobia.com/result?p=datetime-attribute) and tree-shakeable. It aims to be [spec](https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-time-datetime) complete.
+The whole package is [~ 1 KB compressed](https://bundlephobia.com/result?p=datetime-attribute) and tree-shakeable. It aims to be [spec](https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-time-datetime) complete.
 
 ## Installation
 
@@ -22,7 +22,7 @@ Not a NPM users? Copy/paste [the code](https://raw.githubusercontent.com/meduzen
 
 ## Expressing moments with `datetime()`
 
-`datetime()` accepts two optional arguments: a [Date object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date), and a [_precision_ string](#available-precision-strings).
+`datetime()` accepts two optional arguments: a [Date object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date), and a [_precision_ keywords](#available-precision-keywords).
 
 ```js
 const now = new Date() // We’re 14 March 2021 and it’s 10:29 in Brussels.
@@ -37,12 +37,12 @@ datetime() // today formatted in YYYY-mm-dd
 datetime((new Date()), 'day') // same
 ```
 
-### Available precision strings
+### Available precision keywords
 
 By default, `datetime()` precision is `day`, resulting in a `YYYY-mm-dd`
 output. A lot of other values are accepted, covering most of the spec.
 
-Date:
+#### Date
 
 |  precision | example output | description
 |--|--|--|
@@ -52,27 +52,31 @@ Date:
 | `month` | `2021-03` | a month in a year |
 | `week` | `2021W10` | the week number ([ISO-8601 spec](https://en.wikipedia.org/wiki/ISO_week_date)) and its year |
 
-Time:
+#### Time and UTC time
 
 |  precision | example output | description
 |--|--|--|
 | `time` | `10:29` | hours and minutes, like most clock
-| `second` | `10:29:00` | same, with precision up to seconds
-| `ms` | `10:29:00.000` | same, with precision up to milliseconds
-| `time utc` | `09:29Z` | the same moment shifted to UTC time
-| `second utc` | `09:29:00Z` | the same moment shifted to UTC time with precision up to seconds
-| `ms utc` | `09:29:00.000Z` | the same moment shifted to UTC time with precision up to milliseconds
+| `time utc` | `09:29Z` | same as previous, shifted to UTC time
+| `second` | `10:29:00` | time with precision up to seconds
+| `second utc` | `09:29:00Z` | same as previous, shifted to UTC time
+| `ms` | `10:29:00.000` | time with precision up to milliseconds
+| `ms utc` | `09:29:00.000Z` | same as previous, shifted to UTC time
 
-Date + time:
+💡 Basically, you get UTC time by adding ` utc` behind a time keyword.
+
+#### Datetime and UTC datetime
 
 |  precision | example output | description
 |--|--|--|
-`local` | `2021-03-14T10:29` | a local datetime (= date + time)
-`local second` | `2021-03-14T10:29:00` | same, with precision up to seconds
-`local ms` | `2021-03-14T10:29:00.000` | same, with precision up to milliseconds
-`global` | `2021-03-14T09:29Z` | the same moment shifted to UTC time
-`global second` | `2021-03-14T09:29:00Z` | the same moment shifted to UTC time with precision up to seconds
-`global ms` | `2021-03-14T09:29:00.000Z` | the same moment shifted to UTC time with precision up to milliseconds
+`datetime` | `2021-03-14T10:29` | a local datetime (= date + time separated by `T`)
+`datetime utc` | `2021-03-14T09:29Z` | same as previous, shifted to UTC time
+`datetime second` | `2021-03-14T10:29:00` | time with precision up to seconds
+`datetime second utc` | `2021-03-14T09:29:00Z` | same as previous, shifted to UTC time
+`datetime ms` | `2021-03-14T10:29:00.000` | time with precision up to milliseconds
+`datetime ms utc` | `2021-03-14T09:29:00.000Z` | same as previous, shifted to UTC time
+
+💡 Basically, you get UTC datetime by adding ` utc` behind a datetime keyword.
 
 ## Expressing durations with `datetimeDuration()`
 
