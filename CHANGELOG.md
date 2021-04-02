@@ -4,7 +4,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 Until it reaches 1.0.0, breaking changes will bump the _MINOR_ digit (the second one).
 
-## [0.2.1] - 2021-04-02
+## v0.2.1 (2021-04-02)
 
 Compare with [previous version](https://github.com/meduzen/datetime-attribute/compare/0.1.7...0.2.1).
 
@@ -20,7 +20,7 @@ Compare with [previous version](https://github.com/meduzen/datetime-attribute/co
 
 - Rewrite most of the documentation.
 
-## [0.1.7] - 2021-04-01
+## v0.1.7 (2021-04-01)
 
 Compare with [previous version](https://github.com/meduzen/datetime-attribute/compare/0.1.6...0.1.7).
 
@@ -32,7 +32,7 @@ Shorten `datetimeDuration()` footprint by a couple of bytes.
 
 Also fix duration datetime output in documentation.
 
-## [0.1.6] - 2021-03-21
+## v0.1.6 (2021-03-21)
 
 Compare with [previous version](https://github.com/meduzen/datetime-attribute/compare/0.1.5...0.1.6).
 
@@ -40,7 +40,7 @@ Compare with [previous version](https://github.com/meduzen/datetime-attribute/co
 
 Rewrite how `datetime()` works to shorten its footprint.
 
-## [0.1.5] - 2021-03-14
+## v0.1.5 (2021-03-14)
 
 ### New
 
@@ -48,6 +48,6 @@ Compare with [previous version](https://github.com/meduzen/datetime-attribute/co
 
 Mark the package as being side effects free.
 
-## [0.1.4] - 2021-03-14
+## v0.1.4 (2021-03-14)
 
 First published version.
