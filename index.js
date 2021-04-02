@@ -7,7 +7,7 @@
  *
  * See also: https://www.brucelawson.co.uk/2012/best-of-time/
  */
-export function datetime(date = (new Date()), precision = 'day') {
+export function datetime(date = (new Date()), precision = 'day', offset = 'Z') {
   if (!(date instanceof Date)) {
       throw new TypeError('Input date should be of type `Date`');
   }
@@ -23,10 +23,9 @@ export function datetime(date = (new Date()), precision = 'day') {
 
   // Extract substring from local date.
   const local = (start, end) => localMs.substr(start, end)
+  const utcDatetime = (start, end) => date.toJSON().substr(start, end)
 
   const formats = {
-    'global ms': () => date.toJSON(),
-
     'year': () => local(0, 4),          // 1960
     'month': () => local(0, 7),         // 1960-04
     'day': () => local(0, 10),          // 1960-04-27
@@ -41,6 +40,14 @@ export function datetime(date = (new Date()), precision = 'day') {
     'local': () => local(0, 16),        // 1960-04-27T00:00
     'local second': () => local(0, 19), // 1960-04-27T00:00:00
     'local ms': () => local(0, 23),     // 1960-04-27T00:00:00.123
+
+    'global': () => utcDatetime(0, 16) + 'Z',        // 1960-04-26T23:00Z
+    'global second': () => utcDatetime(0, 19) + 'Z', // 1960-04-26T23:00:00Z
+    'global ms': () => date.toJSON(),                // 1960-04-26T23:00:00.000Z
+
+    'time utc': () => utcDatetime(11, 5) + 'Z',   // 23:00Z
+    'second utc': () => utcDatetime(11, 8) + 'Z', // 23:00:00Z
+    'ms utc': () => utcDatetime(11, 12) + 'Z',    // 23:00:00.000Z
   }
 
   return (formats[precision] || formats.day)()

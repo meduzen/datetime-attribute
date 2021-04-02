@@ -33,7 +33,12 @@ describe('datetime', () => {
   test('week on 2021-12-31', () => expect(datetime(december31th2021, 'week')).toBe('2021-W52'))
 
   // This one can’t be tested providing an exact value as the output depends on client timezone.
+  test('global', () => expect(datetime(date, 'global')).toBe(date.toJSON().substr(0, 16) + 'Z'))
   test('global ms', () => expect(datetime(date, 'global ms')).toBe(date.toJSON()))
+  test('global second', () => expect(datetime(date, 'global second')).toBe(date.toJSON().substr(0, 19) + 'Z'))
+  test('time utc', () => expect(datetime(date, 'time utc')).toBe(date.toJSON().substr(11, 5) + 'Z'))
+  test('second utc', () => expect(datetime(date, 'second utc')).toBe(date.toJSON().substr(11, 8) + 'Z'))
+  test('ms utc', () => expect(datetime(date, 'ms utc')).toBe(date.toJSON().substr(11, 12) + 'Z'))
 
   test('non supported precision', () => expect(datetime(date, 'n00t')).toBe('1960-04-27'))
 })

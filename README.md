@@ -6,7 +6,7 @@ Get a [valid HTML `datetime` attribute](https://developer.mozilla.org/en-US/docs
 - [`datetimeDuration()`](#expressing-durations-with-datetimeduration) for a duration;
 - [`datetimeTz()`](#expressing-timezone-offsets-with-datetimetz) for a timezone offset.
 
-The whole package is [< 1 KB compressed](https://bundlephobia.com/result?p=datetime-attribute) and tree-shakeable.
+The whole package is [~ 1 KB compressed](https://bundlephobia.com/result?p=datetime-attribute) and tree-shakeable. It aims to be [spec](https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-time-datetime) complete.
 
 ## Installation
 
@@ -59,6 +59,9 @@ Time:
 | `time` | `10:29` | hours and minutes, like most clock
 | `second` | `10:29:00` | same, with precision up to seconds
 | `ms` | `10:29:00.000` | same, with precision up to milliseconds
+| `time utc` | `09:29Z` | the same moment shifted to UTC time
+| `second utc` | `09:29:00Z` | the same moment shifted to UTC time with precision up to seconds
+| `ms utc` | `09:29:00.000Z` | the same moment shifted to UTC time with precision up to milliseconds
 
 Date + time:
 
@@ -67,9 +70,9 @@ Date + time:
 `local` | `2021-03-14T10:29` | a local datetime (= date + time)
 `local second` | `2021-03-14T10:29:00` | same, with precision up to seconds
 `local ms` | `2021-03-14T10:29:00.000` | same, with precision up to milliseconds
-`global ms` | `2021-03-14T09:29:00.000Z` | the same moment shifted to UTC time
-
-(Not supported yet: global time with seconds and minutes precision.)
+`global` | `2021-03-14T09:29Z` | the same moment shifted to UTC time
+`global second` | `2021-03-14T09:29:00Z` | the same moment shifted to UTC time with precision up to seconds
+`global ms` | `2021-03-14T09:29:00.000Z` | the same moment shifted to UTC time with precision up to milliseconds
 
 ## Expressing durations with `datetimeDuration()`
 
