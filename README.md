@@ -56,7 +56,7 @@ output. A lot of other values are accepted, covering most of the spec.
 
 |  precision | example output | description
 |--|--|--|
-| `time` | `10:29` | hours and minutes, like most clock
+| `time` | `10:29` | hours and minutes, like most clocks
 | `time utc` | `09:29Z` | same as previous, shifted to UTC time
 | `second` | `10:29:00` | time with precision up to seconds
 | `second utc` | `09:29:00Z` | same as previous, shifted to UTC time
@@ -132,7 +132,7 @@ Let’s take this sentence and its  HTML:
 Here’s how you can get the `datetime` attribute fitting this sentence:
 
 ```js
-// const awakeningAt = … // a date Object with 08:00 as time
+// const awakeningAt = … // a Date object with 08:00 as time
 
 datetimeTz(awakeningAt, 'time', 2) // '08:00+02:00'
 ```

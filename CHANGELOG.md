@@ -10,7 +10,7 @@ Compare with [last version](https://github.com/meduzen/datetime-attribute/compar
 
 ### New
 
-- Add `datetimeTz()` to Indicate a `datetime` attribute belongs to the specified timezone offset.
+- Add `datetimeTz()` to indicate a `datetime` attribute belongs to the specified timezone offset.
 
 ### Changed
 
