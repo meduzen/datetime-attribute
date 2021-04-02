@@ -25,14 +25,21 @@ to open an issue and/or a PR that won’t have any side effects.
 
 ## Usage
 
-`datetime` accepts a [Date object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date) as argument, and optionally a [`precision` string](#advanced-usage).
+`datetime()` accepts two optional arguments: a [Date object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date), and a _precision_ string ([view them all](#advanced-usage-for-datetime)).
 
 ```js
 const now = new Date() // We’re 14 March 2021 and it’s 10:29 in Brussels.
 
-const datetimeAttr = datetime(now) // '2021-03-14'
+datetime(now) // '2021-03-14'
 
-const datetimeAttrWithTime = datetime(now, 'local') // '2021-03-14T10:29'
+datetime(now, 'local') // '2021-03-14T10:29'
+```
+
+Without argument, it defaults to _today_:
+```js
+datetime() // today as YYYY-mm-dd
+
+datetime((new Date()), 'day') // same
 ```
 
 `datetimeDuration` requires an object with keys for different levels of durations, from seconds to weeks.
