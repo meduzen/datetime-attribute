@@ -239,7 +239,7 @@ tzOffset()       // '+01:00'
 tzOffset()       // '+02:00' (under daylight time saving)
 ```
 
-Note: values outside the real-life range (`-12:00` to `+14:00`) are currently not adjusted to fit in it. This means `tzOffset(26)` will output `+26:00` instead of `+02:00`.
+Note: values outside the real-life range (`-12:00` to `+14:00`) are not adjusted to fit in it, but to fit into the spec range (`-23:59` to `+23:59`) . This means `tzOffset(26)` will output `+02:00` instead of `+26:00`.
 
 Curious about timezones? Have a look at [the timezone map](https://fr.m.wikipedia.org/wiki/Fichier:World_Time_Zones_Map.png) and the [daylight time saving chaos](https://en.wikipedia.org/wiki/Daylight_saving_time_by_country).
 

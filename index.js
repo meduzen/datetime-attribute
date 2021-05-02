@@ -91,14 +91,22 @@ export function tzOffset(hours = 0, minutes = 0) {
   // Offset sign: `+` (UTC ≥ 0) or `-` (UTC < 0).
   const sign = minutes > 0 ? '+' : '-'
 
+  // Remove sign (handled separately) and ignore the decimal part.
+  minutes = Math.trunc(Math.abs(minutes))
+
+  /**
+   * The timezone offset must stay between -23:59 and +23:59:
+   * https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#concept-timezone
+   */
+  if (minutes >= MINUTES_PER_DAY) {
+    minutes -= Math.floor(minutes / (MINUTES_PER_DAY)) * (MINUTES_PER_DAY)
+  }
+
   // Get hours and minutes.
   hours = Math.trunc(minutes / 60)
   minutes = minutes % 60
 
   if (hours == 0 && minutes == 0 ) { return 'Z' }
-
-  // Remove sign (handled separately) and ignore the decimal part.
-  [hours, minutes] = [hours, minutes].map(value => Math.trunc(Math.abs(value)))
 
   return sign + p(hours) + ':' + p(minutes)
 }
@@ -225,6 +233,7 @@ export function weekNumber(date) {
 \* --------------------- */
 
 const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24
+const MINUTES_PER_DAY = 60 * 24
 
 // Round a number to the provided precision.
 const round = (number, precision = 0) => {
