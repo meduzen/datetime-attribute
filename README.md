@@ -1,3 +1,4 @@
+
 # datetime-attribute
 
 Get a [valid `datetime` attribute](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/datetime) for HTML `<time>` (among others).
@@ -181,7 +182,7 @@ datetimeTz(awakeningAt, 'time', 2) // '08:00+02:00'
 
 ## Expressing durations with `datetimeDuration()`
 
-`datetimeDuration()` requires an object with entries for different levels of durations, from seconds to weeks.
+`datetimeDuration()` requires an object with entries for different levels of durations, from seconds to weeks. It also accepts a second parameter to control the [conversion of units overflow](#units-overflow) (default: `true`).
 
 ```js
 import { datetimeDuration } from 'datetime-attribute'
@@ -203,11 +204,20 @@ All object keys are optional:
 datetimeDuration({ h: 17 }) // 'PT17H'
 ```
 
-Values exceeding a unit are not thrown away:
+### Units overflow
+
+Values exceeding a unit are converted to upper units:
 
 ```js
 datetimeDuration({ h: 31, m: 63, s: 175 }) // 'P1DT8H5M55S'
 ```
+
+If you don’t need this behaviour, pass `false` as second parameter (default valut: `true`).
+```js
+datetimeDuration({ m: 175 }) // 'PT2H55M'
+datetimeDuration({ m: 175 }, false) // 'PT175M'
+```
+
 
 ## Expressing timezone offsets with `tzOffset()`
 

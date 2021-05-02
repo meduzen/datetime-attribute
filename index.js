@@ -111,7 +111,7 @@ export function tzOffset(hours = 0, minutes = 0) {
  *
  * See also: https://www.brucelawson.co.uk/2012/best-of-time/
  */
-export function datetimeDuration(duration) {
+export function datetimeDuration(duration, convertExcess = true) {
 
   // Set default values for missing keys.
   let { w = 0, d = 0, h = 0, m = 0, s = 0 } = duration
@@ -121,28 +121,33 @@ export function datetimeDuration(duration) {
     return null
   }
 
-  // Total duration in seconds.
-  let time = s
-    + 60 * m
-    + 60 * 60 * h
-    + 60 * 60 * 24 * d
-    + 60 * 60 * 24 * 7 * w
+  // Prevent units excess (e.g. `{ m: 65 }` becomes `{ h: 1, m: 5 }`)
+  if (convertExcess) {
 
-  // Reducing remaining time by given cx.
-  const divideRemainingTimeBy = cx => time = Math.floor(time / cx)
+    // Total duration in seconds.
+    let time = s
+      + 60 * m
+      + 60 * 60 * h
+      + 60 * 60 * 24 * d
+      + 60 * 60 * 24 * 7 * w
+
+    // Reduce remaining time by given cx.
+    const divideRemainingTimeBy = cx => time = Math.floor(time / cx)
+
+    s = round(time % 60, 3)
+    divideRemainingTimeBy(60)
+
+    m = time % 60
+    divideRemainingTimeBy(60)
+
+    h = time % 24
+    divideRemainingTimeBy(24)
+
+    d = time % 7
+    w = divideRemainingTimeBy(7)
+  }
+
   const getStr = (value, unit) => (value ? `${value}${unit}` : '')
-
-  s = round(time % 60, 3)
-  divideRemainingTimeBy(60)
-
-  m = time % 60
-  divideRemainingTimeBy(60)
-
-  h = time % 24
-  divideRemainingTimeBy(24)
-
-  d = time % 7
-  w = divideRemainingTimeBy(7)
 
   return 'P' + getStr(w, 'W') + getStr(d, 'D') // weeks and days
     + (h || m || s ? 'T' : '') // separator

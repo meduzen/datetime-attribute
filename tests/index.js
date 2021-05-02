@@ -54,10 +54,16 @@ describe('datetimeDuration', () => {
   test('is a function', () => expect(datetimeDuration).toBeInstanceOf(Function))
   test('()', () => expect(() => datetimeDuration()).toThrow())
   test('empty object {}', () => expect(datetimeDuration({})).toBeNull())
+
   test('complete object', () => expect(datetimeDuration(duration)).toBe('P3W5DT10H43M2.61S'))
   test('complete object with too high values', () => expect(datetimeDuration(durationWithTooHighValues)).toBe('P5W6DT12H55M55.3S'))
   test('hours only', () => expect(datetimeDuration(durationInHours)).toBe('PT17H'))
   test('days only', () => expect(datetimeDuration(durationInDays)).toBe('P6W1D'))
+
+  test('complete object without converting the excess', () => expect(datetimeDuration(duration, false)).toBe('P3W5DT10H43M2.61S'))
+  test('complete object with too high values without converting the excess', () => expect(datetimeDuration(durationWithTooHighValues, false)).toBe('P3W19DT36H53M175.3S'))
+  test('hours only without converting the excess', () => expect(datetimeDuration(durationInHours, false)).toBe('PT17H'))
+  test('days only without converting the excess', () => expect(datetimeDuration(durationInDays, false)).toBe('P43D'))
 })
 
 describe('tzOffset', () => {
