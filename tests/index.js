@@ -79,6 +79,8 @@ describe('tzOffset', () => {
   test('12.75', () => expect(tzOffset(12.75)).toBe('+12:45'))
   test('-8', () => expect(tzOffset(-8)).toBe('-08:00'))
   test('2, -200', () => expect(tzOffset(2, -200)).toBe('-01:20'))
+  test('-35', () => expect(tzOffset(-35)).toBe('-11:00'))
+  test('62.75', () => expect(tzOffset(62.75)).toBe('+14:45'))
   test('non number', () => expect(() => tzOffset('Z')).toThrow(TypeError))
 
   // This one can’t be tested providing an exact value as the output depends on client timezone and daylight time saving.
