@@ -56,12 +56,12 @@ export function datetime(date = (new Date()), precision = 'day') {
 /**
  * Create `datetime="2021-12-02T17:34-06:00"` attribute for `<time>`.
  */
- export function datetimeTz(date, precision = 'datetime', offsetHours = 0, offsetMinutes = 0) {
+ export function datetimeTz(date, precision = 'datetime', offsetHours = 0, offsetMinutes = 0, realLifeBoundaries = false) {
   let timezoneOffset = ''
 
   if (!precision.includes('utc')) { // ignore request for UTC conversion
     timezoneOffset = ('2' in arguments) // see similar line in tzOffset()
-      ? tzOffset(offsetHours, offsetMinutes)
+      ? tzOffset(offsetHours, offsetMinutes, realLifeBoundaries)
       : tzOffset()
   }
 
@@ -74,7 +74,7 @@ export function datetime(date = (new Date()), precision = 'day') {
  * https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#concept-timezone
  * https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/datetime
  */
-export function tzOffset(hours = 0, minutes = 0) {
+export function tzOffset(hours = 0, minutes = 0, realLifeBoundaries = false) {
 
   // No arguments received: the local timezone offset is returned.
   if (!('0' in arguments)) {
@@ -85,20 +85,52 @@ export function tzOffset(hours = 0, minutes = 0) {
     throw new TypeError('hours and (optional) minutes must be numbers.');
   }
 
-  // Convert given offset in minutes by merging parameters.
-  minutes = hours * 60 + minutes
+  // Convert given offset in minutes and ignore the decimal part.
+  minutes = Math.trunc(hours * 60 + minutes)
+
+  // Compute minutes to remove in order to suppress the excess of minutes.
+  const suppressMinutesExcess = limit => Math.floor(minutes / limit) * MINUTES_PER_DAY
+
+  if (realLifeBoundaries) {
+
+    /**
+     * Because lower and upper boundaries are not necessarily symetric,
+     * suppressing the minutes excess can lead to another excess, but
+     * on the other side (e.g. going from beyond +14 to below -12).
+     */
+
+    // Upper boundary
+    if(minutes > REAL_LIFE_UPPER_TIMEZONE) {
+      minutes -= suppressMinutesExcess(REAL_LIFE_UPPER_TIMEZONE)
+      return tzOffset(0, minutes, true)
+    }
+
+    // Lower boundary
+    if(minutes < REAL_LIFE_LOWER_TIMEZONE) {
+      minutes += suppressMinutesExcess(REAL_LIFE_LOWER_TIMEZONE)
+      return tzOffset(0, minutes, true)
+    }
+  }
 
   // Offset sign: `+` (UTC ≥ 0) or `-` (UTC < 0).
   const sign = minutes > 0 ? '+' : '-'
+
+  // Remove sign (stored separately, see previous line).
+  minutes = Math.abs(minutes)
+
+  /**
+   * The timezone offset must stay between -23:59 and +23:59:
+   * https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#concept-timezone
+   */
+  if (minutes >= MINUTES_PER_DAY) {
+    minutes -= suppressMinutesExcess(MINUTES_PER_DAY)
+  }
 
   // Get hours and minutes.
   hours = Math.trunc(minutes / 60)
   minutes = minutes % 60
 
   if (hours == 0 && minutes == 0 ) { return 'Z' }
-
-  // Remove sign (handled separately) and ignore the decimal part.
-  [hours, minutes] = [hours, minutes].map(value => Math.trunc(Math.abs(value)))
 
   return sign + p(hours) + ':' + p(minutes)
 }
@@ -225,6 +257,9 @@ export function weekNumber(date) {
 \* --------------------- */
 
 const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24
+const MINUTES_PER_DAY = 60 * 24
+const REAL_LIFE_LOWER_TIMEZONE = -12 * 60
+const REAL_LIFE_UPPER_TIMEZONE = 14 * 60
 
 // Round a number to the provided precision.
 const round = (number, precision = 0) => {

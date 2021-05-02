@@ -79,6 +79,13 @@ describe('tzOffset', () => {
   test('12.75', () => expect(tzOffset(12.75)).toBe('+12:45'))
   test('-8', () => expect(tzOffset(-8)).toBe('-08:00'))
   test('2, -200', () => expect(tzOffset(2, -200)).toBe('-01:20'))
+  test('-35', () => expect(tzOffset(-35)).toBe('-11:00'))
+  test('62.75', () => expect(tzOffset(62.75)).toBe('+14:45'))
+  test('-12, 0, true', () => expect(tzOffset(-12, 0, true)).toBe('-12:00'))
+  test('-12, -20, true', () => expect(tzOffset(-12, -20, true)).toBe('+11:40'))
+  test('-13, -20, true', () => expect(tzOffset(-13, -20, true)).toBe('+10:40'))
+  test('14, 45, true', () => expect(tzOffset(14, 45, true)).toBe('-09:15'))
+  test('62.75, 0, true', () => expect(tzOffset(62.75, 0, true)).toBe('-09:15'))
   test('non number', () => expect(() => tzOffset('Z')).toThrow(TypeError))
 
   // This one can’t be tested providing an exact value as the output depends on client timezone and daylight time saving.
@@ -96,6 +103,7 @@ describe('datetimeTz', () => {
   test('second -3', () => expect(datetimeTz(date, 'second', -3)).toBe('00:00:00-03:00'))
   test('ms +3.5', () => expect(datetimeTz(date, 'ms', 3.5)).toBe('00:00:00.000+03:30'))
   test('datetime +12:45', () => expect(datetimeTz(date, 'datetime', 12, 45)).toBe('1960-04-27T00:00+12:45'))
+  test('datetime +17, 30, true', () => expect(datetimeTz(date, 'datetime', 17, 30, true)).toBe('1960-04-27T00:00-06:30'))
   test('datetime second -6', () => expect(datetimeTz(date, 'datetime second', -6)).toBe('1960-04-27T00:00:00-06:00'))
   test('datetime ms +1', () => expect(datetimeTz(date, 'datetime ms', 1)).toBe('1960-04-27T00:00:00.000+01:00'))
 
