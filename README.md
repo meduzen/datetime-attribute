@@ -10,6 +10,37 @@ This package aims to cover the [whole `datetime` specification](https://html.spe
 
 The whole package is [~ 1 KB compressed](https://bundlephobia.com/result?p=datetime-attribute) and tree-shakeable.
 
+- [Summary usage](#summary-usage)
+- [Installation](#installation)
+- Usage
+  - [**`datetime()`**](#expressing-moments-with-datetime) to express a **moment** at different [levels of precision](#available-precision-keywords):
+	- [Date](#date)
+	- [Time and UTC time](#time-and-utc-time)
+	- [Datetime and UTC datetime](#time-and-utc-datetime)
+  - [**`datetimeTz()`**](#adding-a-timezone-offset-to-a-moment-with-datetimetz) to express a **moment with a specific timezone** offset
+  - [**`datetimeDuration()`**](#expressing-durations-with-datetimeduration) to expressing a **duration**
+  - [**`tzOffset()`**](#expressing-timezone-offsets-with-tzoffset) to express a **timezone offset**
+- Various:
+  - [Changelog](#changelog)
+  - [Browser and tooling support](#browser-and-tooling-support)
+  - [Not only in `<time>`](#not-only-in-time)
+  - [License](#license)
+
+## Summary usage
+
+```js
+import { datetime, datetimeTz, datetimeDuration, tzOffset } from 'datetime-attribute'
+
+const now = new Date()
+
+datetime(now)                   // '2021-03-14'
+datetime(now, 'time')           // '10:29'
+datetimeTz(now, 'datetime', -7) // '2021-03-14T10:29-07:00'
+
+tzOffset(-9, 30) // '-09:30' (Marquesas Islands)
+datetimeDuration({ d: 4, h: 3, m: 17 }) // 'P4DT3H17M'
+
+```
 
 ## Installation
 
@@ -223,3 +254,7 @@ If you’d like one of those features, feel free to open an issue and/or a PR th
 - Microdata types: [DateTime](https://schema.org/DateTime) and [Time](https://schema.org/Time) properties.
 - Open Graph [dates properties](https://ogp.me/#datetime): `release_date`, `published_time`, `modified_time` and `expiration_time`.
 - The browser [WebExtensions history search API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/history/search).
+
+## License
+
+The _datetime-attribute_ package is open-sourced software licensed under the [DWTFYWTPL](https://github.com/meduzen/datetime-attribute/blob/main/LICENSE).
