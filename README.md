@@ -222,7 +222,7 @@ datetimeDuration({ m: 175 }, false) // 'PT175M'
 
 Timezone offsets are a comparison against [UTC time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time). For example, `+01:00` means “one hour ahead of UTC time” and `-05:00` means “five hours behind UTC time”.
 
-`tzOffset()` accepts two optional arguments for hours and minutes. Without argument, the local timezone offset is returned (and may differ based on daylight saving time).
+`tzOffset()` accepts three optional arguments for hours, minutes, and [compliance to real-life boundaries](#real-life-timezone-offset). Without argument, the local timezone offset is returned (and may differ based on daylight saving time).
 
 ```js
 import { tzOffset } from 'datetime-attribute'
@@ -239,7 +239,16 @@ tzOffset()       // '+01:00'
 tzOffset()       // '+02:00' (under daylight time saving)
 ```
 
-Note: values outside the real-life range (`-12:00` to `+14:00`) are not adjusted to fit in it, but to fit into the spec range (`-23:59` to `+23:59`) . This means `tzOffset(26)` will output `+02:00` instead of `+26:00`.
+### Real-life timezone offset
+
+The timezone offset will be adjusted to fit in the spec range (from `-23:59` to `+23:59`). This means `tzOffset(44)` will output `+20:00` instead of `+44:00`.
+
+However, timezone offsets of countries in the world are all between `-12:00` and `+14:00`. If you want `tzOffset(44)` to output `-04:00` so that it matches real-life boundaries, pass it a third parameter (default: `false`):
+
+```js
+tzOffset(44) // '+20:00'
+tzOffset(44, 0, true) // '-04:00'
+```
 
 Curious about timezones? Have a look at [the timezone map](https://fr.m.wikipedia.org/wiki/Fichier:World_Time_Zones_Map.png) and the [daylight time saving chaos](https://en.wikipedia.org/wiki/Daylight_saving_time_by_country).
 
