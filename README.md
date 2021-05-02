@@ -1,12 +1,15 @@
 # datetime-attribute
 
-Get a [valid HTML `datetime` attribute](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/datetime) for the HTML `<time>` element:
+Get a [valid `datetime` attribute](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/datetime) for HTML `<time>` (among others).
 
-- [`datetime()`](#expressing-moments-with-datetime-and-datetimetz) for a specific moment (and `datetimeTz()` to indicate its timezone);
-- [`datetimeDuration()`](#expressing-durations-with-datetimeduration) for a duration;
-- [`tzOffset()`](#expressing-timezone-offsets-with-tzoffset) for a timezone offset.
+This package aims to cover the [whole `datetime` specification](https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-time-datetime) in 4 functions:
+- [**`datetime()`**](#expressing-moments-with-datetime) for a specific moment;
+- [**`datetimeTz()`**](#adding-a-timezone-offset-to-a-moment-with-datetimetz) for a specific moment in a given timezone;
+- [**`datetimeDuration()`**](#expressing-durations-with-datetimeduration) for a duration;
+- [**`tzOffset()`**](#expressing-timezone-offsets-with-tzoffset) for a timezone offset.
 
-The whole package is [~ 1 KB compressed](https://bundlephobia.com/result?p=datetime-attribute) and tree-shakeable. It aims to be [spec](https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-time-datetime) complete.
+The whole package is [~ 1 KB compressed](https://bundlephobia.com/result?p=datetime-attribute) and tree-shakeable.
+
 
 ## Installation
 
@@ -15,16 +18,22 @@ The whole package is [~ 1 KB compressed](https://bundlephobia.com/result?p=datet
 Import the functions you need in your script:
 
 ```js
-import { datetime, datetimeDuration, tzOffset } from 'datetime-attribute'
+// if you only need `datetime`
+import { datetime } from 'datetime-attribute'
+
+// if you need all functions
+import { datetime, datetimeTz, datetimeDuration, tzOffset } from 'datetime-attribute'
 ```
 
 Not a NPM users? Copy/paste [the code](https://raw.githubusercontent.com/meduzen/datetime-attribute/main/index.js) in your project.
 
-## Expressing moments with `datetime()` and `datetimeTz()`
+## Expressing moments with `datetime()`
 
 `datetime()` accepts two optional arguments: a [Date object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date), and a [_precision_ keywords](#available-precision-keywords).
 
 ```js
+import { datetime } from 'datetime-attribute'
+
 const now = new Date() // We’re 14 March 2021 and it’s 10:29 in Brussels.
 
 datetime(now)          // '2021-03-14'
@@ -78,7 +87,7 @@ output. A lot of other values are accepted, covering most of the spec.
 
 💡 Basically, you get UTC datetime by adding ` utc` behind a datetime keyword.
 
-## Adding a timezone offset to a moment
+## Adding a timezone offset to a moment with `datetimeTz()`
 
 💡 It’s recommended to [read about `tzOffset`](#expressing-timezone-offsets-with-tzoffset) before continuing here.
 
@@ -106,6 +115,8 @@ datetimeTz(date, precision, offsetHours, offsetMinutes)
 When hours and minutes are not specified, the local timezone offset is used.
 
 ```js
+import { datetime, datetimeTz } from 'datetime-attribute'
+
 const now = new Date() // We’re 2 April 2021 and it’s 23:51 in Brussels.
 
 datetime(now) 	// '2021-04-02'
@@ -123,16 +134,16 @@ datetimeTz(now, 'time', -3, 30) // '23:51-03:30'
 
 Let’s take this sentence and its  HTML:
 
-> This week, I’ll wake up at 8 o’clock every day.
+> I wake up at 8 o’clock every day.
 
 ```html
-<p>This week, I’ll wake up <time datetime="08:00+02:00">at 8 o’clock</time> every day.</p>
+<p>I wake up <time datetime="08:00+02:00">at 8 o’clock</time> every day.</p>
 ```
 
 Here’s how you can get the `datetime` attribute fitting this sentence:
 
 ```js
-// const awakeningAt = … // a Date object with 08:00 as time
+// const awakeningAt = new Date(…) // a Date object with 08:00 as time
 
 datetimeTz(awakeningAt, 'time', 2) // '08:00+02:00'
 ```
@@ -142,6 +153,8 @@ datetimeTz(awakeningAt, 'time', 2) // '08:00+02:00'
 `datetimeDuration()` requires an object with entries for different levels of durations, from seconds to weeks.
 
 ```js
+import { datetimeDuration } from 'datetime-attribute'
+
 const duration = {
   w: 3,   //     3 weeks
   d: 5,   //     5 days
@@ -172,6 +185,8 @@ Timezone offsets are a comparison against [UTC time](https://en.wikipedia.org/wi
 `tzOffset()` accepts two optional arguments for hours and minutes. Without argument, the local timezone offset is returned (and may differ based on daylight saving time).
 
 ```js
+import { tzOffset } from 'datetime-attribute'
+
 tzOffset(3)      // '+03:00' (Moscow)
 
 tzOffset(-9, 30) // '-09:30' (Marquesas Islands)
