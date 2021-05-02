@@ -199,3 +199,12 @@ See [CHANGELOG.md](https://github.com/meduzen/datetime-attribute/blob/main/CHANG
 - you can’t import it using `require('datetime-attribute')`.
 
 If you’d like one of those features, feel free to open an issue and/or a PR that won’t have any side effects for modern usage.
+
+## Not only in `<time>`
+
+[`<time>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time) is not alone! Other elements can benefit from `datetime-attribute`:
+- `<input>` of the following types: [`date`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date), [`datetime-local`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/datetime-local), [`month`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/month), [`week`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/week), [`time`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time): check their `min`, `max`, `value`, `datalist` attributes.
+-  [`<del>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del#attributes) and [`<ins>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins#attributes) accept a `datetime` attribute.
+- Microdata types: [DateTime](https://schema.org/DateTime) and [Time](https://schema.org/Time) properties.
+- Open Graph [dates properties](https://ogp.me/#datetime): `release_date`, `published_time`, `modified_time` and `expiration_time`.
+- The browser [WebExtensions history search API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/history/search).
