@@ -6,7 +6,20 @@ Until it reaches 1.0.0, breaking changes will bump the _MINOR_ digit (the second
 
 ## Unreleased
 
-Compare with [last version](https://github.com/meduzen/datetime-attribute/compare/0.4.2...main).
+Compare with [last version](https://github.com/meduzen/datetime-attribute/compare/0.5.0...main).
+
+## v0.5.0 (2021-05-02)
+
+Compare with [previous version](https://github.com/meduzen/datetime-attribute/compare/0.4.2...0.5.0).
+
+### New
+
+- `tzOffset()` now accepts a [third parameter](https://github.com/meduzen/datetime-attribute#real-life-timezone-offset). When set to `true`, it enforce the provided timezone to stay in real-life boundaries (from `-12:00` to `+14:00`).
+- This also applies to `datetimeTz()`, which now accepts a fifth parameter to be on par with how `tzOffset()` works.
+
+### Changed
+
+- `tzOffset()` and `datetimeTz()` now adjust the timezone to fit the spec boundaries (from `-23:59` to `+23:59`). There was no limits before.
 
 ## v0.4.2 (2021-05-02)
 
