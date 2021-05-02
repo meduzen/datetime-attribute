@@ -1,4 +1,3 @@
-
 # datetime-attribute
 
 Get a [valid `datetime` attribute](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/datetime) for HTML `<time>` (among others).

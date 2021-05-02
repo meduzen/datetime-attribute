@@ -6,7 +6,11 @@ Until it reaches 1.0.0, breaking changes will bump the _MINOR_ digit (the second
 
 ## Unreleased
 
-Compare with [last version](https://github.com/meduzen/datetime-attribute/compare/0.4.1...main).
+Compare with [last version](https://github.com/meduzen/datetime-attribute/compare/0.4.2...main).
+
+## v0.4.2 (2021-05-02)
+
+Compare with [previous version](https://github.com/meduzen/datetime-attribute/compare/0.4.1...0.4.2).
 
 ### New
 

@@ -121,7 +121,7 @@ export function datetimeDuration(duration, convertExcess = true) {
     return null
   }
 
-  // Prevent units excess (e.g. `{ m: 65 }` becomes `{ h: 1, m: 5 }`)
+  // Convert units in excess (e.g. `{ m: 65 }` becomes `{ h: 1, m: 5 }`).
   if (convertExcess) {
 
     // Total duration in seconds.
