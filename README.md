@@ -5,7 +5,7 @@ Get a [valid `datetime` attribute](https://developer.mozilla.org/en-US/docs/Web/
 Lightweight ([~ 1 KB compressed](https://bundlephobia.com/result?p=datetime-attribute) and tree-shakeable), datetime-attribute covers the [whole `datetime` specification](https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-time-datetime) in 4 functions:
 - [**`datetime()`**](#expressing-moments-with-datetime) for a specific moment;
 - [**`datetimeTz()`**](#adding-a-timezone-offset-to-a-moment-with-datetimetz) for a specific moment in a given timezone;
-- [**`datetimeDuration()`**](#expressing-durations-with-datetimeduration) for a duration;
+- [**`duration()`**](#expressing-durations-with-duration) for a duration;
 - [**`tzOffset()`**](#expressing-timezone-offsets-with-tzoffset) for a timezone offset.
 
 [![Node.js CI](https://github.com/meduzen/datetime-attribute/actions/workflows/node.js.yml/badge.svg)](https://github.com/meduzen/datetime-attribute/actions/workflows/node.js.yml)
@@ -20,7 +20,7 @@ Lightweight ([~ 1 KB compressed](https://bundlephobia.com/result?p=datetime-attr
 	- [Time and UTC time](#time-and-utc-time)
 	- [Datetime and UTC datetime](#time-and-utc-datetime)
   - [**`datetimeTz()`**](#adding-a-timezone-offset-to-a-moment-with-datetimetz) to express a **moment with a specific timezone** offset
-  - [**`datetimeDuration()`**](#expressing-durations-with-datetimeduration) to expressing a **duration**
+  - [**`duration()`**](#expressing-durations-with-duration) to expressing a **duration**
   - [**`tzOffset()`**](#expressing-timezone-offsets-with-tzoffset) to express a **timezone offset**
 - Various:
   - [Changelog](#changelog)
@@ -31,7 +31,7 @@ Lightweight ([~ 1 KB compressed](https://bundlephobia.com/result?p=datetime-attr
 ## Summary usage
 
 ```js
-import { datetime, datetimeTz, datetimeDuration, tzOffset } from 'datetime-attribute'
+import { datetime, datetimeTz, duration, tzOffset } from 'datetime-attribute'
 
 const now = new Date()
 
@@ -40,7 +40,7 @@ datetime(now, 'time')           // '10:29'
 datetimeTz(now, 'datetime', -7) // '2021-03-14T10:29-07:00'
 
 tzOffset(-9, 30) // '-09:30' (Marquesas Islands)
-datetimeDuration({ d: 4, h: 3, m: 17 }) // 'P4DT3H17M'
+duration({ d: 4, h: 3, m: 17 }) // 'P4DT3H17M'
 
 ```
 
@@ -55,7 +55,7 @@ Import the functions you need in your script:
 import { datetime } from 'datetime-attribute'
 
 // if you need all functions
-import { datetime, datetimeTz, datetimeDuration, tzOffset } from 'datetime-attribute'
+import { datetime, datetimeTz, duration, tzOffset } from 'datetime-attribute'
 ```
 
 Not a NPM users? Copy/paste [the code](https://raw.githubusercontent.com/meduzen/datetime-attribute/main/index.js) in your project.
@@ -155,10 +155,10 @@ const now = new Date() // We’re 2 April 2021 and it’s 23:51 in Brussels.
 datetime(now) 	// '2021-04-02'
 datetimeTz(now) // '2021-04-02T23:51+02:00'
 
-datetime(now, 'time') 		    // '23:51'
-datetime(now, 'time utc') 		// '21:51Z' (same as previous, converted to UTC)
-datetimeTz(now, 'time', 0) 		// '23:51Z' (datetimeTz does not convert)
-datetimeTz(now, 'time') 		// '23:51+02:00' (fall back on local timezone)
+datetime(now, 'time')           // '23:51'
+datetime(now, 'time utc')       // '21:51Z' (same as previous, converted to UTC)
+datetimeTz(now, 'time', 0)      // '23:51Z' (datetimeTz does not convert)
+datetimeTz(now, 'time')         // '23:51+02:00' (fall back on local timezone)
 datetimeTz(now, 'time', 9) 	    // '23:51+09:00'
 datetimeTz(now, 'time', -3, 30) // '23:51-03:30'
 ```
@@ -181,12 +181,12 @@ Here’s how you can get the `datetime` attribute fitting this sentence:
 datetimeTz(awakeningAt, 'time', 2) // '08:00+02:00'
 ```
 
-## Expressing durations with `datetimeDuration()`
+## Expressing durations with `duration()`
 
-`datetimeDuration()` requires an object with entries for different levels of durations, from seconds to weeks. It also accepts a second parameter to control the [conversion of units overflow](#units-overflow) (default: `true`).
+`duration()` requires an object with entries for different levels of durations, from seconds to weeks. It also accepts a second parameter to control the [conversion of units overflow](#units-overflow) (default: `true`).
 
 ```js
-import { datetimeDuration } from 'datetime-attribute'
+import { duration } from 'datetime-attribute'
 
 const duration = {
   w: 3,   //     3 weeks
@@ -196,13 +196,13 @@ const duration = {
   s: 2.61 // 2.610 seconds
 }
 
-datetimeDuration(duration) // 'P3W5DT10H43M2'
+duration(duration) // 'P3W5DT10H43M2'
 ```
 
 All object keys are optional:
 
 ```js
-datetimeDuration({ h: 17 }) // 'PT17H'
+duration({ h: 17 }) // 'PT17H'
 ```
 
 ### Units overflow
@@ -210,13 +210,13 @@ datetimeDuration({ h: 17 }) // 'PT17H'
 Values exceeding a unit are converted to upper units:
 
 ```js
-datetimeDuration({ h: 31, m: 63, s: 175 }) // 'P1DT8H5M55S'
+duration({ h: 31, m: 63, s: 175 }) // 'P1DT8H5M55S'
 ```
 
 If you don’t need this behaviour, pass `false` as second parameter (default valut: `true`).
 ```js
-datetimeDuration({ m: 175 }) // 'PT2H55M'
-datetimeDuration({ m: 175 }, false) // 'PT175M'
+duration({ m: 175 }) // 'PT2H55M'
+duration({ m: 175 }, false) // 'PT175M'
 ```
 
 

@@ -1,4 +1,4 @@
-import { datetime, datetimeTz, datetimeDuration, tzOffset, daysBetween, weekNumber } from '..'
+import { datetime, datetimeTz, duration, tzOffset, daysBetween, weekNumber } from '..'
 
 const togoIndependanceDay = new Date(1960, 3, 27)
 const date = togoIndependanceDay // alias for the sake of brevity
@@ -46,25 +46,25 @@ describe('datetime', () => {
   test('non supported precision', () => expect(datetime(date, 'n00t')).toBe('1960-04-27'))
 })
 
-describe('datetimeDuration', () => {
-  const duration = { w: 3, d: 5, h: 10, m: 43, s: 2.61 }
+describe('duration', () => {
+  const durationObject = { w: 3, d: 5, h: 10, m: 43, s: 2.61 }
   const durationWithTooHighValues = { w: 3, d: 19, h: 36, m: 53, s: 175.3 }
   const durationInHours = { h: 17 }
   const durationInDays = { d: 43 }
 
-  test('is a function', () => expect(datetimeDuration).toBeInstanceOf(Function))
-  test('()', () => expect(() => datetimeDuration()).toThrow())
-  test('empty object {}', () => expect(datetimeDuration({})).toBeNull())
+  test('is a function', () => expect(duration).toBeInstanceOf(Function))
+  test('()', () => expect(() => duration()).toThrow())
+  test('empty object {}', () => expect(duration({})).toBeNull())
 
-  test('complete object', () => expect(datetimeDuration(duration)).toBe('P3W5DT10H43M2.61S'))
-  test('complete object with too high values', () => expect(datetimeDuration(durationWithTooHighValues)).toBe('P5W6DT12H55M55.3S'))
-  test('hours only', () => expect(datetimeDuration(durationInHours)).toBe('PT17H'))
-  test('days only', () => expect(datetimeDuration(durationInDays)).toBe('P6W1D'))
+  test('complete object', () => expect(duration(durationObject)).toBe('P3W5DT10H43M2.61S'))
+  test('complete object with too high values', () => expect(duration(durationWithTooHighValues)).toBe('P5W6DT12H55M55.3S'))
+  test('hours only', () => expect(duration(durationInHours)).toBe('PT17H'))
+  test('days only', () => expect(duration(durationInDays)).toBe('P6W1D'))
 
-  test('complete object without converting the excess', () => expect(datetimeDuration(duration, false)).toBe('P3W5DT10H43M2.61S'))
-  test('complete object with too high values without converting the excess', () => expect(datetimeDuration(durationWithTooHighValues, false)).toBe('P3W19DT36H53M175.3S'))
-  test('hours only without converting the excess', () => expect(datetimeDuration(durationInHours, false)).toBe('PT17H'))
-  test('days only without converting the excess', () => expect(datetimeDuration(durationInDays, false)).toBe('P43D'))
+  test('complete object without converting the excess', () => expect(duration(durationObject, false)).toBe('P3W5DT10H43M2.61S'))
+  test('complete object with too high values without converting the excess', () => expect(duration(durationWithTooHighValues, false)).toBe('P3W19DT36H53M175.3S'))
+  test('hours only without converting the excess', () => expect(duration(durationInHours, false)).toBe('PT17H'))
+  test('days only without converting the excess', () => expect(duration(durationInDays, false)).toBe('P43D'))
 })
 
 describe('tzOffset', () => {
