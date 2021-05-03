@@ -1,14 +1,14 @@
 # datetime-attribute
 
-Get a [valid `datetime` attribute](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/datetime) for HTML `<time>` (among others).
+Get a [valid `datetime` attribute](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/datetime) for HTML `<time>` (among [others](#not-only-in-time)).
 
-This package aims to cover the [whole `datetime` specification](https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-time-datetime) in 4 functions:
+Lightweight ([~ 1 KB compressed](https://bundlephobia.com/result?p=datetime-attribute) and tree-shakeable), datetime-attribute covers the [whole `datetime` specification](https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-time-datetime) in 4 functions:
 - [**`datetime()`**](#expressing-moments-with-datetime) for a specific moment;
 - [**`datetimeTz()`**](#adding-a-timezone-offset-to-a-moment-with-datetimetz) for a specific moment in a given timezone;
 - [**`datetimeDuration()`**](#expressing-durations-with-datetimeduration) for a duration;
 - [**`tzOffset()`**](#expressing-timezone-offsets-with-tzoffset) for a timezone offset.
 
-The whole package is [~ 1 KB compressed](https://bundlephobia.com/result?p=datetime-attribute) and tree-shakeable.
+## Table of contents
 
 - [Summary usage](#summary-usage)
 - [Installation](#installation)
@@ -80,7 +80,7 @@ datetime((new Date()), 'day') // same
 ### Available precision keywords
 
 By default, `datetime()` precision is `day`, resulting in a `YYYY-mm-dd`
-output. A lot of other values are accepted, covering most of the spec.
+output. Many other values are available.
 
 #### Date
 
