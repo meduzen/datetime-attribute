@@ -17,6 +17,7 @@ describe('datetime', () => {
   test('wrong type', () => expect(() => datetime(123)).toThrow(TypeError))
   test('()', () => expect(datetime()).toBe(datetime((new Date()))))
   test('no precision', () => expect(datetime(date)).toBe('1960-04-27'))
+  test('no precision before the 10th', () => expect(datetime(january1st)).toBe('2021-01-01'))
   test('day', () => expect(datetime(date, 'day')).toBe('1960-04-27'))
   test('year', () => expect(datetime(date, 'year')).toBe('1960'))
   test('month', () => expect(datetime(date, 'month')).toBe('1960-04'))

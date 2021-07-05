@@ -15,7 +15,7 @@ export function datetime(date = (new Date()), precision = 'day') {
   // Local datetime at milliseconds precision (1960-04-27T00:00:00.123)
   const localMs = date.getFullYear().toString()
     + '-' + p(date.getMonth() + 1)
-    + '-' + date.getDate()
+    + '-' + p(date.getDate())
     + 'T' + p(date.getHours())
     + ':' + p(date.getMinutes())
     + ':' + p(date.getSeconds())
