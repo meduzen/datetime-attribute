@@ -8,6 +8,8 @@ Lightweight ([~ 1 KB compressed](https://bundlephobia.com/result?p=datetime-attr
 - [**`datetimeDuration()`**](#expressing-durations-with-datetimeduration) for a duration;
 - [**`tzOffset()`**](#expressing-timezone-offsets-with-tzoffset) for a timezone offset.
 
+[![Node.js CI](https://github.com/meduzen/datetime-attribute/actions/workflows/node.js.yml/badge.svg)](https://github.com/meduzen/datetime-attribute/actions/workflows/node.js.yml)
+
 ## Table of contents
 
 - [Summary usage](#summary-usage)
