@@ -23,7 +23,7 @@ export default {
   // collectCoverageFrom: undefined,
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: "coverage",
+  coverageDirectory: 'coverage',
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
@@ -147,7 +147,7 @@ export default {
 
   // The glob patterns Jest uses to detect test files
   testMatch: [
-    "**/tests/**/*.js",
+    '**/tests/**/*.js',
     // "**/__tests__/**/*.[jt]s?(x)",
     // "**/?(*.)+(spec|test).[tj]s?(x)"
   ],
@@ -168,7 +168,7 @@ export default {
 
   // This option sets the URL for the jsdom environment. It is reflected in properties such as location.href
   // testURL: "http://localhost",
-  testURL: "http://some.tld",
+  testURL: 'http://some.tld',
 
   // Setting this value to "fake" allows the use of fake timers for functions such as "setTimeout"
   // timers: "real",
@@ -193,4 +193,4 @@ export default {
 
   // Whether to use watchman for file crawling
   // watchman: true,
-};
+}

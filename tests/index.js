@@ -49,7 +49,7 @@ describe('datetime', () => {
 describe('datetimeDuration', () => {
   const duration = { w: 3, d: 5, h: 10, m: 43, s: 2.61 }
   const durationWithTooHighValues = { w: 3, d: 19, h: 36, m: 53, s: 175.3 }
-  const durationInHours = { h : 17 }
+  const durationInHours = { h: 17 }
   const durationInDays = { d: 43 }
 
   test('is a function', () => expect(datetimeDuration).toBeInstanceOf(Function))
