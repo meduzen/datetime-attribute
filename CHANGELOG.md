@@ -6,7 +6,15 @@ Until it reaches 1.0.0, breaking changes will bump the _MINOR_ digit (the second
 
 ## Unreleased
 
-Compare with [last version](https://github.com/meduzen/datetime-attribute/compare/0.5.0...main).
+Compare with [last version](https://github.com/meduzen/datetime-attribute/compare/0.5.1...main).
+
+## v0.5.1 (2021-07-05)
+
+Compare with [previous version](https://github.com/meduzen/datetime-attribute/compare/0.5.0...0.5.1).
+
+### Fixed
+
+The _day_ number in `datetime()` and `datetimeTz()` was wrong before the 10th of the month. For example, the 5th of July became `2021-07-5T` instead of `2021-07-5T`.
 
 ## v0.5.0 (2021-05-02)
 
