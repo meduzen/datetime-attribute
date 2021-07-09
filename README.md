@@ -264,7 +264,7 @@ See [CHANGELOG.md](https://github.com/meduzen/datetime-attribute/blob/main/CHANG
 - it is up to you to transpile it for legacy browsers;
 - you can’t import it using `require('datetime-attribute')`.
 
-If you’d like one of those features, feel free to open an issue and/or a PR that won’t have any side effects for modern usage.
+If you’d like one of those features, feel free to open an issue and/or a PR that won’t have any side effects for modern usage. [Read more about ESModules](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
 
 ## Not only in `<time>`
 
