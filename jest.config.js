@@ -96,7 +96,17 @@ export default {
   // preset: undefined,
 
   // Run tests from one or more projects
-  // projects: undefined,
+  'projects': [
+    {
+      'displayName': 'tests',
+      'testMatch': ['**/tests/**/*.js']
+    },
+    {
+      'displayName': 'linter',
+      'runner': 'jest-runner-eslint',
+      'testMatch': ['**/*/index.js']
+    }
+  ],
 
   // Use this configuration option to add custom reporters to Jest
   // reporters: undefined,
@@ -146,11 +156,11 @@ export default {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
-  testMatch: [
-    '**/tests/**/*.js',
-    // "**/__tests__/**/*.[jt]s?(x)",
-    // "**/?(*.)+(spec|test).[tj]s?(x)"
-  ],
+  // testMatch: [
+  //   '**/tests/**/*.js',
+  //   // "**/__tests__/**/*.[jt]s?(x)",
+  //   // "**/?(*.)+(spec|test).[tj]s?(x)"
+  // ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   // testPathIgnorePatterns: [
