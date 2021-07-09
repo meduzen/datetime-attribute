@@ -11,8 +11,10 @@
   "scripts": {
     "test": "jest",
     "test:coverage": "c8 --all --include=src npm test",
-    "watch": "jest --watch"
-  },
+    "watch": "jest --watch",
+    "lint": "npx eslint index.js tests/index.js",
+    "lint-fix": "npx eslint index.js tests/index.js --fix"
+},
   "files": [
     "index.js",
     "CHANGELOG.md"
