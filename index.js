@@ -158,7 +158,7 @@ export function tzOffset(hours = 0, minutes = 0, inRealLifeBoundaries = false) {
  *
  * See also: https://www.brucelawson.co.uk/2012/best-of-time/
  */
-export function duration(duration, convertExcess = true) {
+export function duration(duration = {}, convertExcess = true) {
 
   // Set default values for missing keys.
   let { w = 0, d = 0, h = 0, m = 0, s = 0 } = duration
