@@ -70,7 +70,8 @@ describe('duration', () => {
   const durationInDays = { d: 43 }
 
   test('is a function', () => expect(duration).toBeInstanceOf(Function))
-  test('()', () => expect(() => duration()).toThrow())
+  test('()', () => expect(() => duration(null)).toThrow())
+  test('()', () => expect(duration()).toBe('PT0S'))
   test('empty object {}', () => expect(duration({})).toBe('PT0S'))
   test('empty object {}', () => expect(duration({}, false)).toBe('PT0S'))
 
