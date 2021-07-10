@@ -6,7 +6,23 @@ Until it reaches 1.0.0, breaking changes will bump the _MINOR_ digit (the second
 
 ## Unreleased
 
-Compare with [last version](https://github.com/meduzen/datetime-attribute/compare/0.5.1...main).
+Compare with [last version](https://github.com/meduzen/datetime-attribute/compare/0.6.0...main).
+
+## v0.6.0 (2021-07-10)
+
+Compare with [previous version](https://github.com/meduzen/datetime-attribute/compare/0.5.1...0.6.0).
+
+### Changed
+
+- `datetimeDuration()` has been renamed [`duration()`](https://github.com/meduzen/datetime-attribute#expressing-durations-with-duration).
+
+### Under the hood
+
+- The project now has an ESLint configuration.
+
+### New
+
+- Add [`utc()`](https://github.com/meduzen/datetime-attribute#the-utc-shortcut) as a shortcut to `datetime(myDateObject, 'datetime utc)`.
 
 ## v0.5.1 (2021-07-05)
 
@@ -20,14 +36,14 @@ The _day_ number in `datetime()` and `datetimeTz()` was wrong before the 10th of
 
 Compare with [previous version](https://github.com/meduzen/datetime-attribute/compare/0.4.2...0.5.0).
 
+### Changed
+
+- `tzOffset()` and `datetimeTz()` now adjust the timezone to fit the spec boundaries (from `-23:59` to `+23:59`). There was no limits before.
+
 ### New
 
 - `tzOffset()` now accepts a [third parameter](https://github.com/meduzen/datetime-attribute#real-life-timezone-offset). When set to `true`, it enforce the provided timezone to stay in real-life boundaries (from `-12:00` to `+14:00`).
 - This also applies to `datetimeTz()`, which now accepts a fifth parameter to be on par with how `tzOffset()` works.
-
-### Changed
-
-- `tzOffset()` and `datetimeTz()` now adjust the timezone to fit the spec boundaries (from `-23:59` to `+23:59`). There was no limits before.
 
 ## v0.4.2 (2021-05-02)
 
@@ -58,25 +74,25 @@ Compare with [previous version](https://github.com/meduzen/datetime-attribute/co
 
 Compare with [previous version](https://github.com/meduzen/datetime-attribute/compare/0.2.1...0.3.0).
 
-### New
-
-- Add `datetime()` missing global precisions.
-
 ### Changed
 
 - `datetime()`: `local` and `global` precision keywords are now `datetime` and `utc`.
+
+### New
+
+- Add `datetime()` missing global precisions.
 
 ## v0.2.1 (2021-04-02)
 
 Compare with [previous version](https://github.com/meduzen/datetime-attribute/compare/0.1.7...0.2.1).
 
-### New
-
-- [`tzOffset()`](https://github.com/meduzen/datetime-attribute#expressing-timezone-offsets-with-tzOffset) to express timezone offsets
-
 ### Changed
 
 - `datetime()` without parameter is now accepted: instead of throwing an error it defaults to _now_ with the default precision (`YYYY-mm-dd`).
+
+### New
+
+- [`tzOffset()`](https://github.com/meduzen/datetime-attribute#expressing-timezone-offsets-with-tzOffset) to express timezone offsets
 
 ### Documentation
 
