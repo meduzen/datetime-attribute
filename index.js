@@ -165,7 +165,7 @@ export function duration(duration, convertExcess = true) {
 
   // At least one duration must be different than zero.
   if (![w, d, h, m, s].some(value => value)) {
-    return null
+    return 'PT0S'
   }
 
   // Convert units in excess (e.g. `{ m: 65 }` becomes `{ h: 1, m: 5 }`).
