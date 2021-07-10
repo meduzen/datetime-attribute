@@ -26,7 +26,7 @@ Compare with [previous version](https://github.com/meduzen/datetime-attribute/co
 
 ### New
 
-- Add [`utc()`](https://github.com/meduzen/datetime-attribute#the-utc-shortcut) as a shortcut to `datetime(myDateObject, 'datetime utc)`.
+- Add [`utc()`](https://github.com/meduzen/datetime-attribute#the-utc-shortcut) as a shortcut to `datetime(myDateObject, 'datetime utc')`.
 
 ### Under the hood
 

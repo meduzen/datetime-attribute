@@ -60,7 +60,7 @@ describe('utc', () => {
   test('datetime second', () => expect(utc(date, 'datetime second')).toBe(date.toJSON().substr(0, 19) + 'Z'))
   test('datetime ms', () => expect(utc(date, 'datetime ms')).toBe(date.toJSON()))
 
-  test('non supported precision', () => expect(datetime(date, 'n00t')).toBe('1960-04-27'))
+  test('non supported precision', () => expect(utc(date, 'n00t')).toBe('1960-04-27'))
 })
 
 describe('duration', () => {
