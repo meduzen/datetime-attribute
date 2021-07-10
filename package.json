@@ -10,14 +10,17 @@
   },
   "scripts": {
     "test": "jest",
+    "test-types": "npx tsd",
     "test:coverage": "c8 --all --include=src npm test",
     "watch": "jest --watch",
     "lint": "npx eslint index.js tests/index.js",
     "lint-fix": "npx eslint index.js tests/index.js --fix"
   },
   "files": [
-    "index.js"
+    "index.js",
+    "./types/index.d.ts"
   ],
+  "types": "./types/index.d.ts",
   "keywords": [
     "time",
     "datetime",
@@ -43,6 +46,7 @@
     "eslint": "^7.30.0",
     "eslint-plugin-jest": "^24.3.6",
     "jest": "^26.6.3",
-    "jest-runner-eslint": "^0.10.1"
+    "jest-runner-eslint": "^0.10.1",
+    "tsd": "^0.17.0"
   }
 }
