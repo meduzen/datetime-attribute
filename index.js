@@ -9,7 +9,7 @@
  */
 export function datetime(date = (new Date()), precision = 'day') {
   if (!(date instanceof Date)) {
-      throw new TypeError('Input date should be of type `Date`');
+    throw new TypeError('Input date should be of type `Date`')
   }
 
   // Local datetime at milliseconds precision (1960-04-27T00:00:00.123)
@@ -56,7 +56,7 @@ export function datetime(date = (new Date()), precision = 'day') {
 /**
  * Create `datetime="2021-12-02T17:34-06:00"` attribute for `<time>`.
  */
- export function datetimeTz(date, precision = 'datetime', offsetHours = 0, offsetMinutes = 0, realLifeBoundaries = false) {
+export function datetimeTz(date, precision = 'datetime', offsetHours = 0, offsetMinutes = 0, realLifeBoundaries = false) {
   let timezoneOffset = ''
 
   if (!precision.includes('utc')) { // ignore request for UTC conversion
@@ -82,7 +82,7 @@ export function tzOffset(hours = 0, minutes = 0, realLifeBoundaries = false) {
   }
 
   if (typeof hours != 'number' || typeof minutes != 'number') {
-    throw new TypeError('hours and (optional) minutes must be numbers.');
+    throw new TypeError('hours and (optional) minutes must be numbers.')
   }
 
   // Convert given offset in minutes and ignore the decimal part.
@@ -100,13 +100,13 @@ export function tzOffset(hours = 0, minutes = 0, realLifeBoundaries = false) {
      */
 
     // Upper boundary
-    if(minutes > REAL_LIFE_UPPER_TIMEZONE) {
+    if (minutes > REAL_LIFE_UPPER_TIMEZONE) {
       minutes -= suppressMinutesExcess(REAL_LIFE_UPPER_TIMEZONE)
       return tzOffset(0, minutes, true)
     }
 
     // Lower boundary
-    if(minutes < REAL_LIFE_LOWER_TIMEZONE) {
+    if (minutes < REAL_LIFE_LOWER_TIMEZONE) {
       minutes += suppressMinutesExcess(REAL_LIFE_LOWER_TIMEZONE)
       return tzOffset(0, minutes, true)
     }
@@ -130,7 +130,7 @@ export function tzOffset(hours = 0, minutes = 0, realLifeBoundaries = false) {
   hours = Math.trunc(minutes / 60)
   minutes = minutes % 60
 
-  if (hours == 0 && minutes == 0 ) { return 'Z' }
+  if (hours == 0 && minutes == 0) { return 'Z' }
 
   return sign + p(hours) + ':' + p(minutes)
 }
