@@ -16,8 +16,7 @@
     "lint-fix": "npx eslint index.js tests/index.js --fix"
   },
   "files": [
-    "index.js",
-    "CHANGELOG.md"
+    "index.js"
   ],
   "keywords": [
     "time",
