@@ -16,13 +16,13 @@ Compare with [previous version](https://github.com/meduzen/datetime-attribute/co
 
 - `datetimeDuration()` has been renamed [`duration()`](https://github.com/meduzen/datetime-attribute#expressing-durations-with-duration).
 
-### Under the hood
-
-- The project now has an ESLint configuration.
-
 ### New
 
 - Add [`utc()`](https://github.com/meduzen/datetime-attribute#the-utc-shortcut) as a shortcut to `datetime(myDateObject, 'datetime utc)`.
+
+### Under the hood
+
+- The project now has an ESLint configuration.
 
 ## v0.5.1 (2021-07-05)
 
