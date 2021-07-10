@@ -54,14 +54,29 @@ export function datetime(date = (new Date()), precision = 'day') {
 }
 
 /**
+ * Shortcut for `datetime` with UTC output.
+ *
+ * For exemple, these two are the same:
+ * - `datetime(someDate, 'somePrecision utc')`
+ * - `utc(someDate, 'somePrecision')`
+ */
+export const utc = (date = (new Date()), precision = 'datetime') => datetime(date, `${precision} utc`)
+
+/**
  * Create `datetime="2021-12-02T17:34-06:00"` attribute for `<time>`.
  */
-export function datetimeTz(date, precision = 'datetime', offsetHours = 0, offsetMinutes = 0, realLifeBoundaries = false) {
+export function datetimeTz(
+  date,
+  precision = 'datetime',
+  offsetHours = 0,
+  offsetMinutes = 0,
+  inRealLifeBoundaries = false,
+) {
   let timezoneOffset = ''
 
   if (!precision.includes('utc')) { // ignore request for UTC conversion
     timezoneOffset = ('2' in arguments) // see similar line in tzOffset()
-      ? tzOffset(offsetHours, offsetMinutes, realLifeBoundaries)
+      ? tzOffset(offsetHours, offsetMinutes, inRealLifeBoundaries)
       : tzOffset()
   }
 
@@ -74,7 +89,7 @@ export function datetimeTz(date, precision = 'datetime', offsetHours = 0, offset
  * https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#concept-timezone
  * https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/datetime
  */
-export function tzOffset(hours = 0, minutes = 0, realLifeBoundaries = false) {
+export function tzOffset(hours = 0, minutes = 0, inRealLifeBoundaries = false) {
 
   // No arguments received: the local timezone offset is returned.
   if (!('0' in arguments)) {
@@ -91,7 +106,7 @@ export function tzOffset(hours = 0, minutes = 0, realLifeBoundaries = false) {
   // Compute minutes to remove in order to suppress the excess of minutes.
   const suppressMinutesExcess = limit => Math.floor(minutes / limit) * MINUTES_PER_DAY
 
-  if (realLifeBoundaries) {
+  if (inRealLifeBoundaries) {
 
     /**
      * Because lower and upper boundaries are not necessarily symetric,
