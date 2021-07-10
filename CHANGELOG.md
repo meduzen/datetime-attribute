@@ -8,6 +8,14 @@ Until it reaches 1.0.0, breaking changes will bump the _MINOR_ digit (the second
 
 Compare with [last version](https://github.com/meduzen/datetime-attribute/compare/0.6.0...main).
 
+### Changed
+
+- Forbid `null` as valid `duration()` parameter: (`duration(null)`) is now invalid, but `duration()` remains valid.
+
+### Fixed
+
+- Fix zero-seconds duration returning `null` instead of `PT0S`.
+
 ## v0.6.0 (2021-07-10)
 
 Compare with [previous version](https://github.com/meduzen/datetime-attribute/compare/0.5.1...0.6.0).
