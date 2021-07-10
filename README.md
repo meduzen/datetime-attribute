@@ -253,7 +253,7 @@ datetimeTz(awakeningAt, 'time', 2) // '08:00+02:00'
 ```js
 import { duration } from 'datetime-attribute'
 
-const duration = {
+const countdownBeforeBigParty = {
   w: 3,   //     3 weeks
   d: 5,   //     5 days
   h: 10,  //    10 hours
@@ -261,7 +261,7 @@ const duration = {
   s: 2.61 // 2.610 seconds
 }
 
-duration(duration) // 'P3W5DT10H43M2'
+duration(countdownBeforeBigParty) // 'P3W5DT10H43M2'
 ```
 
 All object keys are optional:

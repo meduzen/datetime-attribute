@@ -285,4 +285,5 @@ const round = (number, precision = 0) => {
 // padStart a stringable variable by the provided number of 0.
 const p = (value, length = 2) => value.toString().padStart(length, '0')
 
+// Local timezone offset (from UTC), in minutes
 const LOCAL_TZ_OFFSET = (new Date()).getTimezoneOffset() * -1
