@@ -16,12 +16,13 @@ Lightweight ([~ 1 KB compressed](https://bundlephobia.com/result?p=datetime-attr
 - [Installation](#installation)
 - Usage
   - [**`datetime()`**](#expressing-moments-with-datetime) to express a **moment** at different [levels of precision](#available-precision-keywords):
-	- [Date](#date)
-	- [Time and UTC time](#time-and-utc-time)
-	- [Datetime and UTC datetime](#time-and-utc-datetime)
+	- [date](#date)
+	- [time and UTC time](#time-and-utc-time)
+	- [datetime and UTC datetime](#datetime-and-utc-datetime)
+	- alternative to the UTC syntax with [`utc()`](#the-utc-shortcut)
+  - [**`tzOffset()`**](#expressing-timezone-offsets-with-tzoffset) to express a **timezone offset**
   - [**`datetimeTz()`**](#adding-a-timezone-offset-to-a-moment-with-datetimetz) to express a **moment with a specific timezone** offset
   - [**`duration()`**](#expressing-durations-with-duration) to expressing a **duration**
-  - [**`tzOffset()`**](#expressing-timezone-offsets-with-tzoffset) to express a **timezone offset**
 - Various:
   - [Changelog](#changelog)
   - [Browser and tooling support](#browser-and-tooling-support)
@@ -38,6 +39,7 @@ const now = new Date()
 datetime(now)                   // '2021-03-14'
 datetime(now, 'time')           // '10:29'
 datetimeTz(now, 'datetime', -7) // '2021-03-14T10:29-07:00'
+utc(now, 'time')                // '09:29Z'
 
 tzOffset(-9, 30) // '-09:30' (Marquesas Islands)
 duration({ d: 4, h: 3, m: 17 }) // 'P4DT3H17M'
@@ -96,42 +98,103 @@ output. Many other values are available.
 
 #### Time and UTC time
 
+Time:
+
 |  precision | example output | description
 |--|--|--|
 | `time` | `10:29` | hours and minutes, like most clocks
-| `time utc` | `09:29Z` | same as previous, shifted to UTC time
 | `second` | `10:29:00` | time with precision up to seconds
-| `second utc` | `09:29:00Z` | same as previous, shifted to UTC time
 | `ms` | `10:29:00.000` | time with precision up to milliseconds
-| `ms utc` | `09:29:00.000Z` | same as previous, shifted to UTC time
 
-💡 Basically, you get UTC time by adding ` utc` behind a time keyword.
+To get UTC time, add ` utc` to the time keyword:
+
+|  precision | example output | description
+|--|--|--|
+| `time utc` | `09:29Z` | `time`, shifted to UTC time
+| `second utc` | `09:29:00Z` | `second`, shifted to UTC time
+| `ms utc` | `09:29:00.000Z` | `ms`, shifted to UTC time
 
 #### Datetime and UTC datetime
+
+Datetime:
 
 |  precision | example output | description
 |--|--|--|
 `datetime` | `2021-03-14T10:29` | a local datetime (= date + time separated by `T`)
-`datetime utc` | `2021-03-14T09:29Z` | same as previous, shifted to UTC time
 `datetime second` | `2021-03-14T10:29:00` | time with precision up to seconds
-`datetime second utc` | `2021-03-14T09:29:00Z` | same as previous, shifted to UTC time
 `datetime ms` | `2021-03-14T10:29:00.000` | time with precision up to milliseconds
-`datetime ms utc` | `2021-03-14T09:29:00.000Z` | same as previous, shifted to UTC time
 
-💡 Basically, you get UTC datetime by adding ` utc` behind a datetime keyword.
+To get UTC datetime, add ` utc` to the datetime keyword:
+
+|  precision | example output | description
+|--|--|--|
+`datetime utc` | `2021-03-14T09:29Z` | `datetime`, shifted to UTC time
+`datetime second utc` | `2021-03-14T09:29:00Z` | `datetime second`, shifted to UTC time
+`datetime ms utc` | `2021-03-14T09:29:00.000Z` | `datetime ms`, shifted to UTC time
+
+#### The `utc` shortcut
+
+💡 Instead of adding ` utc` to a [time](#time-and-utc-time) or [datetime](#datetime-and-utc-datetime) keyword, you can use `utc(date, precision)`, which has `datetime` as default precision:
+
+```js
+import { datetime, utc } from 'datetime-attribute'
+
+const now =  new  Date()  // We’re 14 March 2021 and it’s 10:29 in Brussels.
+
+// These are the same:
+utc(now, 'time') // `09:29Z`
+datetime(now, 'time utc') // `09:29Z`
+
+// These are the same:
+utc(now)             // `2021-03-14T09:29Z`
+utc(now, 'datetime') // `2021-03-14T09:29Z`
+datetime(now, 'datetime utc') // `2021-03-14T09:29Z`
+```
+
+## Expressing timezone offsets with `tzOffset()`
+
+Timezone offsets are a comparison against [UTC time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time). For example, `+01:00` means “one hour ahead of UTC time” and `-05:00` means “five hours behind UTC time”.
+
+`tzOffset()` accepts three optional arguments for hours, minutes, and [compliance to real-life boundaries](#real-life-timezone-offset). Without argument, the local timezone offset is returned (and may differ based on daylight saving time).
+
+```js
+import { tzOffset } from 'datetime-attribute'
+
+tzOffset(3)      // '+03:00' (Moscow)
+
+tzOffset(-9, 30) // '-09:30' (Marquesas Islands)
+tzOffset(-9.5)   // '-09:30' (same with 1 parameter)
+
+tzOffset(0)      //      'Z' (Ghana; 'Z' is equal to '+00:00')
+
+// in Belgium
+tzOffset()       // '+01:00'
+tzOffset()       // '+02:00' (under daylight time saving)
+```
+
+### Real-life timezone offset
+
+The timezone offset will be adjusted to fit in the spec range (from `-23:59` to `+23:59`). This means `tzOffset(44)` will output `+20:00` instead of `+44:00`.
+
+However, timezone offsets of countries in the world are all between `-12:00` and `+14:00`. If you want `tzOffset(44)` to output `-04:00` so that it matches real-life boundaries, give it a third parameter (default: `false`):
+
+```js
+tzOffset(44) // '+20:00'
+tzOffset(44, 0, true) // '-04:00'
+```
+
+Curious about timezones? Have a look at [the timezone map](https://fr.m.wikipedia.org/wiki/Fichier:World_Time_Zones_Map.png) and the [daylight time saving chaos](https://en.wikipedia.org/wiki/Daylight_saving_time_by_country).
 
 ## Adding a timezone offset to a moment with `datetimeTz()`
 
-💡 It’s recommended to [read about `tzOffset`](#expressing-timezone-offsets-with-tzoffset) before continuing here.
-
 As `datetime()` doesn’t care about timezones, you can use `datetimeTz()` when you need to be explicit about the timezone of a moment.
 
-`datetimeTz()` is basically a concatenation of [`datetime(date, precision)`](#expressing-moments-with-datetime-and-datetimetz) and [`tzOffset(hours, minutes)`](#expressing-timezone-offsets-with-tzoffset).
+💡 `datetimeTz()` is basically a concatenation of [`datetime(date, precision)`](#expressing-moments-with-datetime) and [`tzOffset(hours, minutes)`](#expressing-timezone-offsets-with-tzoffset), so be sure to read about them.
 
-It accepts the same 4 parameters, all optional:
+It accepts the same 5 parameters, all optional:
 
 ```js
-datetimeTz(date, precision, offsetHours, offsetMinutes)
+datetimeTz(date, precision, offsetHours, offsetMinutes, inRealLifeBoundaries)
 ```
 
 1. A date object (default: `new Date()`)
@@ -144,6 +207,7 @@ datetimeTz(date, precision, offsetHours, offsetMinutes)
 	- `datetime ms`
 3. Hours offset like in [`tzOffset()`](#expressing-timezone-offsets-with-tzoffset)
 4. Minutes offset like in [`tzOffset()`](#expressing-timezone-offsets-with-tzoffset)
+5. Boundaries of the timezone offset like in [`tzOffset()`](#real-life-timezone-offset)
 
 When hours and minutes are not specified, the local timezone offset is used.
 
@@ -161,16 +225,17 @@ datetimeTz(now, 'time', 0)      // '23:51Z' (datetimeTz does not convert)
 datetimeTz(now, 'time')         // '23:51+02:00' (fall back on local timezone)
 datetimeTz(now, 'time', 9) 	    // '23:51+09:00'
 datetimeTz(now, 'time', -3, 30) // '23:51-03:30'
+datetimeTz(now, 'time', -14, 0, true) // '23:51+10:00'
 ```
 
-`datetimeTz()` **does not convert** your moment to another timezone: it **only adds the timezone** to the moment. Its purpose is to generate a valid `datetime` attribute saying “here’s a moment, it has this [hours, minutes] timezone offset”.
+`datetimeTz()` **does not convert** your moment to another timezone: it **only adds the wanted timezone** to the moment. Its purpose is to generate a valid `datetime` attribute saying “here’s a moment, it has this [hours, minutes] timezone offset”.
 
 Let’s take this sentence and its  HTML:
 
-> I wake up at 8 o’clock every day.
+> When I’m in Brussels, I wake up at 8 o’clock every day.
 
 ```html
-<p>I wake up <time datetime="08:00+02:00">at 8 o’clock</time> every day.</p>
+<p>When I’m in Brussels, I wake up <time datetime="08:00+02:00">at 8 o’clock</time> every day.</p>
 ```
 
 Here’s how you can get the `datetime` attribute fitting this sentence:
@@ -218,41 +283,6 @@ If you don’t need this behaviour, pass `false` as second parameter (default va
 duration({ m: 175 }) // 'PT2H55M'
 duration({ m: 175 }, false) // 'PT175M'
 ```
-
-
-## Expressing timezone offsets with `tzOffset()`
-
-Timezone offsets are a comparison against [UTC time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time). For example, `+01:00` means “one hour ahead of UTC time” and `-05:00` means “five hours behind UTC time”.
-
-`tzOffset()` accepts three optional arguments for hours, minutes, and [compliance to real-life boundaries](#real-life-timezone-offset). Without argument, the local timezone offset is returned (and may differ based on daylight saving time).
-
-```js
-import { tzOffset } from 'datetime-attribute'
-
-tzOffset(3)      // '+03:00' (Moscow)
-
-tzOffset(-9, 30) // '-09:30' (Marquesas Islands)
-tzOffset(-9.5)   // '-09:30' (same with 1 parameter)
-
-tzOffset(0)      //      'Z' (Ghana; 'Z' is equal to '+00:00')
-
-// when in Belgium
-tzOffset()       // '+01:00'
-tzOffset()       // '+02:00' (under daylight time saving)
-```
-
-### Real-life timezone offset
-
-The timezone offset will be adjusted to fit in the spec range (from `-23:59` to `+23:59`). This means `tzOffset(44)` will output `+20:00` instead of `+44:00`.
-
-However, timezone offsets of countries in the world are all between `-12:00` and `+14:00`. If you want `tzOffset(44)` to output `-04:00` so that it matches real-life boundaries, pass it a third parameter (default: `false`):
-
-```js
-tzOffset(44) // '+20:00'
-tzOffset(44, 0, true) // '-04:00'
-```
-
-Curious about timezones? Have a look at [the timezone map](https://fr.m.wikipedia.org/wiki/Fichier:World_Time_Zones_Map.png) and the [daylight time saving chaos](https://en.wikipedia.org/wiki/Daylight_saving_time_by_country).
 
 ## Changelog
 

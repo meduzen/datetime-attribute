@@ -1,4 +1,4 @@
-import { datetime, datetimeTz, duration, tzOffset, daysBetween, weekNumber } from '..'
+import { datetime, utc, datetimeTz, duration, tzOffset, daysBetween, weekNumber } from '..'
 
 const togoIndependanceDay = new Date(1960, 3, 27)
 const date = togoIndependanceDay // alias for the sake of brevity
@@ -42,6 +42,23 @@ describe('datetime', () => {
   test('datetime utc', () => expect(datetime(date, 'datetime utc')).toBe(date.toJSON().substr(0, 16) + 'Z'))
   test('datetime second utc', () => expect(datetime(date, 'datetime second utc')).toBe(date.toJSON().substr(0, 19) + 'Z'))
   test('datetime ms utc', () => expect(datetime(date, 'datetime ms utc')).toBe(date.toJSON()))
+
+  test('non supported precision', () => expect(datetime(date, 'n00t')).toBe('1960-04-27'))
+})
+
+describe('utc', () => {
+  test('is a function', () => expect(utc).toBeInstanceOf(Function))
+  test('wrong type', () => expect(() => utc(123)).toThrow(TypeError))
+  test('()', () => expect(utc()).toBe(utc((new Date()))))
+
+  // These ones can’t be tested providing an exact value as the output depends on client timezone.
+  test('no precision', () => expect(utc(date)).toBe(date.toJSON().substr(0, 16) + 'Z'))
+  test('time', () => expect(utc(date, 'time')).toBe(date.toJSON().substr(11, 5) + 'Z'))
+  test('second', () => expect(utc(date, 'second')).toBe(date.toJSON().substr(11, 8) + 'Z'))
+  test('ms', () => expect(utc(date, 'ms')).toBe(date.toJSON().substr(11, 12) + 'Z'))
+  test('datetime', () => expect(utc(date, 'datetime')).toBe(date.toJSON().substr(0, 16) + 'Z'))
+  test('datetime second', () => expect(utc(date, 'datetime second')).toBe(date.toJSON().substr(0, 19) + 'Z'))
+  test('datetime ms', () => expect(utc(date, 'datetime ms')).toBe(date.toJSON()))
 
   test('non supported precision', () => expect(datetime(date, 'n00t')).toBe('1960-04-27'))
 })
