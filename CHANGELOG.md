@@ -6,15 +6,23 @@ Until it reaches 1.0.0, breaking changes will bump the _MINOR_ digit (the second
 
 ## Unreleased
 
-Compare with [last version](https://github.com/meduzen/datetime-attribute/compare/0.6.0...main).
+Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/0.7.0...main).
+
+## v0.7.0 (2021-07-11)
+
+Compare with [previous version](https://github.com/meduzen/datetime-attribute/compare/0.6.0...0.7.0).
 
 ### Changed
 
-- Forbid `null` as valid `duration()` parameter: (`duration(null)`) is now invalid, but `duration()` remains valid.
+- Forbid `null` as valid `duration()` argument: `duration(null)` now throws an error.
+
+### New
+
+- Add [types](https://github.com/meduzen/datetime-attribute/tree/main/types) for TypeScript users.
 
 ### Fixed
 
-- Fix zero-seconds duration returning `null` instead of `PT0S`.
+- Fix zero-seconds `duration()` returning `null` instead of `PT0S`.
 
 ## v0.6.0 (2021-07-10)
 
