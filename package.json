@@ -4,7 +4,7 @@
   "description": "Generate valid datetime attributes for the <time> HTML element.",
   "type": "module",
   "sideEffects": false,
-  "exports": "./index.js",
+  "exports": "./src/index.js",
   "engines": {
     "node": ">=12.8"
   },
@@ -13,11 +13,11 @@
     "test-types": "npx tsd",
     "test:coverage": "c8 --all --include=src npm test",
     "watch": "jest --watch",
-    "lint": "npx eslint index.js tests/index.js",
-    "lint-fix": "npx eslint index.js tests/index.js --fix"
+    "lint": "npx eslint src/**/*.js tests/index.js",
+    "lint-fix": "npx eslint src/**/*.js tests/index.js --fix"
   },
   "files": [
-    "index.js",
+    "src/index.js",
     "types/index.d.ts"
   ],
   "types": "./types/index.d.ts",

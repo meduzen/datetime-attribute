@@ -104,7 +104,7 @@ export default {
     {
       'displayName': 'linter',
       'runner': 'jest-runner-eslint',
-      'testMatch': ['**/*/index.js']
+      'testMatch': ['**/src/**/*.js']
     }
   ],
 

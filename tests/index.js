@@ -1,14 +1,14 @@
-import { datetime, utc, datetimeTz, duration, tzOffset, daysBetween, weekNumber } from '..'
+import { datetime, utc, datetimeTz, duration, tzOffset, daysBetween, weekNumber } from '../src'
 
 const togoIndependanceDay = new Date(1960, 3, 27)
 const date = togoIndependanceDay // alias for the sake of brevity
 
-const january1st                      = new Date(2021, 0, 1, 10, 10, 12)
-const january11th                     = new Date(2021, 0, 11, 10, 10, 12)
-const january19th                     = new Date(2021, 0, 19, 10, 10, 12)
-const december31th2020                = new Date(2020, 11, 31, 10, 10, 12)
-const december31th2020OneMinuteLater  = new Date(2020, 11, 31, 10, 11, 12)
-const december31th2021                = new Date(2021, 11, 31, 10, 10, 12)
+const january1st = new Date(2021, 0, 1, 10, 10, 12)
+const january11th = new Date(2021, 0, 11, 10, 10, 12)
+const january19th = new Date(2021, 0, 19, 10, 10, 12)
+const december31th2020 = new Date(2020, 11, 31, 10, 10, 12)
+const december31th2020OneMinuteLater = new Date(2020, 11, 31, 10, 11, 12)
+const december31th2021 = new Date(2021, 11, 31, 10, 10, 12)
 
 const tzOffsetInMinutes = (new Date()).getTimezoneOffset() * -1
 
