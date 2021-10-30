@@ -1,4 +1,4 @@
-import { MILLISECONDS_PER_DAY } from './const'
+import { MILLISECONDS_PER_DAY } from './const.js'
 
 /**
  * Calculate the difference between 2 dates in days, discarding the time of day.

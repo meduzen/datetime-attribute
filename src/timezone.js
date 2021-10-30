@@ -3,9 +3,9 @@ import {
   REAL_LIFE_LOWER_TIMEZONE,
   REAL_LIFE_UPPER_TIMEZONE,
   LOCAL_TZ_OFFSET,
-} from './utils/const'
+} from './utils/const.js'
 
-import { p } from './utils/string'
+import { p } from './utils/string.js'
 
 /**
  * Create `datetime="+04:00"` timezone attribute for `<time>`.

@@ -1,4 +1,4 @@
-export { datetime, utc, datetimeTz } from './datetime'
-export { duration } from './duration'
-export { tzOffset } from './timezone'
-export { daysBetween, weekNumber } from './utils/date'
+export { datetime, utc, datetimeTz } from './datetime.js'
+export { duration } from './duration.js'
+export { tzOffset } from './timezone.js'
+export { daysBetween, weekNumber } from './utils/date.js'
