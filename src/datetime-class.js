@@ -2,6 +2,8 @@ import { MILLISECONDS_PER_WEEK } from './utils/const.js'
 import { weekNumber } from './index.js'
 
 export class DateTime extends Date {
+  // // Properties used as cache to avoid useless computations.
+  // _weekNumber
 
   /**
    * Returns the week of the year (`1`–`53`) of the specified date according to
@@ -14,7 +16,11 @@ export class DateTime extends Date {
    * @returns {number}
    */
   getWeekNumber() {
-    return weekNumber(this)
+    if (!this._weekNumber) {
+      this._weekNumber = weekNumber(this)
+    }
+
+    return this._weekNumber
   }
 
   /**
@@ -25,6 +31,7 @@ export class DateTime extends Date {
    */
   setWeekNumber(weekNumber) {
     const weeksDiffInMs = (weekNumber - this.getWeekNumber()) * MILLISECONDS_PER_WEEK
+    this._weekNumber = weekNumber // update cached property
     return this.setTime(this.getTime() + weeksDiffInMs)
   }
 }
