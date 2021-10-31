@@ -76,8 +76,8 @@ import { datetime } from 'datetime-attribute'
 
 const now = new Date() // We’re 14 March 2021 and it’s 10:29 in Brussels.
 
-datetime(now)          // '2021-03-14'
-datetime(now, 'local') // '2021-03-14T10:29'
+datetime(now)             // '2021-03-14'
+datetime(now, 'datetime') // '2021-03-14T10:29'
 ```
 
 Without argument, it defaults to _today_:
