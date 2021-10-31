@@ -2,11 +2,13 @@
 
 Get a [valid `datetime` attribute](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/datetime) for HTML `<time>` (among [others](#not-only-in-time)).
 
-Lightweight ([~ 1 KB compressed](https://bundlephobia.com/result?p=datetime-attribute) and tree-shakeable), datetime-attribute covers the [whole `datetime` specification](https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-time-datetime) in 4 functions:
-- [**`datetime()`**](#expressing-moments-with-datetime) for a specific moment;
-- [**`datetimeTz()`**](#adding-a-timezone-offset-to-a-moment-with-datetimetz) for a specific moment in a given timezone;
-- [**`duration()`**](#expressing-durations-with-duration) for a duration;
-- [**`tzOffset()`**](#expressing-timezone-offsets-with-tzoffset) for a timezone offset.
+The [whole `datetime` specification](https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-time-datetime) is covered in 4 functions:
+- [**`datetime()`**](#expressing-moments-with-datetime) for a specific moment ([561 B](https://bundle.js.org/?share=PTAEGEBsEsGMGtQCUCuA7UAzA9gJ1AC4AWApqAELoAmkJVoA1KALLRrSbR2OgDiAXtAAOQ7kICGCcQHMyAZ2j8SAKBIAPIXgKgA3qCriCJAtAC2ZAL5Zc2U6ADkBoyfMBaQwVzQARiiP3lIA));
+- [**`datetimeTz()`**](#adding-a-timezone-offset-to-a-moment-with-datetimetz) for a specific moment in a given timezone ([840 B](https://bundle.js.org/?share=PTAEGEBsEsGMGtQCUCuA7UAzA9gJ1AC4AWApqAELoAmkJVoA1KALLRrSbR2OgDiAXtAAOQ7kICGCcQHMyAZ2j8SAKBIAPIXgKgA3qCriCJAtAC2JACr9QAXyy5sp0AHIDRk+YC0hgrmgAjFCNnZSA));
+- [**`duration()`**](#expressing-durations-with-duration) for a duration ([335 B](https://bundle.js.org/?share=PTAEGEBsEsGMGtQCUCuA7UAzA9gJ1AC4AWApqAELoAmkJVoA1KALLRrSbR2OgDiAXtAAOQ7kICGCcQHMyAZ2j8SAKBIAPIXgKgA3qCopc4gtGwYAvllzYAtqADkVYyRM2SAWmMFc0AEYoCEntlIA));
+- [**`tzOffset()`**](#expressing-timezone-offsets-with-tzoffset) for a timezone offset ([378 B](https://bundle.js.org/?share=PTAEGEBsEsGMGtQCUCuA7UAzA9gJ1AC4AWApqAELoAmkJVoA1KALLRrSbR2OgDiAXtAAOQ7kICGCcQHMyAZ2j8SAKBIAPIXgKgA3oX4B5TJjkltAXyy5sAW1AByKuIJnoNkgFpnBXNABGKC72ykA)).
+
+The package is lightweight ([~ 1.11 KB compressed](https://bundle.js.org/?share=PTAEGEBsEsGMGtQCUCuA7UAzA9gJ1AC4AWApqAELoAmkJVoA1KALLRrSbR2OgDiAXtAAOQ7kICGCcQHMyAZ2j8SAKBIAPIXgKgAVFlzYAtqADkVcQRIFohkgFoLBXNABGKSyaA) for `import *`) and tree-shakeable.
 
 [![Node.js CI](https://github.com/meduzen/datetime-attribute/actions/workflows/node.js.yml/badge.svg)](https://github.com/meduzen/datetime-attribute/actions/workflows/node.js.yml)
 
