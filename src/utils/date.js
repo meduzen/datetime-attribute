@@ -17,7 +17,8 @@ export function daysBetween(date, furtherDate) {
 }
 
 /**
- * Get the week number as defined by the WHATWG and the ISO-8601 specs:
+ * Get the week number (`1`–`53`) of a date according to local time, as defined
+ * by the WHATWG and the ISO-8601 specs:
  *
  * - a week starts on Monday (https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#concept-week);
  * - the first week of the year includes a Thursday;
