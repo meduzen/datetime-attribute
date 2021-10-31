@@ -162,10 +162,11 @@ describe('daysBetween', () => {
 })
 
 const summer = new DateTime(2021, 5, 21)
+const oneWeekAfterSummer = new DateTime(2021, 5, 28)
 
 describe('DateTime class', () => {
   test('extends Date', () => expect(summer).toBeInstanceOf(Date))
   test('.getWeekNumber', () => expect(summer.getWeekNumber()).toBe(25))
-  test('.setWeekNumber', () => expect(summer.setWeekNumber(26)).toBe(1624831200000))
+  test('.setWeekNumber', () => expect(summer.setWeekNumber(26)).toBe(oneWeekAfterSummer.getTime()))
   test(".to('day')", () => expect(summer.to('day')).toBe('2021-06-28'))
 })
