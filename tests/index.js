@@ -1,4 +1,13 @@
-import { datetime, utc, datetimeTz, duration, tzOffset, daysBetween, weekNumber } from '../src'
+import {
+  DateTime,
+  datetime,
+  utc,
+  datetimeTz,
+  duration,
+  tzOffset,
+  daysBetween,
+  weekNumber
+} from '../src'
 
 const togoIndependanceDay = new Date(1960, 3, 27)
 const date = togoIndependanceDay // alias for the sake of brevity
@@ -150,4 +159,13 @@ describe('daysBetween', () => {
   test('1/1 and 11/1', () => expect(daysBetween(january1st, january11th)).toBe(10))
   test('11/1 and 1/1', () => expect(daysBetween(january11th, january1st)).toBe(-10))
   test('same day, different time', () => expect(daysBetween(december31th2020, december31th2020OneMinuteLater)).toBe(0))
+})
+
+const summer = new DateTime(2021, 5, 21)
+
+describe('DateTime class', () => {
+  test('extends Date', () => expect(summer).toBeInstanceOf(Date))
+  test('.getWeekNumber', () => expect(summer.getWeekNumber()).toBe(25))
+  test('.setWeekNumber', () => expect(summer.setWeekNumber(26)).toBe(1624831200000))
+  test(".to('day')", () => expect(summer.to('day')).toBe('2021-06-28'))
 })
