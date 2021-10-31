@@ -1,5 +1,5 @@
 import { MILLISECONDS_PER_WEEK } from './utils/const.js'
-import { weekNumber } from './index.js'
+import { datetime, weekNumber } from './index.js'
 
 export class DateTime extends Date {
   // // Properties used as cache to avoid useless computations.
@@ -33,5 +33,15 @@ export class DateTime extends Date {
     const weeksDiffInMs = (weekNumber - this.getWeekNumber()) * MILLISECONDS_PER_WEEK
     this._weekNumber = weekNumber // update cached property
     return this.setTime(this.getTime() + weeksDiffInMs)
+  }
+
+  /**
+   * Converts a date to a string following the ISO 8601 Extended Format.
+   *
+   * @param {string} precision
+   * @returns {string}
+   */
+  to(precision) {
+    return datetime(this, precision)
   }
 }
