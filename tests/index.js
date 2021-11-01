@@ -169,4 +169,8 @@ describe('DateTime class', () => {
   test('.getWeek', () => expect(summer.getWeek()).toBe(25))
   test('.setWeek', () => expect(summer.setWeek(26)).toBe(oneWeekAfterSummer.getTime()))
   test(".to('day')", () => expect(summer.to('day')).toBe('2021-06-28'))
+  test('weeks is changed when day changes', () => {
+    summer.setDate(summer.getDate() + 14)
+    return expect(summer.getWeek()).toBe(28)
+  })
 })
