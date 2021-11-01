@@ -2,11 +2,15 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-Until it reaches 1.0.0, breaking changes will bump the _MINOR_ digit (the second one).
+Before 1.0.0, many _MINOR_ releases have breaking changes.
 
 ## Unreleased
 
-Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.0.0...main).
+Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.1.0...main).
+
+## v1.1.0 (2021-11-01)
+
+Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.0.0...1.1.0).
 
 ### New
 
@@ -16,10 +20,6 @@ Compare with [last published version](https://github.com/meduzen/datetime-attrib
 
 - Allow `datetimeTz()` without parameters. Before, the date was mandatory.
 - Improve types declaration.
-
-### Documentation
-
-- Improve and update the documentation.
 
 ### Under the hood
 
