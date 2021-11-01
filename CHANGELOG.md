@@ -8,6 +8,24 @@ Until it reaches 1.0.0, breaking changes will bump the _MINOR_ digit (the second
 
 Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.0.0...main).
 
+### New
+
+- Add a [`DateTime()` class](https://github.com/meduzen/datetime-attribute#the-datetime-class) extending the native `Date` object. Available methods: `getWeek()`, `setWeek()` and `to()`.
+
+### Fixed
+
+- Allow `datetimeTz()` without parameters. Before, the date was mandatory.
+- Improve types declaration.
+
+### Documentation
+
+- Improve and update the documentation.
+
+### Under the hood
+
+- Add a NPM script to generate types.
+- Update ESLint rules.
+
 ## v1.0.0 (2021-10-30) 🎉
 
 Compare with [previous version](https://github.com/meduzen/datetime-attribute/compare/0.7.0...1.0.0).

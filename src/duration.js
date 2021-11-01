@@ -7,6 +7,10 @@ import { round } from './utils/math.js'
  * https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/datetime
  *
  * See also: https://www.brucelawson.co.uk/2012/best-of-time/
+ *
+ * @param {DurationObject} duration
+ * @param {boolean} convertExcess
+ * @returns {string}
  */
 export function duration(duration = {}, convertExcess = true) {
 
@@ -86,3 +90,12 @@ export function duration(duration = {}, convertExcess = true) {
   //   + (duration.h || duration.m || duration.s ? 'T' : '') // separator
   //   + duration.h + duration.m + duration.s
 }
+
+/**
+ * @typedef {Object} DurationObject
+ * @property {number=} w – Number of week
+ * @property {number=} d – Number of day
+ * @property {number=} h – Number of hours
+ * @property {number=} m – Number of minutes
+ * @property {number=} s – Number of seconds
+ */
