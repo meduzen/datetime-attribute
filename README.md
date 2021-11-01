@@ -10,7 +10,7 @@ The [whole `datetime` specification](https://html.spec.whatwg.org/multipage/text
 
 Additionally, a [`DateTime` class](#the-datetime-class) and some [other functions](#other-functions) are provided.
 
-The package is lightweight ([~ 1.11 KB compressed](https://bundle.js.org/?share=PTAEGEBsEsGMGtQCUCuA7UAzA9gJ1AC4AWApqAELoAmkJVoA1KALLRrSbR2OgDiAXtAAOQ7kICGCcQHMyAZ2j8SAKBIAPIXgKgAVFlzYAtqADkVcQRIFohkgFoLBXNABGKSyaA) for `import *`), tree-shakeable and include types.
+The package is lightweight ([~ 1.2 KB compressed](https://bundle.js.org/?share=PTAEGEBsEsGMGtQCUCuA7UAzA9gJ1AC4AWApqAELoAmkJVoA1KALLRrSbR2OgDiAXtAAOQ7kICGCcQHMyAZ2j8SAKBIAPIXgKgAVFlzYAtqADkVcQRIFohkgFoLBXNABGKSyaA) for `import *`), tree-shakeable and include types.
 
 [![Node.js CI](https://github.com/meduzen/datetime-attribute/actions/workflows/node.js.yml/badge.svg)](https://github.com/meduzen/datetime-attribute/actions/workflows/node.js.yml)
 
