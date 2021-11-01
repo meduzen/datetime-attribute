@@ -19,7 +19,7 @@
   },
   "files": [
     "src/**/*.js",
-    "types/index.d.ts"
+    "types/**/*.d.ts"
   ],
   "types": "./types/index.d.ts",
   "keywords": [
