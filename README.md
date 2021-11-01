@@ -27,13 +27,13 @@ The package is lightweight ([~ 1.2 KB compressed](https://bundle.js.org/?share=P
   - [**`tzOffset()`**](#expressing-timezone-offsets-with-tzoffset) to express a **timezone offset**
   - [**`datetimeTz()`**](#adding-a-timezone-offset-to-a-moment-with-datetimetz) to express a **moment with a specific timezone** offset
   - [**`duration()`**](#expressing-durations-with-duration) to expressing a **duration**
-- Other functions
-  - [**`daysBetween`**](#daysbetween) to get the number of **days between two dates**
-  - [**`weekNumber`**](#weeknumber) to get the **week number** (in the year) of a date
 - [The **`DateTime`** class](#the-datetime-class)
   - [**`.getWeek()`**](#datetimeprototypegetWeek)
   - [**`.setWeek()`**](#datetimeprototypesetWeek)
   - [**`.to()`**](#datetimeprototypeto)
+- Other functions
+  - [**`daysBetween`**](#daysbetween) to get the number of **days between two dates**
+  - [**`weekNumber`**](#weeknumber) to get the **week number** (in the year) of a date
 - Various:
   - [Changelog](#changelog)
   - [Browser and tooling support](#browser-and-tooling-support)
@@ -305,46 +305,6 @@ duration({ m: 175 }) // 'PT2H55M'
 duration({ m: 175 }, false) // 'PT175M'
 ```
 
-## Other functions
-
-Under the hood, the core features of `datetime-attribute` uses additional functions that you can also `import` individually.
-
-### `daysBetween()`
-
-Calculate the difference between 2 dates in days, **discarding the time of day**. It subtracts the first `Date` object from the second one.
-
-```js
-import { daysBetween } from 'datetime-attribute'
-
-const january1st = new Date(2021, 0, 1, 10, 10, 12)
-const january11th = new Date(2021, 0, 11, 10, 10, 12)
-const january19th = new Date(2021, 0, 19, 10, 10, 12)
-
-daysBetween(january1st, january11th) // 10
-daysBetween(january19th, january11th) // -8
-```
-
-### `weekNumber()`
-
-Get the week number as [defined by the WHATWG](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#weeks), following the ISO-8601 specs:
-- [a week starts on Monday](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#concept-week);
-- the first week of the year includes a Thursday;
-- [week numbers go from 1 to 53](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#week-number-of-the-last-day).
-
-It accepts a `Date` object.
-
-```js
-import { weekNumber } from 'datetime-attribute'
-
-const january1st = new Date(2021, 0, 1, 10, 10, 12)
-const january11th = new Date(2021, 0, 11, 10, 10, 12)
-const togoIndependanceDay = new Date(1960, 3, 27)
-
-weekNumber(togoIndependanceDay) // 17
-weekNumber(january1st) // 53: it’s a Friday!
-weekNumber(january11th) // 2
-```
-
 ## The `DateTime` class
 
 The **`DateTime` class extends the native `Date` object** with methods allowing you to interact with the week number or to output a `datetime` string.
@@ -391,6 +351,46 @@ const summer = new DateTime(2021, 5, 21) // June 21, 2021
 summer.to('month') // 2021-06
 summer.to('yearless') // 06-21
 summer.to('datetime second') // 2021-06-21T00:00:00
+```
+
+## Other functions
+
+Under the hood, the core features of `datetime-attribute` uses additional functions that you can also `import` individually.
+
+### `daysBetween()`
+
+Calculate the difference between 2 dates in days, **discarding the time of day**. It subtracts the first `Date` object from the second one.
+
+```js
+import { daysBetween } from 'datetime-attribute'
+
+const january1st = new Date(2021, 0, 1, 10, 10, 12)
+const january11th = new Date(2021, 0, 11, 10, 10, 12)
+const january19th = new Date(2021, 0, 19, 10, 10, 12)
+
+daysBetween(january1st, january11th) // 10
+daysBetween(january19th, january11th) // -8
+```
+
+### `weekNumber()`
+
+Get the week number as [defined by the WHATWG](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#weeks), following the ISO-8601 specs:
+- [a week starts on Monday](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#concept-week);
+- the first week of the year includes a Thursday;
+- [week numbers go from 1 to 53](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#week-number-of-the-last-day).
+
+It accepts a `Date` object.
+
+```js
+import { weekNumber } from 'datetime-attribute'
+
+const january1st = new Date(2021, 0, 1, 10, 10, 12)
+const january11th = new Date(2021, 0, 11, 10, 10, 12)
+const togoIndependanceDay = new Date(1960, 3, 27)
+
+weekNumber(togoIndependanceDay) // 17
+weekNumber(january1st) // 53: it’s a Friday!
+weekNumber(january11th) // 2
 ```
 
 ## Changelog
