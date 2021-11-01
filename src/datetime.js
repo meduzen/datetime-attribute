@@ -70,7 +70,7 @@ export const utc = (date = (new Date()), precision = 'datetime') => datetime(dat
  * Create `datetime="2021-12-02T17:34-06:00"` attribute for `<time>`.
  */
 export function datetimeTz(
-  date,
+  date = new Date(),
   precision = 'datetime',
   offsetHours = 0,
   offsetMinutes = 0,
