@@ -8,7 +8,7 @@ import { round } from './utils/math.js'
  *
  * See also: https://www.brucelawson.co.uk/2012/best-of-time/
  *
- * @param {DatetimeDuration} duration
+ * @param {DurationObject} duration
  * @param {boolean} convertExcess
  * @returns {string}
  */
@@ -92,7 +92,7 @@ export function duration(duration = {}, convertExcess = true) {
 }
 
 /**
- * @typedef {Object} DatetimeDuration
+ * @typedef {Object} DurationObject
  * @property {number=} w – Number of week
  * @property {number=} d – Number of day
  * @property {number=} h – Number of hours

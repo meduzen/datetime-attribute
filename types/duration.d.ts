@@ -6,12 +6,12 @@
  *
  * See also: https://www.brucelawson.co.uk/2012/best-of-time/
  *
- * @param {DatetimeDuration} duration
+ * @param {DurationObject} duration
  * @param {boolean} convertExcess
  * @returns {string}
  */
-export function duration(duration?: DatetimeDuration, convertExcess?: boolean): string;
-export type DatetimeDuration = {
+export function duration(duration?: DurationObject, convertExcess?: boolean): string;
+export type DurationObject = {
     /**
      * – Number of week
      */

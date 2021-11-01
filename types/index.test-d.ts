@@ -1,5 +1,5 @@
 import { expectAssignable, expectError, expectType } from 'tsd'
-import { DatetimeDuration } from './duration'
+import { DurationObject } from './duration'
 import {
   DateTime,
   datetime,
@@ -37,11 +37,11 @@ const durationWithTooHighValues = { w: 3, d: 19, h: 36, m: 53, s: 175.3 }
 const durationInHours = { h: 17 }
 const durationInDays = { d: 43 }
 
-expectAssignable<DatetimeDuration>(emptyDurationObject)
-expectAssignable<DatetimeDuration>(durationObject)
-expectAssignable<DatetimeDuration>(durationWithTooHighValues)
-expectAssignable<DatetimeDuration>(durationInHours)
-expectAssignable<DatetimeDuration>(durationInDays)
+expectAssignable<DurationObject>(emptyDurationObject)
+expectAssignable<DurationObject>(durationObject)
+expectAssignable<DurationObject>(durationWithTooHighValues)
+expectAssignable<DurationObject>(durationInHours)
+expectAssignable<DurationObject>(durationInDays)
 
 expectType<string>(duration())
 expectType<string>(duration(emptyDurationObject))
