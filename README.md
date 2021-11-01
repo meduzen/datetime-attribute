@@ -8,9 +8,9 @@ The [whole `datetime` specification](https://html.spec.whatwg.org/multipage/text
 - [**`duration()`**](#expressing-durations-with-duration) for a duration ([335 B](https://bundle.js.org/?share=PTAEGEBsEsGMGtQCUCuA7UAzA9gJ1AC4AWApqAELoAmkJVoA1KALLRrSbR2OgDiAXtAAOQ7kICGCcQHMyAZ2j8SAKBIAPIXgKgA3qCopc4gtGwYAvllzYAtqADkVYyRM2SAWmMFc0AEYoCEntlIA));
 - [**`tzOffset()`**](#expressing-timezone-offsets-with-tzoffset) for a timezone offset ([378 B](https://bundle.js.org/?share=PTAEGEBsEsGMGtQCUCuA7UAzA9gJ1AC4AWApqAELoAmkJVoA1KALLRrSbR2OgDiAXtAAOQ7kICGCcQHMyAZ2j8SAKBIAPIXgKgA3oX4B5TJjkltAXyy5sAW1AByKuIJnoNkgFpnBXNABGKC72ykA)).
 
-Additionally, a [`DateTime` class](#the-datetime-class) and some [other functions](#other-functions) are provided
+Additionally, a [`DateTime` class](#the-datetime-class) and some [other functions](#other-functions) are provided.
 
-The package is lightweight ([~ 1.11 KB compressed](https://bundle.js.org/?share=PTAEGEBsEsGMGtQCUCuA7UAzA9gJ1AC4AWApqAELoAmkJVoA1KALLRrSbR2OgDiAXtAAOQ7kICGCcQHMyAZ2j8SAKBIAPIXgKgAVFlzYAtqADkVcQRIFohkgFoLBXNABGKSyaA) for `import *`) and tree-shakeable.
+The package is lightweight ([~ 1.11 KB compressed](https://bundle.js.org/?share=PTAEGEBsEsGMGtQCUCuA7UAzA9gJ1AC4AWApqAELoAmkJVoA1KALLRrSbR2OgDiAXtAAOQ7kICGCcQHMyAZ2j8SAKBIAPIXgKgAVFlzYAtqADkVcQRIFohkgFoLBXNABGKSyaA) for `import *`), tree-shakeable and include types.
 
 [![Node.js CI](https://github.com/meduzen/datetime-attribute/actions/workflows/node.js.yml/badge.svg)](https://github.com/meduzen/datetime-attribute/actions/workflows/node.js.yml)
 
@@ -43,7 +43,7 @@ The package is lightweight ([~ 1.11 KB compressed](https://bundle.js.org/?share=
 ## Summary usage
 
 ```js
-import { datetime, datetimeTz, duration, tzOffset } from 'datetime-attribute'
+import * from 'datetime-attribute'
 
 const now = new Date()
 
@@ -55,23 +55,29 @@ utc(now, 'time')                // '09:29Z'
 tzOffset(-9, 30) // '-09:30' (Marquesas Islands)
 duration({ d: 4, h: 3, m: 17 }) // 'P4DT3H17M'
 
+const importantMeeting = new DateTime(2021, 12, 17, 19, 00) // 17/11
+const meetingWeek = importantMeeting.getWeekNumber() // 46
+importantMeeting.setWeekNumber(meetingWeek + 1) // meeting now on 24/11
+importantMeeting.to('week')        // 2021W47
+importantMeeting.to('datetime')    // 2021-11-24T19:00
+daysBetween(now, importantMeeting) // 248
 ```
 
 ## Installation
 
 `npm install datetime-attribute`
 
-Import the functions you need in your script:
+Then, import the functions you need in your script:
 
 ```js
-// if you only need `datetime`
-import { datetime } from 'datetime-attribute'
+// if you only need `datetime` and `duration`
+import { datetime, duration } from 'datetime-attribute'
 
-// if you need all functions
-import { datetime, datetimeTz, duration, tzOffset } from 'datetime-attribute'
+// if you need everything
+import * from 'datetime-attribute'
 ```
 
-Not a NPM users? Copy/paste [the code](https://raw.githubusercontent.com/meduzen/datetime-attribute/main/index.js) in your project.
+Not a NPM user? Download [the package files](https://github.com/meduzen/datetime-attribute/releases) in your project.
 
 ## Expressing moments with `datetime()`
 
