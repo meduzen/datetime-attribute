@@ -10,6 +10,10 @@ import { tzOffset } from './timezone.js'
  * https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/datetime
  *
  * See also: https://www.brucelawson.co.uk/2012/best-of-time/
+ *
+ * @param {Date=} date
+ * @param {string=} precision
+ * @returns {string}
  */
 export function datetime(date = (new Date()), precision = 'day') {
   if (!(date instanceof Date)) {
@@ -63,11 +67,23 @@ export function datetime(date = (new Date()), precision = 'day') {
  * For exemple, these two are the same:
  * - `datetime(someDate, 'somePrecision utc')`
  * - `utc(someDate, 'somePrecision')`
+ *
+ *
+ * @param {Date=} date
+ * @param {string=} precision
+ * @returns {string}
  */
 export const utc = (date = (new Date()), precision = 'datetime') => datetime(date, `${precision} utc`)
 
 /**
  * Create `datetime="2021-12-02T17:34-06:00"` attribute for `<time>`.
+ *
+ * @param {Date=} date
+ * @param {string=} precision
+ * @param {number=} offsetHours
+ * @param {number=} offsetMinutes
+ * @param {boolean=} inRealLifeBoundaries
+ * @returns {string}
  */
 export function datetimeTz(
   date = new Date(),
