@@ -1,4 +1,5 @@
 import { expectAssignable, expectError, expectType } from 'tsd'
+import { DatetimeDuration } from './duration'
 import {
   DateTime,
   datetime,
@@ -8,7 +9,6 @@ import {
   tzOffset,
   daysBetween,
   weekNumber,
-  DurationObject
 } from '.'
 
 const togoIndependanceDay = new Date(1960, 3, 27)
@@ -37,11 +37,11 @@ const durationWithTooHighValues = { w: 3, d: 19, h: 36, m: 53, s: 175.3 }
 const durationInHours = { h: 17 }
 const durationInDays = { d: 43 }
 
-expectAssignable<DurationObject>(emptyDurationObject)
-expectAssignable<DurationObject>(durationObject)
-expectAssignable<DurationObject>(durationWithTooHighValues)
-expectAssignable<DurationObject>(durationInHours)
-expectAssignable<DurationObject>(durationInDays)
+expectAssignable<DatetimeDuration>(emptyDurationObject)
+expectAssignable<DatetimeDuration>(durationObject)
+expectAssignable<DatetimeDuration>(durationWithTooHighValues)
+expectAssignable<DatetimeDuration>(durationInHours)
+expectAssignable<DatetimeDuration>(durationInDays)
 
 expectType<string>(duration())
 expectType<string>(duration(emptyDurationObject))
@@ -84,6 +84,7 @@ expectType<number>(daysBetween(date, january11th))
 
 const summer = new DateTime(2021, 5, 21)
 
+expectType<DateTime>(summer)
 expectType<number>(summer.getWeekNumber())
 expectType<number>(summer.setWeekNumber(26))
 expectType<string>(summer.to('year'))
