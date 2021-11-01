@@ -85,6 +85,6 @@ expectType<number>(daysBetween(date, january11th))
 const summer = new DateTime(2021, 5, 21)
 
 expectType<DateTime>(summer)
-expectType<number>(summer.getWeekNumber())
-expectType<number>(summer.setWeekNumber(26))
+expectType<number>(summer.getWeek())
+expectType<number>(summer.setWeek(26))
 expectType<string>(summer.to('year'))

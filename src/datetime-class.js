@@ -15,7 +15,7 @@ export class DateTime extends Date {
    *
    * @returns {number}
    */
-  getWeekNumber() {
+  getWeek() {
     if (!this._weekNumber) {
       this._weekNumber = weekNumber(this)
     }
@@ -29,8 +29,8 @@ export class DateTime extends Date {
    * @param {number} weekNumber
    * @returns {number} Milliseconds since midnight on January 1, 1970, UTC
    */
-  setWeekNumber(weekNumber) {
-    const weeksDiffInMs = (weekNumber - this.getWeekNumber()) * MILLISECONDS_PER_WEEK
+  setWeek(weekNumber) {
+    const weeksDiffInMs = (weekNumber - this.getWeek()) * MILLISECONDS_PER_WEEK
     this._weekNumber = weekNumber // update cached property
     return this.setTime(this.getTime() + weeksDiffInMs)
   }

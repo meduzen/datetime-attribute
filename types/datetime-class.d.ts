@@ -9,7 +9,7 @@ export class DateTime extends Date {
      *
      * @returns {number}
      */
-    getWeekNumber(): number;
+    getWeek(): number;
     _weekNumber: number;
     /**
      * Set the week number.
@@ -17,7 +17,7 @@ export class DateTime extends Date {
      * @param {number} weekNumber
      * @returns {number} Milliseconds since midnight on January 1, 1970, UTC
      */
-    setWeekNumber(weekNumber: number): number;
+    setWeek(weekNumber: number): number;
     /**
      * Converts a date to a string following the ISO 8601 Extended Format.
      *

@@ -31,9 +31,9 @@ The package is lightweight ([~ 1.11 KB compressed](https://bundle.js.org/?share=
   - [**`daysBetween`**](#daysbetween) to get the number of **days between two dates**
   - [**`weekNumber`**](#weeknumber) to get the **week number** (in the year) of a date
 - [The **`DateTime`** class](#the-datetime-class)
-  - [**`.getWeekNumber()`**](#datetime-prototype-getweeknumber)
-  - [**`.setWeekNumber()`**](#datetime-prototype-setweeknumber)
-  - [**`.to()`**](#datetime-prototype-to)
+  - [**`.getWeek()`**](#datetimeprototypegetWeek)
+  - [**`.setWeek()`**](#datetimeprototypesetWeek)
+  - [**`.to()`**](#datetimeprototypeto)
 - Various:
   - [Changelog](#changelog)
   - [Browser and tooling support](#browser-and-tooling-support)
@@ -56,14 +56,18 @@ tzOffset(-9, 30) // '-09:30' (Marquesas Islands)
 duration({ d: 4, h: 3, m: 17 }) // 'P4DT3H17M'
 
 const importantMeeting = new DateTime(2021, 12, 17, 19, 00) // 17/11
-const meetingWeek = importantMeeting.getWeekNumber() // 46
-importantMeeting.setWeekNumber(meetingWeek + 1) // meeting now on 24/11
+const meetingWeek = importantMeeting.getWeek() // 46
+
+importantMeeting.setWeek(meetingWeek + 1) // meeting now on 24/11
 importantMeeting.to('week')        // 2021W47
 importantMeeting.to('datetime')    // 2021-11-24T19:00
+
 daysBetween(now, importantMeeting) // 248
 ```
 
 ## Installation
+
+Install the package:
 
 `npm install datetime-attribute`
 
@@ -356,25 +360,25 @@ import { DateTime } from 'datetime-attribute'
 const summer = new DateTime(2021, 5, 21) // June 21, 2021
 ```
 
-### `DateTime.prototype.getWeekNumber()`
+### `DateTime.prototype.getWeek()`
 
 Returns the week of the year, giving the same output as [`weekNumber()`](#weeknumber).
 
 ```js
 const summer = new DateTime(2021, 5, 21) // June 21, 2021
 
-summer.getWeekNumber() // 25
+summer.getWeek() // 25
 ```
 
-### `DateTime.prototype.setWeekNumber()`
+### `DateTime.prototype.setWeek()`
 
 Shifts the date to the provided week, while preserving its initial day. In other words, if the initial date is a Friday, then the shifted date remains a Friday.
 
 ```js
 const summer = new DateTime(2021, 5, 21) // June 21, 2021
 
-summer.setWeekNumber(26) // shifts the date to June 28, 2021
-summer.getWeekNumber() // now it’s 26
+summer.setWeek(26) // shifts the date to June 28, 2021
+summer.getWeek() // now it’s 26
 ```
 
 ### `DateTime.prototype.to()`
