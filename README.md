@@ -8,6 +8,8 @@ The [whole `datetime` specification](https://html.spec.whatwg.org/multipage/text
 - [**`duration()`**](#expressing-durations-with-duration) for a duration ([335 B](https://bundle.js.org/?share=PTAEGEBsEsGMGtQCUCuA7UAzA9gJ1AC4AWApqAELoAmkJVoA1KALLRrSbR2OgDiAXtAAOQ7kICGCcQHMyAZ2j8SAKBIAPIXgKgA3qCopc4gtGwYAvllzYAtqADkVYyRM2SAWmMFc0AEYoCEntlIA));
 - [**`tzOffset()`**](#expressing-timezone-offsets-with-tzoffset) for a timezone offset ([378 B](https://bundle.js.org/?share=PTAEGEBsEsGMGtQCUCuA7UAzA9gJ1AC4AWApqAELoAmkJVoA1KALLRrSbR2OgDiAXtAAOQ7kICGCcQHMyAZ2j8SAKBIAPIXgKgA3oX4B5TJjkltAXyy5sAW1AByKuIJnoNkgFpnBXNABGKC72ykA)).
 
+Additionally, a [`DateTime` class](#the-datetime-class) and some [other functions](#other-functions) are provided
+
 The package is lightweight ([~ 1.11 KB compressed](https://bundle.js.org/?share=PTAEGEBsEsGMGtQCUCuA7UAzA9gJ1AC4AWApqAELoAmkJVoA1KALLRrSbR2OgDiAXtAAOQ7kICGCcQHMyAZ2j8SAKBIAPIXgKgAVFlzYAtqADkVcQRIFohkgFoLBXNABGKSyaA) for `import *`) and tree-shakeable.
 
 [![Node.js CI](https://github.com/meduzen/datetime-attribute/actions/workflows/node.js.yml/badge.svg)](https://github.com/meduzen/datetime-attribute/actions/workflows/node.js.yml)
@@ -28,6 +30,10 @@ The package is lightweight ([~ 1.11 KB compressed](https://bundle.js.org/?share=
 - Other functions
   - [**`daysBetween`**](#daysbetween) to get the number of **days between two dates**
   - [**`weekNumber`**](#weeknumber) to get the **week number** (in the year) of a date
+- [The **`DateTime`** class](#the-datetime-class)
+  - [**`.getWeekNumber()`**](#datetime-prototype-getweeknumber)
+  - [**`.setWeekNumber()`**](#datetime-prototype-setweeknumber)
+  - [**`.to()`**](#datetime-prototype-to)
 - Various:
   - [Changelog](#changelog)
   - [Browser and tooling support](#browser-and-tooling-support)
@@ -327,6 +333,54 @@ const togoIndependanceDay = new Date(1960, 3, 27)
 weekNumber(togoIndependanceDay) // 17
 weekNumber(january1st) // 53: it’s a Friday!
 weekNumber(january11th) // 2
+```
+
+## The `DateTime` class
+
+The **`DateTime` class extends the native `Date` object** with methods allowing you to interact with the week number or to output a `datetime` string.
+
+### Constructor
+
+Its constructor remains the same as [the `Date` one](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date).
+
+```js
+import { DateTime } from 'datetime-attribute'
+
+// One of the many ways to instantiate a `Date`, and this `DateTime`.
+const summer = new DateTime(2021, 5, 21) // June 21, 2021
+```
+
+### `DateTime.prototype.getWeekNumber()`
+
+Returns the week of the year, giving the same output as [`weekNumber()`](#weeknumber).
+
+```js
+const summer = new DateTime(2021, 5, 21) // June 21, 2021
+
+summer.getWeekNumber() // 25
+```
+
+### `DateTime.prototype.setWeekNumber()`
+
+Shifts the date to the provided week, while preserving its initial day. In other words, if the initial date is a Friday, then the shifted date remains a Friday.
+
+```js
+const summer = new DateTime(2021, 5, 21) // June 21, 2021
+
+summer.setWeekNumber(26) // shifts the date to June 28, 2021
+summer.getWeekNumber() // now it’s 26
+```
+
+### `DateTime.prototype.to()`
+
+Returns a `datetime` attribute. `DateTime.to()` accepts the same [`precision` keywords](#available-precision-keywords) as [`datetime()`](#expressing-moments-with-datetime).
+
+```js
+const summer = new DateTime(2021, 5, 21) // June 21, 2021
+
+summer.to('month') // 2021-06
+summer.to('yearless') // 06-21
+summer.to('datetime second') // 2021-06-21T00:00:00
 ```
 
 ## Changelog
