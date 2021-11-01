@@ -1,5 +1,15 @@
 import { expectAssignable, expectError, expectType } from 'tsd'
-import { datetime, utc, datetimeTz, duration, tzOffset, daysBetween, weekNumber, DurationObject } from '.'
+import {
+  DateTime,
+  datetime,
+  utc,
+  datetimeTz,
+  duration,
+  tzOffset,
+  daysBetween,
+  weekNumber,
+  DurationObject
+} from '.'
 
 const togoIndependanceDay = new Date(1960, 3, 27)
 const date = togoIndependanceDay // alias for the sake of brevity
@@ -69,3 +79,11 @@ expectError(() => datetimeTz(123))
 
 expectType<number>(weekNumber(date))
 expectType<number>(daysBetween(date, january11th))
+
+// DateTime class
+
+const summer = new DateTime(2021, 5, 21)
+
+expectType<number>(summer.getWeekNumber())
+expectType<number>(summer.setWeekNumber(26))
+expectType<string>(summer.to('year'))

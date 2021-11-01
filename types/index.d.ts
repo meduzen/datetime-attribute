@@ -77,3 +77,9 @@ export declare function daysBetween(date: Date, furtherDate: Date): number;
  * @param {Date} date
  */
 export declare function weekNumber(date: Date): number;
+
+export declare class DateTime extends Date {
+  getWeekNumber(): number;
+  setWeekNumber(weekNumber: number): number;
+  to(precision?: string): string;
+}
