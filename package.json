@@ -40,14 +40,14 @@
     "access": "public"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.8",
-    "@babel/preset-env": "^7.13.9",
+    "@babel/core": "^7",
+    "@babel/preset-env": "^7",
     "babel-jest": "^27",
-    "c8": "^7.6.0",
+    "c8": "^7",
     "eslint": "^8",
     "eslint-plugin-jest": "^25",
     "jest": "^27",
     "jest-runner-eslint": "^1",
-    "tsd": "^0.18.0"
+    "tsd": "^0.19"
   }
 }
