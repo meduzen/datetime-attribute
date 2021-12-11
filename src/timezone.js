@@ -6,6 +6,7 @@ import {
 } from './utils/const.js'
 
 import { p } from './utils/string.js'
+import { tzConfig } from './utils/config.js'
 
 /**
  * Create `datetime="+04:00"` timezone attribute for `<time>`.
@@ -76,5 +77,5 @@ export function tzOffset(hours = 0, minutes = 0, inRealLifeBoundaries = false) {
 
   if (hours == 0 && minutes == 0) { return 'Z' }
 
-  return sign + p(hours) + ':' + p(minutes)
+  return sign + p(hours) + tzConfig.separator + p(minutes)
 }

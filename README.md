@@ -20,13 +20,16 @@ The package is lightweight ([~ 1.2 KB compressed](https://bundle.js.org/?share=P
 - [Installation](#installation)
 - Usage
   - [**`datetime()`**](#expressing-moments-with-datetime) to express a **moment** at different [levels of precision](#available-precision-keywords):
-	- [date](#date)
-	- [time and UTC time](#time-and-utc-time)
-	- [datetime and UTC datetime](#datetime-and-utc-datetime)
-	- alternative to the UTC syntax with [`utc()`](#the-utc-shortcut)
+    - [date](#date)
+    - [time and UTC time](#time-and-utc-time)
+    - [datetime and UTC datetime](#datetime-and-utc-datetime)
+    - alternative to the UTC syntax with [`utc()`](#the-utc-shortcut)
   - [**`tzOffset()`**](#expressing-timezone-offsets-with-tzoffset) to express a **timezone offset**
+    - [hours-minutes separator](#hours-minutes-separator)
+    - [real-life timezone offset](#real-life-timezone-offset)
   - [**`datetimeTz()`**](#adding-a-timezone-offset-to-a-moment-with-datetimetz) to express a **moment with a specific timezone** offset
   - [**`duration()`**](#expressing-durations-with-duration) to expressing a **duration**
+    - [units overflow](#units-overflow)
 - [The **`DateTime`** class](#the-datetime-class)
   - [**`.getWeek()`**](#datetimeprototypegetweek)
   - [**`.setWeek()`**](#datetimeprototypesetweek)
@@ -193,6 +196,24 @@ tzOffset()       // '+01:00'
 tzOffset()       // '+02:00' (under daylight time saving)
 ```
 
+### Hours-minutes separator
+
+[Per spec](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#time-zones), the separator between hours and minutes is optional. The allowed values are:
+- (default) a colon caracter (`:`);
+- an empty string.
+
+To change the separator, use `setTzSeparator`:
+
+```js
+import { setTzSeparator } from 'datetime-attribute'
+
+setTzSeparator('')
+
+// All next usage will follow the new setting.
+tzOffset(3)       // '+0300'
+tzOffset(-9, 30)  // '-0930'
+```
+
 ### Real-life timezone offset
 
 The timezone offset will be adjusted to fit in the spec range (from `-23:59` to `+23:59`). This means `tzOffset(44)` will output `+20:00` instead of `+44:00`.
@@ -220,12 +241,12 @@ datetimeTz(date, precision, offsetHours, offsetMinutes, inRealLifeBoundaries)
 
 1. A date object (default: `new Date()`)
 2. A [precision keywords](#available-precision-keywords) among:
-	- `time`
-	- `second`
-	- `ms`
-	- `datetime` (default)
-	- `datetime second`
-	- `datetime ms`
+  - `time`
+  - `second`
+  - `ms`
+  - `datetime` (default)
+  - `datetime second`
+  - `datetime ms`
 3. Hours offset like in [`tzOffset()`](#expressing-timezone-offsets-with-tzoffset)
 4. Minutes offset like in [`tzOffset()`](#expressing-timezone-offsets-with-tzoffset)
 5. Boundaries of the timezone offset like in [`tzOffset()`](#real-life-timezone-offset)
@@ -237,14 +258,14 @@ import { datetime, datetimeTz } from 'datetime-attribute'
 
 const now = new Date() // We’re 2 April 2021 and it’s 23:51 in Brussels.
 
-datetime(now) 	// '2021-04-02'
+datetime(now)   // '2021-04-02'
 datetimeTz(now) // '2021-04-02T23:51+02:00'
 
 datetime(now, 'time')           // '23:51'
 datetime(now, 'time utc')       // '21:51Z' (same as previous, converted to UTC)
 datetimeTz(now, 'time', 0)      // '23:51Z' (datetimeTz does not convert)
 datetimeTz(now, 'time')         // '23:51+02:00' (fall back on local timezone)
-datetimeTz(now, 'time', 9) 	    // '23:51+09:00'
+datetimeTz(now, 'time', 9)      // '23:51+09:00'
 datetimeTz(now, 'time', -3, 30) // '23:51-03:30'
 datetimeTz(now, 'time', -14, 0, true) // '23:51+10:00'
 ```
