@@ -9,7 +9,7 @@
     "node": ">=12.8"
   },
   "scripts": {
-    "types": "npx -p typescript tsc src/**/*.js --declaration --allowJs --emitDeclarationOnly --outDir types",
+    "types": "npx -p typescript tsc src/index.js --declaration --allowJs --emitDeclarationOnly --outDir types",
     "test": "jest",
     "test-types": "npx tsd",
     "test:coverage": "c8 --all --include=src npm test",
