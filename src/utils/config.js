@@ -23,7 +23,7 @@ export const setTzConfig = ({ separator }) => {
    * https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#time-zones
    */
   if (separator != ':' && separator != '') {
-    throw new Error(`Separator can only be ':'' or ''.`)
+    throw new Error(`Invalid timezone separator. Use ':'' or ''.`)
   }
 
   return Object.assign(tzConfig, { separator })
