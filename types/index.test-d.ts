@@ -1,5 +1,6 @@
 import { expectAssignable, expectError, expectType } from 'tsd'
 import { DurationObject } from './duration'
+import { TimezoneOptions } from './utils/config'
 import {
   DateTime,
   datetime,
@@ -9,7 +10,10 @@ import {
   tzOffset,
   daysBetween,
   weekNumber,
+  setTzSeparator,
 } from '.'
+
+import { setTzConfig } from './utils/config'
 
 const togoIndependanceDay = new Date(1960, 3, 27)
 const date = togoIndependanceDay // alias for the sake of brevity
@@ -74,6 +78,17 @@ expectType<string>(datetimeTz(date, 'time', 0))
 expectType<string>(datetimeTz(date, 'datetime', 12, 45))
 expectType<string>(datetimeTz(date, 'datetime', 17, 30, true))
 expectError(() => datetimeTz(123))
+
+// setTzSeparator and setTzConfig
+
+expectType<TimezoneOptions>(setTzSeparator(':'))
+expectType<TimezoneOptions>(setTzSeparator(''))
+expectType<TimezoneOptions>(setTzSeparator())
+expectError(() => setTzSeparator(123))
+
+expectType<TimezoneOptions>(setTzConfig({ separator: ':' }))
+expectType<TimezoneOptions>(setTzConfig({ separator: '' }))
+expectError(() => setTzConfig({ separator: 123 }))
 
 // weekNumber, daysBetween
 

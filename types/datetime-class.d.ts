@@ -10,7 +10,6 @@ export class DateTime extends Date {
      * @returns {number}
      */
     getWeek(): number;
-    _weekNumber: number;
     /**
      * Set the week number.
      *
