@@ -16,17 +16,17 @@ export let tzConfig = {
  * @param {TimezoneOptions} options
  * @returns {TimezoneOptions}
  */
-export const setTzConfig = ({ separator }) => {
+export const setTzConfig = options => {
 
   /**
    * The separator can only be ':' or ''.
    * https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#time-zones
    */
-  if (separator != ':' && separator != '') {
+  if (options.separator != ':' && options.separator != '') {
     throw new Error(`Invalid timezone separator. Use ':'' or ''.`)
   }
 
-  return Object.assign(tzConfig, { separator })
+  return Object.assign(tzConfig, options)
 }
 
 /**
