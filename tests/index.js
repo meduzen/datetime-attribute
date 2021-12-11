@@ -6,8 +6,16 @@ import {
   duration,
   tzOffset,
   daysBetween,
-  weekNumber
+  weekNumber,
+  setTzSeparator,
 } from '../src'
+
+/**
+ * This one is currently not exported in the mail bundle (though it’s used by
+ * `setTzSeparator`). It will appear in the main bundle when a new setting
+ * will be added to the timezone configuration object.
+ */
+import { setTzConfig } from '../src/utils/config.js'
 
 const togoIndependanceDay = new Date(1960, 3, 27)
 const date = togoIndependanceDay // alias for the sake of brevity
@@ -143,6 +151,53 @@ describe('datetimeTz', () => {
   test('datetime utc', () => expect(datetimeTz(date, 'datetime utc')).toBe(date.toJSON().substr(0, 16) + 'Z'))
   test('datetime second utc', () => expect(datetimeTz(date, 'datetime second utc')).toBe(date.toJSON().substr(0, 19) + 'Z'))
   test('datetime ms utc', () => expect(datetimeTz(date, 'datetime ms utc')).toBe(date.toJSON()))
+})
+
+describe('setTzSeparator', () => {
+  test('is a function', () => expect(setTzSeparator).toBeInstanceOf(Function))
+
+  test('no timezone separator', () => {
+    setTzSeparator()
+    expect(tzOffset(3)).toBe('+0300')
+  })
+
+  test('empty string timezone separator', () => {
+    setTzSeparator('')
+    expect(tzOffset(3)).toBe('+0300')
+  })
+
+  test(': as timezone separator', () => {
+    setTzSeparator(':')
+    expect(tzOffset(3)).toBe('+03:00')
+  })
+
+  test('invalid separator', () => expect(() => setTzSeparator(42)).toThrow(Error))
+
+  test('empty string timezone separator with datetimeTz', () => {
+    setTzSeparator('')
+    expect(datetimeTz(date, 'datetime second', -6)).toBe('1960-04-27T00:00:00-0600')
+  })
+})
+
+describe('setTzConfig', () => {
+  test('is a function', () => expect(setTzConfig).toBeInstanceOf(Function))
+
+  test('empty string timezone separator using setTzConfig', () => {
+    setTzConfig({ separator: '' })
+    expect(tzOffset(3)).toBe('+0300')
+  })
+
+  test(': as timezone separator using setTzConfig', () => {
+    setTzConfig({ separator: ':' })
+    expect(tzOffset(3)).toBe('+03:00')
+  })
+
+  test('invalid separator using setTzConfig', () => expect(() => setTzConfig({ separator: 42 })).toThrow(Error))
+
+  test(': as timezone separator with datetimeTz', () => {
+    setTzConfig({ separator: ':' })
+    expect(datetimeTz(date, 'datetime second', -6)).toBe('1960-04-27T00:00:00-06:00')
+  })
 })
 
 describe('weekNumber', () => {
