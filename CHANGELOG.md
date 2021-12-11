@@ -1,12 +1,18 @@
 # Changelog
 
-This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
-Before 1.0.0, many _MINOR_ releases have breaking changes.
+This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) starting 1.0.
 
 ## Unreleased
 
 Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.1.0...main).
+
+### New
+
+- Add [`setTzSeparator()`](https://github.com/meduzen/datetime-attribute##hours-minutes-separator) to customize the hours-minutes separator of timezone offsets.
+
+### Under the hood
+
+- Improve types generation.
 
 ## v1.1.0 (2021-11-01)
 
