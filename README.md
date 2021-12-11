@@ -35,8 +35,8 @@ The package is lightweight ([~ 1.2 KB compressed](https://bundle.js.org/?share=P
   - [**`.setWeek()`**](#datetimeprototypesetweek)
   - [**`.to()`**](#datetimeprototypeto)
 - Other functions
-  - [**`daysBetween`**](#daysbetween) to get the number of **days between two dates**
-  - [**`weekNumber`**](#weeknumber) to get the **week number** (in the year) of a date
+  - [**`daysBetween()`**](#daysbetween) to get the number of **days between two dates**
+  - [**`weekNumber()`**](#weeknumber) to get the **week number** (in the year) of a date
 - Various:
   - [Changelog](#changelog)
   - [Browser and tooling support](#browser-and-tooling-support)
@@ -209,9 +209,12 @@ import { setTzSeparator } from 'datetime-attribute'
 
 setTzSeparator('')
 
-// All next usage will follow the new setting.
+// All next timezone-related functions will follow the new setting.
 tzOffset(3)       // '+0300'
 tzOffset(-9, 30)  // '-0930'
+
+// Switch back to the default.
+setTzSeparator(':')
 ```
 
 ### Real-life timezone offset
@@ -241,12 +244,12 @@ datetimeTz(date, precision, offsetHours, offsetMinutes, inRealLifeBoundaries)
 
 1. A date object (default: `new Date()`)
 2. A [precision keywords](#available-precision-keywords) among:
-  - `time`
-  - `second`
-  - `ms`
-  - `datetime` (default)
-  - `datetime second`
-  - `datetime ms`
+    - `time`
+    - `second`
+    - `ms`
+    - `datetime` (default)
+    - `datetime second`
+    - `datetime ms`
 3. Hours offset like in [`tzOffset()`](#expressing-timezone-offsets-with-tzoffset)
 4. Minutes offset like in [`tzOffset()`](#expressing-timezone-offsets-with-tzoffset)
 5. Boundaries of the timezone offset like in [`tzOffset()`](#real-life-timezone-offset)
