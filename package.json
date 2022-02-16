@@ -18,6 +18,7 @@
     "lint-fix": "npx eslint src/**/*.js tests/index.js --fix"
   },
   "files": [
+    "CHANGELOG.md",
     "src/**/*.js",
     "types/**/*.d.ts"
   ],
