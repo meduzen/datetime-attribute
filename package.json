@@ -18,6 +18,7 @@
     "lint-fix": "npx eslint src/**/*.js tests/index.js --fix"
   },
   "files": [
+    "CHANGELOG.md",
     "src/**/*.js",
     "types/**/*.d.ts"
   ],
@@ -45,7 +46,7 @@
     "babel-jest": "^27",
     "c8": "^7",
     "eslint": "^8",
-    "eslint-plugin-jest": "^25",
+    "eslint-plugin-jest": "^26",
     "jest": "^27",
     "jest-runner-eslint": "^1",
     "tsd": "^0.19"
