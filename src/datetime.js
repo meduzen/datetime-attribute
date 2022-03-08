@@ -70,7 +70,7 @@ export function datetime(date = (new Date()), precision = 'day') {
  *
  *
  * @param {Date=} date
- * @param {Precision=} precision
+ * @param {'datetime'|'datetime second'|'datetime ms'|'time'|'second'|'ms'} precision
  * @returns {string}
  */
 export const utc = (date = (new Date()), precision = 'datetime') => datetime(date, `${precision} utc`)
