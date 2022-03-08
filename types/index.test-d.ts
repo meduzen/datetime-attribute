@@ -25,13 +25,13 @@ expectError(() => datetime(123))
 expectType<string>(datetime())
 expectType<string>(datetime(date))
 expectType<string>(datetime(date, 'time'))
-expectType<string>(datetime(date, 'n00t'))
+expectError(datetime(date, 'unsupported precision'))
 
 expectError(() => utc(123))
 expectType<string>(utc())
 expectType<string>(utc(date))
 expectType<string>(utc(date, 'time'))
-expectType<string>(utc(date, 'n00t'))
+expectError(utc(date, 'unsupported precision'))
 
 // duration
 
