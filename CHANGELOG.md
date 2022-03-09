@@ -8,7 +8,7 @@ Compare with [last published version](https://github.com/meduzen/datetime-attrib
 
 ## v1.2.0 (2022-03-10)
 
-Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.1.0...1.2.0).
+Compare with [previous](https://github.com/meduzen/datetime-attribute/compare/1.1.0...1.2.0).
 
 ### New
 
@@ -21,7 +21,7 @@ Compare with [last published version](https://github.com/meduzen/datetime-attrib
 
 ## v1.1.0 (2021-11-01)
 
-Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.0.0...1.1.0).
+Compare with [previous](https://github.com/meduzen/datetime-attribute/compare/1.0.0...1.1.0).
 
 ### New
 
