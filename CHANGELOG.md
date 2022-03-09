@@ -9,7 +9,7 @@ Compare with [last published version](https://github.com/meduzen/datetime-attrib
 ### New
 
 - Add [`setTzSeparator()`](https://github.com/meduzen/datetime-attribute##hours-minutes-separator) to customize the hours-minutes separator of timezone offsets.
-- Add a [Precision](https://github.com/meduzen/datetime-attribute/blob/7b80e254c57e0f05dcdf9a452535cb66f70a1c90/types/datetime.d.ts#L30) type for `precision` parameter of `datetime`, `datetimeTz` and `DateTime.to`, and a subset of it for `utc`. It autocompletes the parameter (in modern code editors) with the available string.
+- Add a [Precision](https://github.com/meduzen/datetime-attribute/blob/7b80e254c57e0f05dcdf9a452535cb66f70a1c90/types/datetime.d.ts#L30) type for the `precision` parameter of `datetime`, `datetimeTz` and `DateTime.to`, and a subset of this new type for `utc`. It autocompletes the parameter (in modern code editors) with the available keywords.
 
 ### Under the hood
 
