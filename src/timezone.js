@@ -40,8 +40,8 @@ export function tzOffset(hours = 0, minutes = 0, inRealLifeBoundaries = false) {
 
     /**
      * Because lower and upper boundaries are not necessarily symetric,
-     * suppressing the minutes excess can lead to another excess, but
-     * on the other side (e.g. going from beyond +14 to below -12).
+     * suppressing the minutes excess can lead to another excess but
+     * on the other side (e.g. by jumping from beyond +14 to -12).
      */
 
     // Upper boundary
