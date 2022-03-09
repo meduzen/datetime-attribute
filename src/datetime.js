@@ -12,7 +12,7 @@ import { tzOffset } from './timezone.js'
  * See also: https://www.brucelawson.co.uk/2012/best-of-time/
  *
  * @param {Date=} date
- * @param {string=} precision
+ * @param {Precision=} precision
  * @returns {string}
  */
 export function datetime(date = (new Date()), precision = 'day') {
@@ -70,7 +70,7 @@ export function datetime(date = (new Date()), precision = 'day') {
  *
  *
  * @param {Date=} date
- * @param {string=} precision
+ * @param {'datetime'|'datetime second'|'datetime ms'|'time'|'second'|'ms'} precision
  * @returns {string}
  */
 export const utc = (date = (new Date()), precision = 'datetime') => datetime(date, `${precision} utc`)
@@ -79,7 +79,7 @@ export const utc = (date = (new Date()), precision = 'datetime') => datetime(dat
  * Create `datetime="2021-12-02T17:34-06:00"` attribute for `<time>`.
  *
  * @param {Date=} date
- * @param {string=} precision
+ * @param {Precision=} precision
  * @param {number=} offsetHours
  * @param {number=} offsetMinutes
  * @param {boolean=} inRealLifeBoundaries
@@ -102,3 +102,13 @@ export function datetimeTz(
 
   return datetime(date, precision) + timezoneOffset
 }
+
+/**
+ * Supported precision keywords.
+ *
+ * @typedef { 'day' | 'year' | 'yearless' | 'month' | 'week' |
+ *            'time' | 'second' | 'ms' |
+ *            'time utc' | 'second utc' | 'ms utc' |
+ *            'datetime' | 'datetime second' | 'datetime ms' |
+ *            'datetime utc' | 'datetime second utc' | 'datetime ms utc' } Precision
+ */
