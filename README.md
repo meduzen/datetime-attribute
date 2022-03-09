@@ -202,8 +202,6 @@ tzOffset()       // '+02:00' (under daylight time saving)
 - (default) a colon caracter (`:`);
 - an empty string.
 
- **⚠ The following function is unreleased.**
-
 To change the separator, use `setTzSeparator`:
 
 ```js
