@@ -31,7 +31,7 @@ export class DateTime extends Date {
   /**
    * Converts a date to a string following the ISO 8601 Extended Format.
    *
-   * @param {string} precision
+   * @param {import('./datetime.js').Precision} precision
    * @returns {string}
    */
   to(precision) {
