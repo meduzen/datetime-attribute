@@ -4,7 +4,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## Unreleased
 
-Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.1.0...main).
+Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.2.0...main).
+
+## v1.2.0 (2022-03-10)
+
+Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.1.0...1.2.0).
 
 ### New
 
