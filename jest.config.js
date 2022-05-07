@@ -177,11 +177,13 @@ export default {
   // testRunner: "jasmine2",
 
   // This option sets the URL for the jsdom environment. It is reflected in properties such as location.href
-  // testURL: "http://localhost",
-  testURL: 'http://some.tld',
+  testEnvironmentOptions: {
+    // url: "http://localhost",
+    url: 'http://some.tld',
+  },
 
   // Setting this value to "fake" allows the use of fake timers for functions such as "setTimeout"
-  // timers: "real",
+  // fakeTimers: "real",
 
   // A map from regular expressions to paths to transformers
   // transform: undefined,
