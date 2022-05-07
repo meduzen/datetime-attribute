@@ -43,11 +43,11 @@
   "devDependencies": {
     "@babel/core": "^7",
     "@babel/preset-env": "^7",
-    "babel-jest": "^27",
+    "babel-jest": "^28",
     "c8": "^7",
     "eslint": "^8",
     "eslint-plugin-jest": "^26",
-    "jest": "^27",
+    "jest": "^28",
     "jest-runner-eslint": "^1",
     "tsd": "^0.20"
   }
