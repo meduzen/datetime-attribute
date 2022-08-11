@@ -49,6 +49,6 @@
     "eslint-plugin-jest": "^26",
     "jest": "^28",
     "jest-runner-eslint": "^1",
-    "tsd": "^0.20"
+    "tsd": "^0.22.0"
   }
 }
