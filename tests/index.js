@@ -20,6 +20,7 @@ import { setTzConfig } from '../src/utils/config.js'
 const togoIndependanceDay = new Date(1960, 3, 27)
 const date = togoIndependanceDay // alias for the sake of brevity
 
+const foundationOfSyracuse = new Date(-733, 6, 7)
 const birthOfChineseEmpressWuZetian = new Date(624, 1, 17) // https://en.wikipedia.org/wiki/Wu_Zetian
 const january1st = new Date(2021, 0, 1, 10, 10, 12)
 const january11th = new Date(2021, 0, 11, 10, 10, 12)
@@ -38,9 +39,11 @@ describe('datetime', () => {
   test('no precision before the 10th', () => expect(datetime(january1st)).toBe('2021-01-01'))
   test('day', () => expect(datetime(date, 'day')).toBe('1960-04-27'))
   test('year', () => expect(datetime(date, 'year')).toBe('1960'))
+  test('3 digits year before 0', () => expect(datetime(foundationOfSyracuse, 'year')).toBe('-0733'))
   test('3 digits year', () => expect(datetime(birthOfChineseEmpressWuZetian, 'year')).toBe('0624'))
   test('month', () => expect(datetime(date, 'month')).toBe('1960-04'))
   test('yearless', () => expect(datetime(date, 'yearless')).toBe('04-27'))
+  test('yearless and year before 0', () => expect(datetime(foundationOfSyracuse, 'yearless')).toBe('07-07'))
   test('yearless and 3 digits year', () => expect(datetime(birthOfChineseEmpressWuZetian, 'yearless')).toBe('02-17'))
   test('time', () => expect(datetime(date, 'time')).toBe('00:00'))
   test('second', () => expect(datetime(date, 'second')).toBe('00:00:00'))
