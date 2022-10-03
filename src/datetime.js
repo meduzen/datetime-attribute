@@ -31,7 +31,7 @@ export function datetime(date = (new Date()), precision = 'day') {
 
   // Extract substring from local date.
   const local = (start, end) => localMs.substr(start, end)
-  const utc = (start, end) => date.toJSON().substr(start, end)
+  const utc = (start, end) => date.toJSON().substr(start, end) + 'Z'
 
   const formats = {
     'year': () => local(0, 4),          // 1960
@@ -49,13 +49,13 @@ export function datetime(date = (new Date()), precision = 'day') {
     'datetime second': () => local(0, 19), // 1960-04-27T00:00:00
     'datetime ms': () => local(0, 23),     // 1960-04-27T00:00:00.123
 
-    'datetime utc': () => utc(0, 16) + 'Z',        // 1960-04-26T23:00Z
-    'datetime second utc': () => utc(0, 19) + 'Z', // 1960-04-26T23:00:00Z
-    'datetime ms utc': () => date.toJSON(),        // 1960-04-26T23:00:00.000Z
+    'datetime utc': () => utc(0, 16),        // 1960-04-26T23:00Z
+    'datetime second utc': () => utc(0, 19), // 1960-04-26T23:00:00Z
+    'datetime ms utc': () => date.toJSON(),  // 1960-04-26T23:00:00.000Z
 
-    'time utc': () => utc(11, 5) + 'Z',   // 23:00Z
-    'second utc': () => utc(11, 8) + 'Z', // 23:00:00Z
-    'ms utc': () => utc(11, 12) + 'Z',    // 23:00:00.000Z
+    'time utc': () => utc(11, 5),   // 23:00Z
+    'second utc': () => utc(11, 8), // 23:00:00Z
+    'ms utc': () => utc(11, 12),    // 23:00:00.000Z
   }
 
   return (formats[precision] || formats.day)()
