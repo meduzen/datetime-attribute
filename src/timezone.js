@@ -57,7 +57,10 @@ export function tzOffset(hours = 0, minutes = 0, inRealLifeBoundaries = false) {
     }
   }
 
-  // Offset sign: `+` (UTC ≥ 0) or `-` (UTC < 0).
+  /**
+   * Offset sign: `+` (UTC > 0) or `-` (UTC < 0).
+   * We don’t have condition when minutes is 0: it returns `'Z'` (see further).
+   */
   const sign = minutes > 0 ? '+' : '-'
 
   // Remove sign (stored separately, see previous line).
