@@ -6,6 +6,25 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.2.0...main).
 
+### New
+
+- Support years prior to year 1 (`-0051-01-01`).
+
+### Fixed
+
+- Missing zero-padding in front of years with less then 4 digits (`0537-01-01`).
+
+### Documentation
+
+- Update bundle sizes and related links.
+- Fix links in this changelog.
+
+### Under the hood
+
+- Update development dependencies.
+- Update `package.json` description and keywords fields.
+- Update GitHub actions.
+
 ## v1.2.0 (2022-03-10)
 
 Compare with [previous](https://github.com/meduzen/datetime-attribute/compare/1.1.0...1.2.0).
