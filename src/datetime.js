@@ -38,8 +38,8 @@ export function datetime(date = (new Date()), precision = 'day') {
     + '.' + p(date.getMilliseconds(), 3)
 
   // Extract substring from local date.
-  const local = (start, end) => localMs.substr(start, end)
-  const utc = (start, end) => date.toJSON().substr(start, end) + 'Z'
+  const local = (start, length) => localMs.substr(start, length)
+  const utc = (start, length) => date.toJSON().substr(start, length) + 'Z'
 
   const formats = {
     'year': () => sign + local(0, 4),   // 1960
