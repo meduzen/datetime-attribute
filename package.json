@@ -1,7 +1,7 @@
 {
   "name": "datetime-attribute",
   "version": "1.2.0",
-  "description": "Generate valid datetime attributes for the <time> HTML element.",
+  "description": "Generate datetime attributes for the <time> HTML element, following WHATWG and ISO8601 specs.",
   "type": "module",
   "sideEffects": false,
   "exports": "./src/index.js",
@@ -28,7 +28,8 @@
     "datetime",
     "attribute",
     "date",
-    "duration"
+    "duration",
+    "iso8601"
   ],
   "homepage": "https://github.com/meduzen/datetime-attribute",
   "author": "Mehdi Merah",
