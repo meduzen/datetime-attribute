@@ -22,14 +22,25 @@ export function datetime(date = (new Date()), precision = 'day') {
 
   let year = date.getFullYear()
 
-  // Note: year 0 doesn’t exists in real life, but does in the ISO-8601 spec.
+  // Year 0 doesn’t exists in real life, but does in the ISO-8601 spec.
   const sign = year < 0 ? '-' : '' // no sign if year is not negative
 
   // Remove sign (stored separately, see previous line).
   year = Math.abs(year)
 
+  let bigYearDigits = ''
+
+  // Cut last 4 digits of the year from the others to ease further computation.
+  if (year > 9999) {
+    [bigYearDigits, year] = (year / 10000).toFixed(4).split('.')
+
+    // Clone date (to leave it untouched) and set a 4-digits year in the clone.
+    date = new Date(date)
+    date.setFullYear(year)
+  }
+
   // Local datetime at milliseconds precision (1960-04-27T00:00:00.123)
-  const localMs = p(year.toString(), 4)
+  const localMs = p(year.toString(), 4) // zero-pad years, as per spec
     + '-' + p(date.getMonth() + 1) // `+ 1` because 0 is January and 11 is December
     + '-' + p(date.getDate())
     + 'T' + p(date.getHours())
@@ -37,29 +48,31 @@ export function datetime(date = (new Date()), precision = 'day') {
     + ':' + p(date.getSeconds())
     + '.' + p(date.getMilliseconds(), 3)
 
-  // Extract substring from local date.
-  const local = (start, length) => localMs.substr(start, length)
-  const utc = (start, length) => date.toJSON().substr(start, length) + 'Z'
+  const addSignAndYearDigits = shouldAdd => shouldAdd ? sign + bigYearDigits : ''
+
+  // Extract substring from local date, prepend sign and missing years digits.
+  const local = (start, length) => addSignAndYearDigits(!start) + localMs.substr(start, length)
+  const utc = (start, length) => addSignAndYearDigits(!start) + date.toJSON().substr(start, length) + 'Z'
 
   const formats = {
-    'year': () => sign + local(0, 4),   // 1960
-    'month': () => sign + local(0, 7),  // 1960-04
-    'day': () => sign + local(0, 10),   // 1960-04-27
+    'year': () => local(0, 4),   // 1960
+    'month': () => local(0, 7),  // 1960-04
+    'day': () => local(0, 10),   // 1960-04-27
 
-    'week': () => sign + local(0, 5) + 'W' + p(weekNumber(date)), // 1960-W17
+    'week': () => local(0, 5) + 'W' + p(weekNumber(date)), // 1960-W17
     'yearless': () => local(5, 5),      // 04-27
 
     'time': () => local(11, 5),   // 00:00
     'second': () => local(11, 8), // 00:00:00
     'ms': () => local(11, 12),    // 00:00:00.123
 
-    'datetime': () => sign + local(0, 16),          // 1960-04-27T00:00
-    'datetime second': () => sign + local(0, 19),   // 1960-04-27T00:00:00
-    'datetime ms': () => sign + local(0, 23),       // 1960-04-27T00:00:00.123
+    'datetime': () => local(0, 16),          // 1960-04-27T00:00
+    'datetime second': () => local(0, 19),   // 1960-04-27T00:00:00
+    'datetime ms': () => local(0, 23),       // 1960-04-27T00:00:00.123
 
-    'datetime utc': () => sign + utc(0, 16),        // 1960-04-26T23:00Z
-    'datetime second utc': () => sign + utc(0, 19), // 1960-04-26T23:00:00Z
-    'datetime ms utc': () => sign + date.toJSON(),  // 1960-04-26T23:00:00.000Z
+    'datetime utc': () => utc(0, 16),        // 1960-04-26T23:00Z
+    'datetime second utc': () => utc(0, 19), // 1960-04-26T23:00:00Z
+    'datetime ms utc': () => sign + bigYearDigits + date.toJSON(),  // 1960-04-26T23:00:00.000Z
 
     'time utc': () => utc(11, 5),   // 23:00Z
     'second utc': () => utc(11, 8), // 23:00:00Z
