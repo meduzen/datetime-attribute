@@ -8,6 +8,7 @@ Compare with [last published version](https://github.com/meduzen/datetime-attrib
 
 ### New
 
+- Support years with more then 4 digits (`12345-01-01`).
 - Support years prior to year 1 (`-0051-01-01`).
 
 ### Fixed
