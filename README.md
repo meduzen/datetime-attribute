@@ -12,7 +12,7 @@ Additionally, a [`DateTime` class](#the-datetime-class) ([625 B](https://bundle.
 
 [![Node.js CI](https://github.com/meduzen/datetime-attribute/actions/workflows/node.js.yml/badge.svg)](https://github.com/meduzen/datetime-attribute/actions/workflows/node.js.yml)
 
-The package is lightweight ([~ 1.28 KB compressed](https://bundle.js.org/?q=datetime-attribute&bundle) for `import *`), tree-shakeable, typed and tested.
+The package is lightweight ([~ 1.28 KB compressed](https://bundle.js.org/?q=datetime-attribute&bundle) for `import *`), **tree-shakeable**, **typed** and tested.
 
 ## Table of contents
 
