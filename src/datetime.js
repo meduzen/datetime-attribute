@@ -48,28 +48,30 @@ export function datetime(date = (new Date()), precision = 'day') {
     + ':' + p(date.getSeconds())
     + '.' + p(date.getMilliseconds(), 3)
 
-  // Extract substring from local date.
-  const local = (start, length) => localMs.substr(start, length)
-  const utc = (start, length) => date.toJSON().substr(start, length) + 'Z'
+  const addSignAndYearDigits = shouldAdd => shouldAdd ? sign + bigYearDigits : ''
+
+  // Extract substring from local date, prepend sign and missing years digits.
+  const local = (start, length) => addSignAndYearDigits(!start) + localMs.substr(start, length)
+  const utc = (start, length) => addSignAndYearDigits(!start) + date.toJSON().substr(start, length) + 'Z'
 
   const formats = {
-    'year': () => sign + bigYearDigits + local(0, 4),   // 1960
-    'month': () => sign + bigYearDigits + local(0, 7),  // 1960-04
-    'day': () => sign + bigYearDigits + local(0, 10),   // 1960-04-27
+    'year': () => local(0, 4),   // 1960
+    'month': () => local(0, 7),  // 1960-04
+    'day': () => local(0, 10),   // 1960-04-27
 
-    'week': () => sign + bigYearDigits + local(0, 5) + 'W' + p(weekNumber(date)), // 1960-W17
+    'week': () => local(0, 5) + 'W' + p(weekNumber(date)), // 1960-W17
     'yearless': () => local(5, 5),      // 04-27
 
     'time': () => local(11, 5),   // 00:00
     'second': () => local(11, 8), // 00:00:00
     'ms': () => local(11, 12),    // 00:00:00.123
 
-    'datetime': () => sign + bigYearDigits + local(0, 16),          // 1960-04-27T00:00
-    'datetime second': () => sign + bigYearDigits + local(0, 19),   // 1960-04-27T00:00:00
-    'datetime ms': () => sign + bigYearDigits + local(0, 23),       // 1960-04-27T00:00:00.123
+    'datetime': () => local(0, 16),          // 1960-04-27T00:00
+    'datetime second': () => local(0, 19),   // 1960-04-27T00:00:00
+    'datetime ms': () => local(0, 23),       // 1960-04-27T00:00:00.123
 
-    'datetime utc': () => sign + bigYearDigits + utc(0, 16),        // 1960-04-26T23:00Z
-    'datetime second utc': () => sign + bigYearDigits + utc(0, 19), // 1960-04-26T23:00:00Z
+    'datetime utc': () => utc(0, 16),        // 1960-04-26T23:00Z
+    'datetime second utc': () => utc(0, 19), // 1960-04-26T23:00:00Z
     'datetime ms utc': () => sign + bigYearDigits + date.toJSON(),  // 1960-04-26T23:00:00.000Z
 
     'time utc': () => utc(11, 5),   // 23:00Z
