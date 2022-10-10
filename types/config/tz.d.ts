@@ -5,7 +5,7 @@
 /**
  * @type TimezoneOptions
  */
-export let tzConfig: TimezoneOptions;
+export const tzConfig: TimezoneOptions;
 export function setTzConfig(options: TimezoneOptions): TimezoneOptions;
 export function setTzSeparator(separator?: (':' | '') | undefined): TimezoneOptions;
 export type TimezoneOptions = {

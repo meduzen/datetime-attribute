@@ -10,6 +10,7 @@ Compare with [last published version](https://github.com/meduzen/datetime-attrib
 
 - Support years with more then 4 digits (`12345-01-01`).
 - Support years prior to year 1 (`-0051-01-01`).
+- Add [`setTimeSeparator()`](https://github.com/meduzen/datetime-attribute#datetime-separator) to customize the separator between date and time.
 
 ### Fixed
 

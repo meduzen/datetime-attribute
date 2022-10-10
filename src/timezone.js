@@ -6,7 +6,7 @@ import {
 } from './utils/const.js'
 
 import { p } from './utils/string.js'
-import { tzConfig } from './utils/config.js'
+import { tzConfig } from './config/tz.js'
 
 /**
  * Create `datetime="+04:00"` timezone attribute for `<time>`.
