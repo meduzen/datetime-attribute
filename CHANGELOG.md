@@ -6,6 +6,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.2.0...main).
 
+## v1.3.0 (2022-10-10)
+
+Compare with [previous version](https://github.com/meduzen/datetime-attribute/compare/1.2.0...1.3.0).
+
 ### New
 
 - Support years with more then 4 digits (`12345-01-01`).
