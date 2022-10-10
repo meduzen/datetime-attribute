@@ -1,6 +1,7 @@
 import { weekNumber } from './utils/date.js'
 import { p } from './utils/string.js'
 import { tzOffset } from './timezone.js'
+import { config } from './config/datetime'
 
 /**
  * Create `datetime="2021-12-02"` attribute for `<time>`.
@@ -50,7 +51,11 @@ export function datetime(date = (new Date()), precision = 'day') {
 
   const addSignAndYearDigits = shouldAdd => shouldAdd ? sign + bigYearDigits : ''
 
-  // Extract substring from local date, prepend sign and missing years digits.
+  /**
+   * Extract substring from local date. When `start` is 0, the year is wanted:
+   * its sign and missing digits (for years with 5+ digits) are prepended.
+   */
+
   const local = (start, length) => addSignAndYearDigits(!start) + localMs.substr(start, length)
   const utc = (start, length) => addSignAndYearDigits(!start) + date.toJSON().substr(start, length) + 'Z'
 
@@ -79,7 +84,7 @@ export function datetime(date = (new Date()), precision = 'day') {
     'ms utc': () => utc(11, 12),    // 23:00:00.000Z
   }
 
-  return (formats[precision] || formats.day)()
+  return (formats[precision] || formats.day)().replace('T', config.separator)
 }
 
 /**

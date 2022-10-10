@@ -7,15 +7,17 @@ import {
   tzOffset,
   daysBetween,
   weekNumber,
+  setTimeSeparator,
   setTzSeparator,
 } from '../src'
 
 /**
- * This one is currently not exported in the mail bundle (though it’s used by
- * `setTzSeparator`). It will appear in the main bundle when a new setting
- * will be added to the timezone configuration object.
+ * These config methods are currently not exported in the main bundle (though
+ * they are used by `setXxSeparator` functions). There’s no reason to move
+ * them to the main without any new entry in the configuration objects.
  */
-import { setTzConfig } from '../src/utils/config.js'
+import { setConfig } from '../src/config/datetime.js'
+import { setTzConfig } from '../src/config/tz.js'
 
 const togoIndependanceDay = new Date(1960, 3, 27)
 const date = togoIndependanceDay // alias for the sake of brevity
@@ -254,4 +256,43 @@ describe('DateTime class', () => {
     summer.setDate(summer.getDate() + 14)
     return expect(summer.getWeek()).toBe(28)
   })
+})
+
+// These tests are at the end as they change the widely-used separator config.
+
+describe('setTimeSeparator', () => {
+  test('is a function', () => expect(setTimeSeparator).toBeInstanceOf(Function))
+
+  test('no time separator', () => {
+    setTimeSeparator()
+    expect(datetime(date, 'datetime')).toBe('1960-04-27T00:00')
+  })
+
+  test('T as time separator', () => {
+    setTimeSeparator('T')
+    expect(datetime(date, 'datetime')).toBe('1960-04-27T00:00')
+  })
+
+  test('space as time separator', () => {
+    setTimeSeparator(' ')
+    expect(datetime(date, 'datetime')).toBe('1960-04-27 00:00')
+  })
+
+  test('invalid separator', () => expect(() => setTimeSeparator(42)).toThrow(Error))
+})
+
+describe('setConfig', () => {
+  test('is a function', () => expect(setConfig).toBeInstanceOf(Function))
+
+  test('T as time separator using setConfig', () => {
+    setConfig({ separator: 'T' })
+    expect(datetime(date, 'datetime')).toBe('1960-04-27T00:00')
+  })
+
+  test('space as time separator using setConfig', () => {
+    setConfig({ separator: ' ' })
+    expect(datetime(date, 'datetime')).toBe('1960-04-27 00:00')
+  })
+
+  test('invalid separator using setConfig', () => expect(() => setConfig({ separator: 42 })).toThrow(Error))
 })

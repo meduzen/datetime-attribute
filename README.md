@@ -24,6 +24,7 @@ The package is lightweight ([~ 1.28 KB compressed](https://bundlejs.com/?q=datet
     - [time and UTC time](#time-and-utc-time)
     - [datetime and UTC datetime](#datetime-and-utc-datetime)
     - alternative to the UTC syntax with [`utc()`](#the-utc-shortcut)
+    - [datetime separator](#datetime-separator)
   - [**`tzOffset()`**](#expressing-timezone-offsets-with-tzoffset) to express a **timezone offset**
     - [hours-minutes separator](#hours-minutes-separator)
     - [real-life timezone offset](#real-life-timezone-offset)
@@ -174,6 +175,26 @@ utc(now)             // `2021-03-14T09:29Z`
 utc(now, 'datetime') // `2021-03-14T09:29Z`
 datetime(now, 'datetime utc') // `2021-03-14T09:29Z`
 ```
+
+### Datetime separator
+
+[Per spec](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#local-dates-and-times), the separator between date and time can be `T` (default) or ` ` (1 space).
+
+To change the separator, use `setTimeSeparator`:
+
+```js
+import { setTimeSeparator } from 'datetime-attribute'
+
+setTimeSeparator(' ')
+
+// All next datetime functions will follow the new setting.
+datetime(now) // `2021-03-14 10:29`
+
+// Switch back to the default.
+setTimeSeparator('T') // or `setTimeSeparator()`
+```
+
+Setting the separator to a space can be useful to deal with [MySQL](https://dev.mysql.com/doc/refman/8.0/en/datetime.html) or [MariaDB `DATETIME`](https://mariadb.com/kb/en/datetime/) column.
 
 ## Expressing timezone offsets with `tzOffset()`
 
