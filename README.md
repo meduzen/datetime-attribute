@@ -3,16 +3,16 @@
 Get a [`datetime` attribute](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/datetime) for HTML `<time>` (and [other elements](#not-only-in-time)).
 
 It covers the [whole WHATWG specification](https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-time-datetime) in 4 functions:
-- [**`datetime()`**](#expressing-moments-with-datetime) for a specific moment ([551 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{datetime}]&bundle));
-- [**`datetimeTz()`**](#adding-a-timezone-offset-to-a-moment-with-datetimetz) for a specific moment in a given timezone ([842 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{datetimeTz}]&bundle));
+- [**`datetime()`**](#expressing-moments-with-datetime) for a specific moment ([666 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{datetime}]&bundle));
+- [**`datetimeTz()`**](#adding-a-timezone-offset-to-a-moment-with-datetimetz) for a specific moment in a given timezone ([936 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{datetimeTz}]&bundle));
 - [**`duration()`**](#expressing-durations-with-duration) for a duration ([339 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{duration}]&bundle));
-- [**`tzOffset()`**](#expressing-timezone-offsets-with-tzoffset) for a timezone offset ([386 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{tzOffset}]&bundle)).
+- [**`tzOffset()`**](#expressing-timezone-offsets-with-tzoffset) for a timezone offset ([340 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{tzOffset}]&bundle)).
 
-Additionally, a [`DateTime` class](#the-datetime-class) ([625 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{DateTime}]&bundle)) and some [other functions](#other-functions) are provided.
+Additionally, a [`DateTime` class](#the-datetime-class) ([741 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{DateTime}]&bundle)) and some [other functions](#other-functions) are provided.
 
 [![Node.js CI](https://github.com/meduzen/datetime-attribute/actions/workflows/node.js.yml/badge.svg)](https://github.com/meduzen/datetime-attribute/actions/workflows/node.js.yml)
 
-The package is lightweight ([~ 1.28 KB compressed](https://bundlejs.com/?q=datetime-attribute&bundle) for `import *`), **tree-shakeable**, **typed** and tested.
+The package is lightweight ([~ 1.39 KB compressed](https://bundlejs.com/?q=datetime-attribute&bundle) for `import *`), **tree-shakeable**, **typed** and tested.
 
 ## Table of contents
 
