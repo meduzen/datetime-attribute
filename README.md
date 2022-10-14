@@ -42,6 +42,7 @@ The package is lightweight ([~ 1.39 KB compressed](https://bundlejs.com/?q=datet
   - [Changelog](#changelog)
   - [Browser and tooling support](#browser-and-tooling-support)
   - [Not only in `<time>`](#not-only-in-time)
+  - [Contributing](#contributing)
   - [License](#license)
 
 ## Summary usage
@@ -448,7 +449,7 @@ See [CHANGELOG.md](https://github.com/meduzen/datetime-attribute/blob/main/CHANG
 - it is up to you to transpile it for legacy browsers;
 - you can’t import it using `require('datetime-attribute')`.
 
-If you’d like one of those features, feel free to open an issue and/or a PR that won’t have any side effects for modern usage. [Read more about ESModules](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
+[Read more about ESModules](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
 
 ## Not only in `<time>`
 
@@ -458,6 +459,10 @@ If you’d like one of those features, feel free to open an issue and/or a PR th
 - Microdata types: [DateTime](https://schema.org/DateTime) and [Time](https://schema.org/Time) properties.
 - Open Graph [dates properties](https://ogp.me/#datetime): `release_date`, `published_time`, `modified_time` and `expiration_time`.
 - The browser [WebExtensions history search API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/history/search).
+
+## Contributing
+
+See [contributing guidelines](https://github.com/meduzen/datetime-attribute/blob/main/CONTRIBUTING.md).
 
 ## License
 
