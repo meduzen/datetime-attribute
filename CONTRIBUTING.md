@@ -1,4 +1,4 @@
-# Contributing
+# Contribution guidelines
 
 You can contribute to this project by:
 - creating [issues](https://github.com/meduzen/datetime-attribute/issues/) to report a bug, request a feature or ask a question;
@@ -11,7 +11,7 @@ The following websites can provide tips and guidance on how to contribute to ope
 
 Please do your best to communicate the necessary context so your contribution can be easily understood by other persons, and don’t be afraid if you struggle with English or if you are not sure about what you are doing.
 
-## Bugs reports
+## Bug reports
 
 When reporting a bug, here are the informations you can provide to help other persons to help you:
 - version of the library that you are using;
