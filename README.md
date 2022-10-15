@@ -42,6 +42,7 @@ The package is lightweight ([~ 1.39 KB compressed](https://bundlejs.com/?q=datet
   - [Changelog](#changelog)
   - [Browser and tooling support](#browser-and-tooling-support)
   - [Not only in `<time>`](#not-only-in-time)
+  - [Security](#security)
   - [Contributing](#contributing)
   - [License](#license)
 
@@ -460,9 +461,13 @@ See [CHANGELOG.md](https://github.com/meduzen/datetime-attribute/blob/main/CHANG
 - Open Graph [dates properties](https://ogp.me/#datetime): `release_date`, `published_time`, `modified_time` and `expiration_time`.
 - The browser [WebExtensions history search API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/history/search).
 
+## Security
+
+See the [security policy](https://github.com/meduzen/datetime-attribute/blob/main/SECURITY.md).
+
 ## Contributing
 
-See [contributing guidelines](https://github.com/meduzen/datetime-attribute/blob/main/CONTRIBUTING.md).
+See the [contributing guidelines](https://github.com/meduzen/datetime-attribute/blob/main/CONTRIBUTING.md).
 
 ## License
 
