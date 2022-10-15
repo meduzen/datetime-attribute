@@ -9,4 +9,4 @@
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability within this project, you can send an e-mail to the adress mentioned on [mehdi.cc](https://mehdi.cc).
+If you discover a security vulnerability within this project, you can send an e-mail to the address mentioned on [mehdi.cc](https://mehdi.cc).
