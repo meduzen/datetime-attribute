@@ -472,3 +472,7 @@ See the [contributing guidelines](https://github.com/meduzen/datetime-attribute/
 ## License
 
 The _datetime-attribute_ package is open-sourced software licensed under the [DWTFYWTPL](https://github.com/meduzen/datetime-attribute/blob/main/LICENSE).
+
+## 
+
+[![Verified on Openbase](https://badges.openbase.com/js/verified/datetime-attribute.svg?token=ngHvoLLDN27g9x7qUc+Ihp2QJNmvGWNxVkuA/5ldiKI=)](https://openbase.com/js/datetime-attribute?utm_source=embedded&amp;utm_medium=badge&amp;utm_campaign=rate-badge)
