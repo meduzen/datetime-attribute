@@ -93,8 +93,8 @@ export function duration(duration = {}, convertExcess = true) {
 
 /**
  * @typedef {Object} DurationObject
- * @property {number=} w – Number of week
- * @property {number=} d – Number of day
+ * @property {number=} w – Number of weeks
+ * @property {number=} d – Number of days
  * @property {number=} h – Number of hours
  * @property {number=} m – Number of minutes
  * @property {number=} s – Number of seconds
