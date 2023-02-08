@@ -13,11 +13,11 @@
 export function duration(duration?: DurationObject, convertExcess?: boolean): string;
 export type DurationObject = {
     /**
-     * – Number of week
+     * – Number of weeks
      */
     w?: number | undefined;
     /**
-     * – Number of day
+     * – Number of days
      */
     d?: number | undefined;
     /**
