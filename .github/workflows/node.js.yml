@@ -25,6 +25,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Use pnpm
       uses: pnpm/action-setup@v2
-    - run: npm ci
-    - run: npm test
-    - run: npm run test-types
+    - run: pnpm install
+    - run: pnpm test
+    - run: pnpm run test-types
