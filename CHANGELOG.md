@@ -6,6 +6,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.3.1...main).
 
+### Under the hood
+
+- Replace NPM by pnpm
+
 ## v1.3.1 (2023-02-10)
 
 Compare with [previous version](https://github.com/meduzen/datetime-attribute/compare/1.3.0...1.3.1).
