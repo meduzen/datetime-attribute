@@ -21,6 +21,6 @@ When reporting a bug, here are the informations you can provide to help other pe
 ## Pull requests
 
 Before submitting code, the changes you bring should:
-- have written tests that don’t fail when they are run (`npm run test`)
-- have updated [JSDoc comments](https://jsdoc.app/), updated types (`npm run types`) that are tested (`npm run test-types`);
-- respect the code styles (`npm run lint-fix`) defined using [EditorConfig](https://editorconfig.org/) and [ESLint](https://eslint.org).
+- have written tests that don’t fail when they are run (`pnpm run test`)
+- have updated [JSDoc comments](https://jsdoc.app/), updated types (`pnpm run types`) that are tested (`pnpm run test-types`);
+- respect the code styles (`pnpm run lint-fix`) defined using [EditorConfig](https://editorconfig.org/) and [ESLint](https://eslint.org).

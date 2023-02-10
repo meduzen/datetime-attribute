@@ -23,6 +23,8 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm test
-    - run: npm run test-types
+    - name: Use pnpm
+      uses: pnpm/action-setup@v2
+    - run: pnpm install
+    - run: pnpm test
+    - run: pnpm run test-types
