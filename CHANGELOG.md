@@ -14,6 +14,11 @@ Compare with [previous version](https://github.com/meduzen/datetime-attribute/co
 
 - Typo (grammar) in types documentation.
 
+### Under the hood
+
+- Add code of conduct, issue template, contributing guidelines, code analysis, dependabot, CodeQL.
+- Replace Jest by Vitest.
+
 ## v1.3.0 (2022-10-10)
 
 Compare with [previous version](https://github.com/meduzen/datetime-attribute/compare/1.2.0...1.3.0).
