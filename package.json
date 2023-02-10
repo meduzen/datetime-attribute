@@ -8,6 +8,7 @@
   "engines": {
     "node": ">=12.8"
   },
+  "packageManager": "pnpm@7.27.0",
   "scripts": {
     "types": "tsc src/index.js --declaration --allowJs --emitDeclarationOnly --outDir types",
     "test": "vitest run",
