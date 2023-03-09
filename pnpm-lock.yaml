@@ -3,14 +3,14 @@ lockfileVersion: 5.4
 specifiers:
   '@vitest/coverage-c8': ^0.29.1
   eslint: ^8.35.0
-  tsd: ^0.25.0
+  tsd: ^0.26.0
   typescript: ^4.9.5
   vitest: ^0.29.1
 
 devDependencies:
   '@vitest/coverage-c8': 0.29.1_vitest@0.29.1
   eslint: 8.35.0
-  tsd: 0.25.0
+  tsd: 0.26.1
   typescript: 4.9.5
   vitest: 0.29.1
 
@@ -1857,8 +1857,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /tsd/0.25.0:
-    resolution: {integrity: sha512-liUlvKtsdr+70XEZP/kkF6U8+Q9URZi4Pw58ih7a9x3kjJblG8rdVgvG62xcvkgRva1q3yWX5qAxfYZuYiC5CA==}
+  /tsd/0.26.1:
+    resolution: {integrity: sha512-HbYaRQqL7imva6ZbSE/7KSIPN/dhwyoLIwPfbjyE7nwWqjkLUTwvyvyhhOUuMLOKWMo4mIx66KyqlTpEqNngdA==}
     engines: {node: '>=14.16'}
     hasBin: true
     dependencies:
