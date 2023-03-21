@@ -10,7 +10,7 @@
   },
   "packageManager": "pnpm@7.27.0",
   "scripts": {
-    "types": "tsc src/index.js --declaration --allowJs --emitDeclarationOnly --outDir types",
+    "types": "tsc",
     "test": "vitest run",
     "test-types": "pnpm exec tsd",
     "coverage": "vitest run --coverage",
