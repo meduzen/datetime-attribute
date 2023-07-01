@@ -1,14 +1,14 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@vitest/coverage-c8': ^0.31
+  '@vitest/coverage-c8': ^0.32
   eslint: ^8.39.0
   tsd: ^0.28.1
   typescript: ^5.0.4
   vitest: ^0.31
 
 devDependencies:
-  '@vitest/coverage-c8': 0.31.0_vitest@0.31.0
+  '@vitest/coverage-c8': 0.32.2_vitest@0.31.0
   eslint: 8.39.0
   tsd: 0.28.1
   typescript: 5.0.4
@@ -416,8 +416,8 @@ packages:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
     dev: true
 
-  /@vitest/coverage-c8/0.31.0_vitest@0.31.0:
-    resolution: {integrity: sha512-h72qN1D962AO7UefQVulm9JFP5ACS7OfhCdBHioXU8f7ohH/+NTZCgAqmgcfRNHHO/8wLFxx+93YVxhodkEJVA==}
+  /@vitest/coverage-c8/0.32.2_vitest@0.31.0:
+    resolution: {integrity: sha512-z07kMTN6e4t1jDY4XXU6W1LxCb3V5Rw7KAZId4VM6BCIGLGz1QqwH9UWYWv7LemqQVnARl5CwaDDwVrkcYgwPg==}
     peerDependencies:
       vitest: '>=0.30.0 <1'
     dependencies:
