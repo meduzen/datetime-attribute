@@ -12,6 +12,7 @@
   "scripts": {
     "types": "tsc",
     "test": "vitest run",
+    "test:ui": "vitest --ui",
     "test-types": "pnpm exec tsd",
     "coverage": "vitest run --coverage",
     "watch": "vitest watch",
