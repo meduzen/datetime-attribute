@@ -43,10 +43,11 @@
     "access": "public"
   },
   "devDependencies": {
-    "@vitest/coverage-c8": "^0.31",
-    "eslint": "^8.39.0",
+    "@vitest/coverage-v8": "^0.32.4",
+    "@vitest/ui": "^0.32.4",
+    "eslint": "^8.44.0",
     "tsd": "^0.28.1",
-    "typescript": "^5.0.4",
-    "vitest": "^0.32"
+    "typescript": "^5.1.6",
+    "vitest": "^0.32.4"
   }
 }
