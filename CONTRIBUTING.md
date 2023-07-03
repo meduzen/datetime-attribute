@@ -25,4 +25,4 @@ Before submitting code, the changes you bring should:
 - have updated [JSDoc comments](https://jsdoc.app/), updated types (`pnpm run types`) that are tested (`pnpm run test-types`);
 - respect the code styles (`pnpm run lint-fix`) defined using [EditorConfig](https://editorconfig.org/) and [ESLint](https://eslint.org).
 
-Tests are using Vitest, and a command for [its UI](https://vitest.dev/guide/ui.html) is available: `pnpm run test:ui`.
+Tests are using Vitest, and a command for [its UI](https://vitest.dev/guide/ui.html) is available (`pnpm run test:ui`).
