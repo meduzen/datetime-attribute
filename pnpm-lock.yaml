@@ -1,16 +1,12 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 devDependencies:
   '@vitest/coverage-v8':
     specifier: ^0.32.4
     version: 0.32.4(vitest@0.32.4)
   '@vitest/ui':
-    specifier: ^0.32.4
-    version: 0.32.4(vitest@0.32.4)
+    specifier: ^0.33.0
+    version: 0.33.0(vitest@0.32.4)
   eslint:
     specifier: ^8.44.0
     version: 8.44.0
@@ -22,7 +18,7 @@ devDependencies:
     version: 5.1.6
   vitest:
     specifier: ^0.32.4
-    version: 0.32.4(@vitest/ui@0.32.4)
+    version: 0.32.4(@vitest/ui@0.33.0)
 
 packages:
 
@@ -455,7 +451,7 @@ packages:
       std-env: 3.3.3
       test-exclude: 6.0.0
       v8-to-istanbul: 9.1.0
-      vitest: 0.32.4(@vitest/ui@0.32.4)
+      vitest: 0.32.4(@vitest/ui@0.33.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -490,23 +486,31 @@ packages:
       tinyspy: 2.1.1
     dev: true
 
-  /@vitest/ui@0.32.4(vitest@0.32.4):
-    resolution: {integrity: sha512-92y7bkjf55L08nomvHHYQkDWQEIkb36dJkgi+F/zpO5cFbrmk1pv/dYiaZKQ772uP96fAWinmux6sXNMNUh16w==}
+  /@vitest/ui@0.33.0(vitest@0.32.4):
+    resolution: {integrity: sha512-7gbAjLqt30R4bodkJAutdpy4ncv+u5IKTHYTow1c2q+FOxZUC9cKOSqMUxjwaaTwLN+EnDnmXYPtg3CoahaUzQ==}
     peerDependencies:
       vitest: '>=0.30.1 <1'
     dependencies:
-      '@vitest/utils': 0.32.4
+      '@vitest/utils': 0.33.0
       fast-glob: 3.3.0
       fflate: 0.8.0
       flatted: 3.2.7
       pathe: 1.1.1
       picocolors: 1.0.0
       sirv: 2.0.3
-      vitest: 0.32.4(@vitest/ui@0.32.4)
+      vitest: 0.32.4(@vitest/ui@0.33.0)
     dev: true
 
   /@vitest/utils@0.32.4:
     resolution: {integrity: sha512-Gwnl8dhd1uJ+HXrYyV0eRqfmk9ek1ASE/LWfTCuWMw+d07ogHqp4hEAV28NiecimK6UY9DpSEPh+pXBA5gtTBg==}
+    dependencies:
+      diff-sequences: 29.4.3
+      loupe: 2.3.6
+      pretty-format: 29.5.0
+    dev: true
+
+  /@vitest/utils@0.33.0:
+    resolution: {integrity: sha512-pF1w22ic965sv+EN6uoePkAOTkAPWM03Ri/jXNyMIKBb/XHLDPfhLvf/Fa9g0YECevAIz56oVYXhodLvLQ/awA==}
     dependencies:
       diff-sequences: 29.4.3
       loupe: 2.3.6
@@ -2018,7 +2022,7 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest@0.32.4(@vitest/ui@0.32.4):
+  /vitest@0.32.4(@vitest/ui@0.33.0):
     resolution: {integrity: sha512-3czFm8RnrsWwIzVDu/Ca48Y/M+qh3vOnF16czJm98Q/AN1y3B6PBsyV8Re91Ty5s7txKNjEhpgtGPcfdbh2MZg==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -2056,7 +2060,7 @@ packages:
       '@vitest/runner': 0.32.4
       '@vitest/snapshot': 0.32.4
       '@vitest/spy': 0.32.4
-      '@vitest/ui': 0.32.4(vitest@0.32.4)
+      '@vitest/ui': 0.33.0(vitest@0.32.4)
       '@vitest/utils': 0.32.4
       acorn: 8.9.0
       acorn-walk: 8.2.0
@@ -2122,3 +2126,7 @@ packages:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
     dev: true
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
