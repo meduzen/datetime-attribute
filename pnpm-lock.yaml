@@ -1,13 +1,9 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 devDependencies:
   '@vitest/coverage-v8':
     specifier: ^0.34
-    version: 0.34.0(vitest@0.34.0)
+    version: 0.34.1(vitest@0.34.0)
   '@vitest/ui':
     specifier: ^0.34
     version: 0.34.0(vitest@0.34.0)
@@ -439,8 +435,8 @@ packages:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
     dev: true
 
-  /@vitest/coverage-v8@0.34.0(vitest@0.34.0):
-    resolution: {integrity: sha512-rUFY9xX6nnrFvVfTDjlEaOFzfHqolUoA+Unz356T38W100QA+NiaekCFq/3XB/LXBISaFreCsVjAbPV3hjV7Jg==}
+  /@vitest/coverage-v8@0.34.1(vitest@0.34.0):
+    resolution: {integrity: sha512-lRgUwjTMr8idXEbUPSNH4jjRZJXJCVY3BqUa+LDXyJVe3pldxYMn/r0HMqatKUGTp0Kyf1j5LfFoY6kRqRp7jw==}
     peerDependencies:
       vitest: '>=0.32.0 <1'
     dependencies:
@@ -2120,3 +2116,7 @@ packages:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
     dev: true
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
