@@ -450,9 +450,10 @@ See [CHANGELOG.md](https://github.com/meduzen/datetime-attribute/blob/main/CHANG
 
 ## Browser and tooling support
 
-`datetime-attribute` is provided for [modern browsers usage](https://github.com/meduzen/datetime-attribute/blob/main/browserslist) with standard JavaScript syntax:
+`datetime-attribute` is provided [as module](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#browser_compatibility) for [modern browsers usage](https://github.com/meduzen/datetime-attribute/blob/main/browserslist) with standard JavaScript syntax:
 - it is up to you to transpile it for legacy browsers;
-- you can’t import it using `require('datetime-attribute')`.
+- you can’t import it using `require('datetime-attribute')`;
+- if you don’t transpile it, `DateTime` requires support for [`class` fields](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#browser_compatibility) (Safari 14.0) starting `v1.32.0`.
 
 [Read more about ESModules](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
 
