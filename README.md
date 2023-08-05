@@ -419,6 +419,8 @@ daysBetween(january1st, january11th) // 10
 daysBetween(january19th, january11th) // -8
 ```
 
+([134 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{daysBetween}]&bundle))
+
 ### `weekNumber()`
 
 Get the week number as [defined by the WHATWG](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#weeks), following the ISO-8601 specs:
@@ -439,6 +441,8 @@ weekNumber(togoIndependanceDay) // 17
 weekNumber(january1st) // 53: it’s a Friday!
 weekNumber(january11th) // 2
 ```
+
+([201 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{weekNumber}]&bundle))
 
 ## Changelog
 
