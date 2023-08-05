@@ -247,16 +247,17 @@ describe('daysBetween', () => {
 })
 
 const summer = new DateTime(2021, 5, 21)
-const oneWeekAfterSummer = new DateTime(2021, 5, 28)
+const twoWeeksAfterSummer = new DateTime(2021, 6, 5)
 
 describe('DateTime class', () => {
   test('extends Date', () => expect(summer).toBeInstanceOf(Date))
   test('.getWeek', () => expect(summer.getWeek()).toBe(25))
-  test('.setWeek', () => expect(summer.setWeek(26)).toBe(oneWeekAfterSummer.getTime()))
-  test(".to('day')", () => expect(summer.to('day')).toBe('2021-06-28'))
+  test(".to('day')", () => expect(summer.to('day')).toBe('2021-06-21'))
+  test('.setWeek', () => expect(summer.setWeek(27)).toBe(twoWeeksAfterSummer.getTime()))
+  test(".to('month')", () => expect(twoWeeksAfterSummer.to('month')).toBe('2021-07'))
   test('weeks is changed when day changes', () => {
     summer.setDate(summer.getDate() + 14)
-    return expect(summer.getWeek()).toBe(28)
+    return expect(summer.getWeek()).toBe(29)
   })
 })
 
