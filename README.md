@@ -87,7 +87,7 @@ import { datetime, duration } from 'datetime-attribute'
 import * from 'datetime-attribute'
 ```
 
-Not using a package manager? Download [the package files](https://github.com/meduzen/datetime-attribute/releases) in your project ad take the files in `/src`.
+Not using a package manager? Download [the package files](https://github.com/meduzen/datetime-attribute/releases) in your project and take the files in `/src`.
 
 ## Expressing moments with `datetime()`
 
