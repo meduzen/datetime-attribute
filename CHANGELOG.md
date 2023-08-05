@@ -4,7 +4,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## Unreleased
 
-Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.3.1...main).
+Nothing for now.
+
+<!-- Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.3.1...main). -->
+
+## v1.3.2 (2023-08-05)
+
+Compare with [previous version](https://github.com/meduzen/datetime-attribute/compare/1.3.1...1.3.2).
 
 ### Improved
 
@@ -15,7 +21,7 @@ Compare with [last published version](https://github.com/meduzen/datetime-attrib
 
 ### Under the hood
 
-- Replace NPM by pnpm
+- Replace NPM by pnpm.
 
 ## v1.3.1 (2023-02-10)
 
