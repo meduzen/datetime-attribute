@@ -15,7 +15,6 @@ export function daysBetween(date, furtherDate) {
   /**
    * The commented code below could be accurate if we cared about time of day.
    */
-  // // rounding is used for days containing a daylight saving change
   // return Math.ceil((furtherDate - date) / MILLISECONDS_PER_DAY)
 
   return (furtherDate - date) / MILLISECONDS_PER_DAY
