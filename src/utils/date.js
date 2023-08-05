@@ -8,12 +8,17 @@ import { MILLISECONDS_PER_DAY } from './const.js'
  * @returns {number}
  */
 export function daysBetween(date, furtherDate) {
-  date = new Date(date.getFullYear(), date.getMonth(), date.getDate())
-  furtherDate = new Date(furtherDate.getFullYear(), furtherDate.getMonth(), furtherDate.getDate())
 
-  const diffInDays = (furtherDate - date) / MILLISECONDS_PER_DAY
+  // discard time of day
+  [date, furtherDate] = [date, furtherDate].map(d => new Date(d.getFullYear(), d.getMonth(), d.getDate()))
 
-  return Math.ceil(diffInDays)
+  /**
+   * The commented code below could be accurate if we cared about time of day.
+   */
+  // // rounding is used for days containing a daylight saving change
+  // return Math.ceil((furtherDate - date) / MILLISECONDS_PER_DAY)
+
+  return (furtherDate - date) / MILLISECONDS_PER_DAY
 }
 
 /**
