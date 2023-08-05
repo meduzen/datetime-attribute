@@ -3,16 +3,16 @@
 Get a [`datetime` attribute](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/datetime) for HTML `<time>` (and [other elements](#not-only-in-time)).
 
 It covers the [whole WHATWG specification](https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-time-datetime) in 4 functions:
-- [**`datetime()`**](#expressing-moments-with-datetime) for a specific moment ([666 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{datetime}]&bundle));
-- [**`datetimeTz()`**](#adding-a-timezone-offset-to-a-moment-with-datetimetz) for a specific moment in a given timezone ([936 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{datetimeTz}]&bundle));
-- [**`duration()`**](#expressing-durations-with-duration) for a duration ([339 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{duration}]&bundle));
-- [**`tzOffset()`**](#expressing-timezone-offsets-with-tzoffset) for a timezone offset ([340 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{tzOffset}]&bundle)).
+- [**`datetime()`**](#expressing-moments-with-datetime) for a specific moment ([645 B compressed](https://bundlejs.com/?q=datetime-attribute&treeshake=[{datetime}]&bundle));
+- [**`datetimeTz()`**](#adding-a-timezone-offset-to-a-moment-with-datetimetz) for a specific moment in a given timezone ([942 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{datetimeTz}]&bundle));
+- [**`duration()`**](#expressing-durations-with-duration) for a duration ([307 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{duration}]&bundle));
+- [**`tzOffset()`**](#expressing-timezone-offsets-with-tzoffset) for a timezone offset ([388 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{tzOffset}]&bundle)).
 
-Additionally, a [`DateTime` class](#the-datetime-class) ([741 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{DateTime}]&bundle)) and some [other functions](#other-functions) are provided.
+Additionally, a [`DateTime` class](#the-datetime-class) ([721 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{DateTime}]&bundle)) and some [other functions](#other-functions) are provided.
 
 [![Node.js CI](https://github.com/meduzen/datetime-attribute/actions/workflows/node.js.yml/badge.svg)](https://github.com/meduzen/datetime-attribute/actions/workflows/node.js.yml)
 
-The package is lightweight ([~ 1.39 KB compressed](https://bundlejs.com/?q=datetime-attribute&bundle) for `import *`), **tree-shakeable**, **typed** and tested.
+The package is lightweight ([~ 1.42 KB compressed](https://bundlejs.com/?q=datetime-attribute&bundle) for `import *`), tree-shakeable, typed and tested.
 
 ## Table of contents
 
@@ -419,6 +419,8 @@ daysBetween(january1st, january11th) // 10
 daysBetween(january19th, january11th) // -8
 ```
 
+([134 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{daysBetween}]&bundle))
+
 ### `weekNumber()`
 
 Get the week number as [defined by the WHATWG](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#weeks), following the ISO-8601 specs:
@@ -440,15 +442,18 @@ weekNumber(january1st) // 53: it’s a Friday!
 weekNumber(january11th) // 2
 ```
 
+([201 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{weekNumber}]&bundle))
+
 ## Changelog
 
 See [CHANGELOG.md](https://github.com/meduzen/datetime-attribute/blob/main/CHANGELOG.md) or the [releases](https://github.com/meduzen/datetime-attribute/releases).
 
 ## Browser and tooling support
 
-`datetime-attribute` is provided for [modern browsers usage](https://github.com/meduzen/datetime-attribute/blob/main/browserslist) with standard JavaScript syntax:
+`datetime-attribute` is provided [as module](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#browser_compatibility) for [modern browsers usage](https://github.com/meduzen/datetime-attribute/blob/main/browserslist) with standard JavaScript syntax:
 - it is up to you to transpile it for legacy browsers;
-- you can’t import it using `require('datetime-attribute')`.
+- you can’t import it using `require('datetime-attribute')`;
+- if you don’t transpile it, `DateTime` requires support for [`class` fields](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#browser_compatibility) (Safari 14.0) starting `v1.32.0`.
 
 [Read more about ESModules](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
 
@@ -472,7 +477,3 @@ See the [contributing guidelines](https://github.com/meduzen/datetime-attribute/
 ## License
 
 The _datetime-attribute_ package is open-sourced software licensed under the [DWTFYWTPL](https://github.com/meduzen/datetime-attribute/blob/main/LICENSE).
-
-## 
-
-[![Verified on Openbase](https://badges.openbase.com/js/verified/datetime-attribute.svg?token=ngHvoLLDN27g9x7qUc+Ihp2QJNmvGWNxVkuA/5ldiKI=)](https://openbase.com/js/datetime-attribute?utm_source=embedded&amp;utm_medium=badge&amp;utm_campaign=rate-badge)

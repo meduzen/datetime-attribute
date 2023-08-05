@@ -13,9 +13,7 @@ export class DateTime extends Date {
    *
    * @returns {number}
    */
-  getWeek() {
-    return weekNumber(this)
-  }
+  getWeek = () => weekNumber(this)
 
   /**
    * Set the week number.
@@ -34,7 +32,5 @@ export class DateTime extends Date {
    * @param {import('./datetime.js').Precision} precision
    * @returns {string}
    */
-  to(precision) {
-    return datetime(this, precision)
-  }
+  to = precision => datetime(this, precision)
 }

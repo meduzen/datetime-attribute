@@ -9,7 +9,7 @@ export class DateTime extends Date {
      *
      * @returns {number}
      */
-    getWeek(): number;
+    getWeek: () => number;
     /**
      * Set the week number.
      *
@@ -23,5 +23,5 @@ export class DateTime extends Date {
      * @param {import('./datetime.js').Precision} precision
      * @returns {string}
      */
-    to(precision: import('./datetime.js').Precision): string;
+    to: (precision: import('./datetime.js').Precision) => string;
 }

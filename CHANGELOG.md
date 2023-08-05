@@ -6,6 +6,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.3.1...main).
 
+### Improved
+
+- Shorten `daysBetween()` and `DateTime` footprint by a couple of bytes.
+
+> **Warning**\
+> If not transpiled, `DateTime` now requires support for [`class` fields](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#browser_compatibility) (Safari 14.0).
+
 ### Under the hood
 
 - Replace NPM by pnpm
