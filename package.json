@@ -1,6 +1,6 @@
 {
   "name": "datetime-attribute",
-  "version": "1.3.2-0",
+  "version": "1.3.2",
   "description": "Generate datetime attributes for the <time> HTML element, following WHATWG and ISO8601 specs.",
   "type": "module",
   "sideEffects": false,
