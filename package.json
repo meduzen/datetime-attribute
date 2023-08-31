@@ -20,6 +20,12 @@
     "lint": "pnpm exec eslint src/**/*.js tests/index.test.js",
     "lint-fix": "pnpm exec eslint src/**/*.js tests/index.test.js --fix"
   },
+  "size-limit": [
+    {
+      "path": "src/index.js",
+      "brotli": true
+    }
+  ],
   "files": [
     "CHANGELOG.md",
     "src/**/*.js",
@@ -45,9 +51,11 @@
     "access": "public"
   },
   "devDependencies": {
+    "@size-limit/preset-small-lib": "^8.2.6",
     "@vitest/coverage-v8": "^0.34.1",
     "@vitest/ui": "^0.34.1",
     "eslint": "^8.46.0",
+    "size-limit": "^8.2.6",
     "tsd": "^0.28.1",
     "typescript": "^5.1.6",
     "vitest": "^0.34.1"
