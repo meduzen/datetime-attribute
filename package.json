@@ -60,5 +60,10 @@
     "tsd": "^0.29.0",
     "typescript": "^5.2.2",
     "vitest": "^0.34.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "has": "npm:@nolyfill/has@latest"
+    }
   }
 }
