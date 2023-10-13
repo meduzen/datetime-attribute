@@ -346,7 +346,7 @@ Values exceeding a unit are converted to upper units:
 duration({ h: 31, m: 63, s: 175 }) // 'P1DT8H5M55S'
 ```
 
-If you don’t need this behaviour, pass `false` as second parameter (default valut: `true`).
+If you don’t need this behaviour, pass `false` as second parameter (default value: `true`).
 ```js
 duration({ m: 175 }) // 'PT2H55M'
 duration({ m: 175 }, false) // 'PT175M'
