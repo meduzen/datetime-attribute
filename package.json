@@ -65,5 +65,8 @@
     "overrides": {
       "has": "npm:@nolyfill/has@latest"
     }
+  },
+  "dependencies": {
+    "@js-temporal/polyfill": "^0.4.4"
   }
 }
