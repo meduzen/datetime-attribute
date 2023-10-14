@@ -7,7 +7,6 @@ import {
   datetimeTz,
   tzOffset,
   daysBetween,
-  weekNumber,
   setTimeSeparator,
   setTzSeparator,
 } from '../../src'
@@ -21,6 +20,7 @@ import { duration } from '../../src/temporal'
  */
 import { setConfig } from '../../src/config/datetime.js'
 import { setTzConfig } from '../../src/config/tz.js'
+import { weekNumber } from '../../src/temporal/utils/date'
 
 const togoIndependanceDay = new Date(1960, 3, 27)
 const date = togoIndependanceDay // alias for the sake of brevity
@@ -231,7 +231,7 @@ describe.todo('setTzConfig', () => {
   })
 })
 
-describe.todo('weekNumber', () => {
+describe('weekNumber', () => {
   test('is a function', () => expect(weekNumber).toBeInstanceOf(Function))
   test('1960-04-27', () => expect(weekNumber(date)).toBe(17))
   test('2021-01-01', () => expect(weekNumber(january1st)).toBe(53))
