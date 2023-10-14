@@ -1,11 +1,19 @@
 /**
  * @todo
- * - weekNumber could accept more Temporal type, maybe
- * - make sur to understand zone datetime (https://tc39.es/proposal-temporal/docs/zoneddatetime.html#weekOfYear)
+ * - `weekNumber` and `daysBetween` could accept Temporal objects as parameters
+ * - make sur to understand zoned datetime (https://tc39.es/proposal-temporal/docs/zoneddatetime.html#weekOfYear)
  */
 
-import { Temporal, Intl, toTemporalInstant } from '@js-temporal/polyfill'
-Date.prototype.toTemporalInstant = toTemporalInstant
+import { dateToPlainDate } from './temporal'
+
+/**
+ * Calculate the difference between 2 dates in days, discarding the time of day.
+ *
+ * @param {Date} date The oldest of the two dates.
+ * @param {Date} furtherDate Another date, greater than the first one.
+ * @returns {number}
+ */
+export const daysBetween = (date, furtherDate) => dateToPlainDate(date).until(dateToPlainDate(furtherDate)).days
 
 /**
  * Get the week number (`1`–`53`) of a date according to local time, as defined
@@ -18,4 +26,5 @@ Date.prototype.toTemporalInstant = toTemporalInstant
  * @param {Date} date
  * @returns {number}
  */
-export const weekNumber = date => date.toTemporalInstant().toZonedDateTimeISO('UTC').weekOfYear
+export const weekNumber = date => dateToPlainDate(date).weekOfYear
+// export const weekNumber = date => date.toTemporalInstant().toZonedDateTimeISO('UTC').weekOfYear

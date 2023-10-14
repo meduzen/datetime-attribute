@@ -6,12 +6,12 @@ import {
   utc,
   datetimeTz,
   tzOffset,
-  daysBetween,
   setTimeSeparator,
   setTzSeparator,
 } from '../../src'
 
 import { duration } from '../../src/temporal'
+import { daysBetween, weekNumber } from '../../src/temporal/utils/date'
 
 /**
  * These config methods are currently not exported in the main bundle (though
@@ -20,7 +20,6 @@ import { duration } from '../../src/temporal'
  */
 import { setConfig } from '../../src/config/datetime.js'
 import { setTzConfig } from '../../src/config/tz.js'
-import { weekNumber } from '../../src/temporal/utils/date'
 
 const togoIndependanceDay = new Date(1960, 3, 27)
 const date = togoIndependanceDay // alias for the sake of brevity
@@ -240,7 +239,7 @@ describe('weekNumber', () => {
   test('2021-12-31', () => expect(weekNumber(december31th2021)).toBe(52))
 })
 
-describe.todo('daysBetween', () => {
+describe('daysBetween', () => {
   test('is a function', () => expect(daysBetween).toBeInstanceOf(Function))
   test('1/1 and 11/1', () => expect(daysBetween(january1st, january11th)).toBe(10))
   test('11/1 and 1/1', () => expect(daysBetween(january11th, january1st)).toBe(-10))
