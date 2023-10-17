@@ -25,6 +25,10 @@
     {
       "path": "src/index.js",
       "brotli": true
+    },
+    {
+      "path": "src/temporal/index.js",
+      "brotli": true
     }
   ],
   "files": [
