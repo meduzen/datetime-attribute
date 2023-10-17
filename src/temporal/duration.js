@@ -8,6 +8,7 @@
  */
 
 import { Temporal, Intl, toTemporalInstant } from '@js-temporal/polyfill'
+import { round } from '../utils/math'
 
 // Date.prototype.toTemporalInstant = toTemporalInstant
 
@@ -26,9 +27,40 @@ import { Temporal, Intl, toTemporalInstant } from '@js-temporal/polyfill'
 export function duration(duration = {}, convertExcess = true) {
 
   // Set default values for missing keys.
-  let { w = 0, d = 0, h = 0, m = 0, s = 0 } = duration
+  let { w = 0, d = 0, h = 0, m = 0, s = 0, ms = 0 } = duration
 
-  // At least one duration must be different than zero.
+  // Transfer decimals, not accepted by Temporal.Duration polyfill.
+
+  if (!Number.isInteger(w)) {
+    d += w / 7
+    w = Math.floor(w)
+  }
+
+  if (!Number.isInteger(d)) {
+    h += d / 24
+    d = Math.floor(d)
+  }
+
+  if (!Number.isInteger(h)) {
+    m += h / 24
+    h = Math.floor(h)
+  }
+
+  if (!Number.isInteger(m)) {
+    s += m / 60
+    m = Math.floor(m)
+  }
+
+  if (!Number.isInteger(s)) {
+    ms += round(s % 1 * 1000) // rounding avoid precision issues
+    s = Math.floor(s)
+  }
+
+
+  /**
+   * At least one duration must be different than zero.
+   * @todo Check if needed once done.
+   */
   // if (![w, d, h, m, s].some(value => value)) {
   //   return 'PT0S'
   // }
@@ -55,8 +87,7 @@ export function duration(duration = {}, convertExcess = true) {
    * “non-integer numerical arguments are rounded to the nearest integer, towards zero”
    * https://tc39.es/proposal-temporal/docs/duration.html#new-Temporal-Duration
    */
-  // let dur = new Temporal.Duration(0, 0, w, d, h, m, s)
-  let dur = new Temporal.Duration(0, 0, Math.floor(w), Math.floor(d), Math.floor(h), Math.floor(m), Math.floor(s))
+  let dur = new Temporal.Duration(0, 0, w, d, h, m, s, ms)
 
   if (convertExcess) {
     dur = dur.round({ largestUnit: 'weeks', relativeTo: '2019-01-01' })
