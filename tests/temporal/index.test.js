@@ -107,6 +107,7 @@ describe.todo('utc', () => {
 describe.skip('duration', () => {
   const durationObject = { w: 3, d: 5, h: 10, m: 43, s: 2.61 }
   const durationWithTooHighValues = { w: 3, d: 19, h: 36, m: 53, s: 175.3 }
+  const durationWithDecimal = { w: 3, d: 22, h: 48, m: 53, s: 175.3 }
   const durationInHours = { h: 17 }
   const durationInDays = { d: 43 }
 
@@ -118,6 +119,7 @@ describe.skip('duration', () => {
 
   test('complete object', () => expect(duration(durationObject)).toBe('P3W5DT10H43M2.61S'))
   test('complete object with too high values', () => expect(duration(durationWithTooHighValues)).toBe('P5W6DT12H55M55.3S'))
+  test('decimals', () => expect(duration(durationWithDecimal)).toBe('P6W3DT55M55.3S'))
   test('hours only', () => expect(duration(durationInHours)).toBe('PT17H'))
   test('days only', () => expect(duration(durationInDays)).toBe('P6W1D'))
 

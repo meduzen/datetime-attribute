@@ -1,8 +1,5 @@
 /**
  * @todo
- * Continue the work once the following issue is clarified:
- * https://github.com/tc39/proposal-temporal/issues/2711:
- * - check decimal parameters
  * - check balancing (https://tc39.es/proposal-temporal/docs/balancing.html)
  * - add support for sub-second units (ms, mis, ns)
  */
@@ -26,67 +23,43 @@ import { round } from '../utils/math'
  */
 export function duration(duration = {}, convertExcess = true) {
 
+  if (!duration) {
+    throw new Error('No duration provided.')
+  }
+
   // Set default values for missing keys.
-  let { w = 0, d = 0, h = 0, m = 0, s = 0, ms = 0 } = duration
 
-  // Transfer decimals, not accepted by Temporal.Duration polyfill.
-
-  if (!Number.isInteger(w)) {
-    d += w / 7
-    w = Math.floor(w)
-  }
-
-  if (!Number.isInteger(d)) {
-    h += d / 24
-    d = Math.floor(d)
-  }
-
-  if (!Number.isInteger(h)) {
-    m += h / 24
-    h = Math.floor(h)
-  }
-
-  if (!Number.isInteger(m)) {
-    s += m / 60
-    m = Math.floor(m)
-  }
-
-  if (!Number.isInteger(s)) {
-    ms += round(s % 1 * 1000) // rounding avoid precision issues
-    s = Math.floor(s)
-  }
-
+  duration = Object.assign({ w: 0, d: 0, h: 0, m: 0, s: 0, ms: 0 }, duration)
 
   /**
    * At least one duration must be different than zero.
-   * @todo Check if needed once done.
+   * Not needed with the Temporal API, only here for
+   * early return.
    */
-  // if (![w, d, h, m, s].some(value => value)) {
-  //   return 'PT0S'
-  // }
+  if (!Object.values(duration).some(value => value)) {
+    return 'PT0S'
+  }
 
-  /**
-   * @var {import('@js-temporal/polyfill').DurationLike} temporalDuration
-   */
-  // const temporalDuration = {
-  //   ...(w ? { weeks: w } : null),
-  //   // ...('w' in duration ? { weeks: duration.w } : null),
-  //   ...(d ? { days: d } : null),
-  //   // ...('d' in duration ? { days: duration.d } : null),
-  //   ...(h ? { hours: h } : null),
-  //   // ...('h' in duration ? { hours: duration.h } : null),
-  //   ...(m ? { minutes: m } : null),
-  //   // ...('m' in duration ? { minutes: duration.m } : null),
-  //   ...(s ? { seconds: s } : null),
-  //   // ...('s' in duration ? { seconds: duration.s } : null),
-  // }
+  // Transfer decimals as they aren’t accepted by `Temporal.Duration` constructor.
 
-  // let dur = Temporal.Duration.from(temporalDuration)
+  const processDecimals = (unit, smallerUnit, howManySmallInUnit) => {
+    if (!Number.isInteger(duration[unit])) {
+      duration[smallerUnit] += duration[unit] / howManySmallInUnit
+      duration[unit] = Math.floor(duration[unit])
+    }
+  }
 
-  /**
-   * “non-integer numerical arguments are rounded to the nearest integer, towards zero”
-   * https://tc39.es/proposal-temporal/docs/duration.html#new-Temporal-Duration
-   */
+  processDecimals('w', 'd', 7)
+  processDecimals('d', 'h', 24)
+  processDecimals('h', 'm', 60)
+  processDecimals('m', 's', 60)
+  processDecimals('s', 'ms', 1) // last item of the chain (`ms`) is a special use case, we process it in the next line
+  duration.ms = round((duration.ms - duration.s) * 1000) //
+
+  let { w = 0, d = 0, h = 0, m = 0, s = 0, ms = 0 } = duration
+
+  // Create a Duration object
+
   let dur = new Temporal.Duration(0, 0, w, d, h, m, s, ms)
 
   if (convertExcess) {
