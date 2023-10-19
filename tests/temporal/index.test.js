@@ -104,7 +104,7 @@ describe.todo('utc', () => {
   test('unsupported precision', () => expect(utc(date, 'n00t')).toBe('1960-04-27'))
 })
 
-describe.skip('duration', () => {
+describe('duration', () => {
   const durationObject = { w: 3, d: 5, h: 10, m: 43, s: 2.61 }
   const durationWithTooHighValues = { w: 3, d: 19, h: 36, m: 53, s: 175.3 }
   const durationWithDecimal = { w: 3, d: 22, h: 48, m: 53, s: 175.3 }
