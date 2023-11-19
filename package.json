@@ -23,12 +23,10 @@
   },
   "size-limit": [
     {
-      "path": "src/index.js",
-      "brotli": true
+      "path": "src/index.js"
     },
     {
-      "path": "src/temporal/index.js",
-      "brotli": true
+      "path": "src/temporal/index.js"
     }
   ],
   "files": [
@@ -56,14 +54,14 @@
     "access": "public"
   },
   "devDependencies": {
-    "@size-limit/preset-small-lib": "^9.0.0",
-    "@vitest/coverage-v8": "^0.34.3",
-    "@vitest/ui": "^0.34.3",
-    "eslint": "^8.46.0",
-    "size-limit": "^9.0.0",
+    "@size-limit/preset-small-lib": "^11.0.0",
+    "@vitest/coverage-v8": "^0.34.6",
+    "@vitest/ui": "^0.34.6",
+    "eslint": "^8.54.0",
+    "size-limit": "^11.0.0",
     "tsd": "^0.29.0",
     "typescript": "^5.2.2",
-    "vitest": "^0.34.3"
+    "vitest": "^0.34.6"
   },
   "pnpm": {
     "overrides": {
