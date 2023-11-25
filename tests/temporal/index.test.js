@@ -2,12 +2,11 @@ import { describe, expect, test } from 'vitest'
 
 import {
   DateTime,
-  datetimeTz,
   setTimeSeparator,
   setTzSeparator,
 } from '../../src'
 
-import { duration, datetime, utc, tzOffset } from '../../src/temporal'
+import { duration, datetime, datetimeTz, utc, tzOffset } from '../../src/temporal'
 import { daysBetween, weekNumber } from '../../src/temporal/utils/date'
 
 /**
@@ -152,7 +151,7 @@ describe('tzOffset', () => {
   test('()', () => expect(tzOffset()).toBe(tzOffset(0, tzOffsetInMinutes)))
 })
 
-describe.todo('datetimeTz', () => {
+describe('datetimeTz', () => {
   test('is a function', () => expect(datetimeTz).toBeInstanceOf(Function))
   test('wrong type', () => expect(() => datetimeTz(123)).toThrow(TypeError))
 

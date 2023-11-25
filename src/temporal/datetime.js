@@ -2,7 +2,7 @@ import { weekNumber } from './utils/date.js'
 import { p } from '../utils/string.js'
 import { tzOffset } from '../timezone.js'
 import { config } from '../config/datetime'
-import { Temporal, Intl, toTemporalInstant } from '@js-temporal/polyfill'
+import { Temporal, toTemporalInstant } from '@js-temporal/polyfill'
 
 Date.prototype.toTemporalInstant = toTemporalInstant
 
@@ -92,6 +92,36 @@ export function datetime(date = new Date(), precision = 'day') {
  */
 export const utc = (date = new Date(), precision = 'datetime') =>
   datetime(date, `${precision} utc`)
+
+/**
+ * Create `datetime="2021-12-02T17:34-06:00"` attribute for `<time>`.
+ *
+ * @param {Date=} date
+ * @param {Precision=} precision
+ * @param {number=} offsetHours
+ * @param {number=} offsetMinutes
+ * @param {boolean=} inRealLifeBoundaries
+ * @returns {string}
+ */
+export function datetimeTz(
+  date = new Date(),
+  precision = 'datetime',
+  offsetHours = 0,
+  offsetMinutes = 0,
+  inRealLifeBoundaries = false,
+) {
+  let timezoneOffset = ''
+
+  if (!precision.includes('utc')) {
+    // ignore request for UTC conversion
+    timezoneOffset =
+      '2' in arguments // see similar line in tzOffset()
+        ? tzOffset(offsetHours, offsetMinutes, inRealLifeBoundaries)
+        : tzOffset()
+  }
+
+  return datetime(date, precision) + timezoneOffset
+}
 
 /**
  * Supported precision keywords.
