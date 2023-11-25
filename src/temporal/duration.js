@@ -4,10 +4,10 @@
  * - add support for sub-second units (ms, mis, ns)
  */
 
-import { Temporal, Intl, toTemporalInstant } from '@js-temporal/polyfill'
-import { round } from '../utils/math'
 
 // Date.prototype.toTemporalInstant = toTemporalInstant
+import { Temporal } from '@js-temporal/polyfill'
+import { round } from './utils/math'
 
 /**
  * Create `datetime="P3DT2H8M32.541S"` duration attribute for `<time>`.
