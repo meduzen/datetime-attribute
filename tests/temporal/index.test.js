@@ -3,12 +3,11 @@ import { describe, expect, test } from 'vitest'
 import {
   DateTime,
   datetimeTz,
-  tzOffset,
   setTimeSeparator,
   setTzSeparator,
 } from '../../src'
 
-import { duration, datetime, utc } from '../../src/temporal'
+import { duration, datetime, utc, tzOffset } from '../../src/temporal'
 import { daysBetween, weekNumber } from '../../src/temporal/utils/date'
 
 /**
@@ -127,7 +126,7 @@ describe('duration', () => {
   test('days only without converting the excess', () => expect(duration(durationInDays, false)).toBe('P43D'))
 })
 
-describe.todo('tzOffset', () => {
+describe('tzOffset', () => {
   test('is a function', () => expect(tzOffset).toBeInstanceOf(Function))
   test('0', () => expect(tzOffset(0)).toBe('Z'))
   test('-3', () => expect(tzOffset(-3)).toBe('-03:00'))
