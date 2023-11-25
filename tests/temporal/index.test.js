@@ -2,7 +2,6 @@ import { describe, expect, test } from 'vitest'
 
 import {
   DateTime,
-  datetime,
   utc,
   datetimeTz,
   tzOffset,
@@ -10,7 +9,7 @@ import {
   setTzSeparator,
 } from '../../src'
 
-import { duration } from '../../src/temporal'
+import { duration, datetime } from '../../src/temporal'
 import { daysBetween, weekNumber } from '../../src/temporal/utils/date'
 
 /**
@@ -37,7 +36,7 @@ const year10k = new Date(10000, 0, 1)
 
 const tzOffsetInMinutes = (new Date()).getTimezoneOffset() * -1
 
-describe.todo('datetime', () => {
+describe('datetime', () => {
   test('is a function', () => expect(datetime).toBeInstanceOf(Function))
   test('wrong type', () => expect(() => datetime(123)).toThrow(TypeError))
 
