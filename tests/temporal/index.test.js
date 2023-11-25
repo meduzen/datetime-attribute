@@ -2,14 +2,13 @@ import { describe, expect, test } from 'vitest'
 
 import {
   DateTime,
-  utc,
   datetimeTz,
   tzOffset,
   setTimeSeparator,
   setTzSeparator,
 } from '../../src'
 
-import { duration, datetime } from '../../src/temporal'
+import { duration, datetime, utc } from '../../src/temporal'
 import { daysBetween, weekNumber } from '../../src/temporal/utils/date'
 
 /**
@@ -86,7 +85,7 @@ describe('datetime', () => {
   test('unsupported precision', () => expect(datetime(date, 'n00t')).toBe('1960-04-27'))
 })
 
-describe.todo('utc', () => {
+describe('utc', () => {
   test('is a function', () => expect(utc).toBeInstanceOf(Function))
   test('wrong type', () => expect(() => utc(123)).toThrow(TypeError))
   test('()', () => expect(utc()).toBe(utc((new Date()))))

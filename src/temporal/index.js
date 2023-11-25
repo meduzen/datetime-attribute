@@ -1,2 +1,2 @@
 export { duration } from './duration.js'
-export { datetime } from './datetime.js'
+export { datetime, utc } from './datetime.js'

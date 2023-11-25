@@ -79,6 +79,21 @@ export function datetime(date = new Date(), precision = 'day') {
 }
 
 /**
+ * Shortcut for `datetime` with UTC output.
+ *
+ * For exemple, these two are the same:
+ * - `datetime(someDate, 'somePrecision utc')`
+ * - `utc(someDate, 'somePrecision')`
+ *
+ *
+ * @param {Date=} date
+ * @param {'datetime'|'datetime second'|'datetime ms'|'time'|'second'|'ms'} precision
+ * @returns {string}
+ */
+export const utc = (date = new Date(), precision = 'datetime') =>
+  datetime(date, `${precision} utc`)
+
+/**
  * Supported precision keywords.
  *
  * @typedef { 'day' | 'year' | 'yearless' | 'month' | 'week' |
