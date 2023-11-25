@@ -2,10 +2,6 @@ import { describe, expect, test } from 'vitest'
 
 import {
   DateTime,
-} from '../../src'
-
-import {
-  // DateTime,
   datetime,
   utc,
   datetimeTz,
@@ -256,7 +252,7 @@ describe('daysBetween', () => {
 const summer = new DateTime(2021, 5, 21)
 const twoWeeksAfterSummer = new DateTime(2021, 6, 5)
 
-describe.todo('DateTime class', () => {
+describe('DateTime class', () => {
   test('extends Date', () => expect(summer).toBeInstanceOf(Date))
   test('.getWeek', () => expect(summer.getWeek()).toBe(25))
   test(".to('day')", () => expect(summer.to('day')).toBe('2021-06-21'))
