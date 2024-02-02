@@ -16,8 +16,8 @@ Compare with [previous version](https://github.com/meduzen/datetime-attribute/co
 
 - Shorten `daysBetween()` and `DateTime` footprint by a couple of bytes.
 
-> **Warning**\
-> If not transpiled, `DateTime` now requires support for [`class` fields](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#browser_compatibility) (Safari 14.0).
+> [!WARNING]  
+> When not transpiled, `DateTime` now requires support for [`class` fields](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#browser_compatibility) (Safari 14.0).
 
 ### Under the hood
 
