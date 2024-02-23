@@ -1,7 +1,7 @@
 import { weekNumber } from './utils/date.js'
 import { p } from './utils/string.js'
 import { tzOffset } from './timezone.js'
-import { config } from './config/datetime'
+import { config } from './config/datetime.js'
 
 /**
  * Create `datetime="2021-12-02"` attribute for `<time>`.
