@@ -12,8 +12,8 @@
   "scripts": {
     "types": "tsc",
     "test": "vitest run",
+    "test:types": "pnpm exec tsd",
     "test:ui": "vitest --ui",
-    "test-types": "pnpm exec tsd",
     "coverage": "vitest run --coverage",
     "watch": "vitest watch",
     "build": "echo \"Nothing to build, this command is only here to please size-limit GitHub action\" && exit 0",
