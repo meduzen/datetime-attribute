@@ -43,7 +43,10 @@
   "homepage": "https://github.com/meduzen/datetime-attribute",
   "author": "Mehdi Merah",
   "license": "WTFPL",
-  "repository": "https://github.com/meduzen/datetime-attribute.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meduzen/datetime-attribute.git"
+  },
   "bugs": {
     "url": "https://github.com/meduzen/datetime-attribute/issues"
   },
