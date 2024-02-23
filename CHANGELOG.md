@@ -6,7 +6,26 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 Nothing for now.
 
-<!-- Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.3.1...main). -->
+<!-- Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.3.3...main). -->
+
+## v1.3.3 (2024-02-23)
+
+Compare with [previous version](https://github.com/meduzen/datetime-attribute/compare/1.3.2...1.3.3).
+
+### Fixed
+ 
+- Fix `.js` file extension missing in an `import` statement when trying to `import { datetime }`, which worked in some bundlers but could fail in others or when not using any bundler.
+
+### Documentation
+
+- Fix typos.
+
+### Under the hood
+
+- The NPM command to test types has been changed from `test-types` to `test:types`.
+- Update tooling for Node 20.
+- Configure the dependencies update automation to group them by categories.
+- Monitor package size on pull request.
 
 ## v1.3.2 (2023-08-05)
 
