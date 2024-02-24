@@ -14,7 +14,7 @@ Compare with [previous version](https://github.com/meduzen/datetime-attribute/co
 
 ### Fixed
  
-- Fix `.js` file extension missing in an `import` statement when trying to `import { datetime }`, which worked in some bundlers but could fail in others or when not using any bundler.
+- Fix `.js` file extension missing in an `import` statement when trying to `import { datetime }`, which worked in some bundlers but could fail in others or when not using any bundler. This issue was [introduced](https://github.com/meduzen/datetime-attribute/pull/38/files#diff-5146f40a8c8111b14e5ab3407eff80c7a6d2f3c92a4bf4ccd4647bff32d47e38R4) in version 1.3.0.
 
 ### Documentation
 
