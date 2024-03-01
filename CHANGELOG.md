@@ -6,7 +6,26 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 Nothing for now.
 
-<!-- Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.3.1...main). -->
+Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.3.3...main).
+
+## v1.3.3 (2024-02-23)
+
+Compare with [previous version](https://github.com/meduzen/datetime-attribute/compare/1.3.2...1.3.3).
+
+### Fixed
+ 
+- Fix `.js` file extension missing in an `import` statement when trying to `import { datetime }`, which worked in some bundlers but could fail in others or when not using any bundler. This issue was [introduced](https://github.com/meduzen/datetime-attribute/pull/38/files#diff-5146f40a8c8111b14e5ab3407eff80c7a6d2f3c92a4bf4ccd4647bff32d47e38R4) in version 1.3.0.
+
+### Documentation
+
+- Fix typos.
+
+### Under the hood
+
+- The NPM command to test types has been changed from `test-types` to `test:types`.
+- Update tooling for Node 20.
+- Configure the dependencies update automation to group them by categories.
+- Monitor package size on pull request.
 
 ## v1.3.2 (2023-08-05)
 
@@ -16,8 +35,8 @@ Compare with [previous version](https://github.com/meduzen/datetime-attribute/co
 
 - Shorten `daysBetween()` and `DateTime` footprint by a couple of bytes.
 
-> **Warning**\
-> If not transpiled, `DateTime` now requires support for [`class` fields](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#browser_compatibility) (Safari 14.0).
+> [!WARNING]  
+> When not transpiled, `DateTime` now requires support for [`class` fields](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#browser_compatibility) (Safari 14.0).
 
 ### Under the hood
 
