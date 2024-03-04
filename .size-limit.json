@@ -50,7 +50,7 @@
       "import": "{ DateTime }"
     },
     {
-      "name": "Overall",
+      "name": "**All modules** (`import *`)",
       "path": "src/index.js"
     }
   ]
