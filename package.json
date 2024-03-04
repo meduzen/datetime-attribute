@@ -21,11 +21,6 @@
     "lint": "pnpm exec eslint src/**/*.js tests/index.test.js",
     "lint-fix": "pnpm exec eslint src/**/*.js tests/index.test.js --fix"
   },
-  "size-limit": [
-    {
-      "path": "src/index.js"
-    }
-  ],
   "files": [
     "CHANGELOG.md",
     "src/**/*.js",
