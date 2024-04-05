@@ -52,5 +52,9 @@
     {
       "name": "**All modules** (`import *`)",
       "path": "src/index.js"
+    },
+    {
+      "name": "Types",
+      "path": ["types/*.d.ts", "!types/index.d.ts"]
     }
   ]
