@@ -8,6 +8,16 @@ Nothing for now.
 
 Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.3.3...main).
 
+### Improved
+
+- Improve type definitions where `?` and `undefined` are redundant by removing `undefined`:
+  - for some signatures of optional parameters from `datetime(date?: Date | undefined` to `datetime(date?: Date`
+  - for some optional properties from `{ w?: number | undefined }` to `{ w?: number }`
+
+### Under the hood
+
+- Enforce type definitions for optional properties of the internal config functions `setConfig` and `setTzConfig`: it was possible to use them by omitting the `separator` property, it’s not anymore.
+
 ## v1.3.3 (2024-02-23)
 
 Compare with [previous version](https://github.com/meduzen/datetime-attribute/compare/1.3.2...1.3.3).

@@ -6,8 +6,8 @@
  *
  * See also: https://www.brucelawson.co.uk/2012/best-of-time/
  *
- * @param {DurationObject} duration
- * @param {boolean} convertExcess
+ * @param {DurationObject} [duration={}]
+ * @param {boolean} [convertExcess=true]
  * @returns {string}
  */
 export function duration(duration?: DurationObject, convertExcess?: boolean): string;
@@ -15,21 +15,21 @@ export type DurationObject = {
     /**
      * – Number of weeks
      */
-    w?: number | undefined;
+    w?: number;
     /**
      * – Number of days
      */
-    d?: number | undefined;
+    d?: number;
     /**
      * – Number of hours
      */
-    h?: number | undefined;
+    h?: number;
     /**
      * – Number of minutes
      */
-    m?: number | undefined;
+    m?: number;
     /**
      * – Number of seconds
      */
-    s?: number | undefined;
+    s?: number;
 };

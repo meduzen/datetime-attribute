@@ -12,8 +12,8 @@ import { config } from './config/datetime.js'
  *
  * See also: https://www.brucelawson.co.uk/2012/best-of-time/
  *
- * @param {Date=} date
- * @param {Precision=} precision
+ * @param {Date} [date=new Date()] - default to now
+ * @param {Precision} [precision='day']
  * @returns {string}
  */
 export function datetime(date = (new Date()), precision = 'day') {
@@ -95,8 +95,8 @@ export function datetime(date = (new Date()), precision = 'day') {
  * - `utc(someDate, 'somePrecision')`
  *
  *
- * @param {Date=} date
- * @param {'datetime'|'datetime second'|'datetime ms'|'time'|'second'|'ms'} precision
+ * @param {Date} [date=new Date()] - default to now
+ * @param {'datetime'|'datetime second'|'datetime ms'|'time'|'second'|'ms'} [precision=datetime]
  * @returns {string}
  */
 export const utc = (date = (new Date()), precision = 'datetime') => datetime(date, `${precision} utc`)
@@ -104,11 +104,11 @@ export const utc = (date = (new Date()), precision = 'datetime') => datetime(dat
 /**
  * Create `datetime="2021-12-02T17:34-06:00"` attribute for `<time>`.
  *
- * @param {Date=} date
- * @param {Precision=} precision
- * @param {number=} offsetHours
- * @param {number=} offsetMinutes
- * @param {boolean=} inRealLifeBoundaries
+ * @param {Date} [date=new Date()] - default to now
+ * @param {Precision} [precision=datetime]
+ * @param {number} [offsetHours=0]
+ * @param {number} [offsetMinutes=0]
+ * @param {boolean} [inRealLifeBoundaries=false]
  * @returns {string}
  */
 export function datetimeTz(
