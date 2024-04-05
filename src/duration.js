@@ -8,8 +8,8 @@ import { round } from './utils/math.js'
  *
  * See also: https://www.brucelawson.co.uk/2012/best-of-time/
  *
- * @param {DurationObject} duration
- * @param {boolean} convertExcess
+ * @param {DurationObject} [duration={}]
+ * @param {boolean} [convertExcess=true]
  * @returns {string}
  */
 export function duration(duration = {}, convertExcess = true) {
@@ -93,9 +93,9 @@ export function duration(duration = {}, convertExcess = true) {
 
 /**
  * @typedef {Object} DurationObject
- * @property {number=} w – Number of weeks
- * @property {number=} d – Number of days
- * @property {number=} h – Number of hours
- * @property {number=} m – Number of minutes
- * @property {number=} s – Number of seconds
+ * @property {number} [w=0] – Number of weeks
+ * @property {number} [d=0] – Number of days
+ * @property {number} [h=0] – Number of hours
+ * @property {number} [m=0] – Number of minutes
+ * @property {number} [s=0] – Number of seconds
  */
