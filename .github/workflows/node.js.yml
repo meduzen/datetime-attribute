@@ -28,4 +28,6 @@ jobs:
     - run: pnpm install --no-frozen-lockfile
     - run: pnpm lint
     - run: pnpm test
+      env:
+        GITHUB_ACTIONS: true
     - run: pnpm test:types
