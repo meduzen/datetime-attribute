@@ -19,7 +19,7 @@ const tzOffsetInMinutes = (new Date()).getTimezoneOffset() * -1
 
 describe('datetime', () => {
   test('is a function', () => expect(datetime).toBeInstanceOf(Function))
-  test('wrong type', () => expect(() => datetime(123)).toThrow(TypeError))
+  test('throws on wrong date type', () => expect(() => datetime(123)).toThrow(TypeError))
 
   test('()', () => expect(datetime()).toBe(datetime((new Date()))))
 
@@ -69,7 +69,7 @@ describe('datetime', () => {
 
 describe('datetimeTz', () => {
   test('is a function', () => expect(datetimeTz).toBeInstanceOf(Function))
-  test('wrong type', () => expect(() => datetimeTz(123)).toThrow(TypeError))
+  test('throws on wrong date type', () => expect(() => datetimeTz(123)).toThrow(TypeError))
 
   test('()', () => expect(datetimeTz()).toBe(datetimeTz((new Date()))))
 
@@ -99,7 +99,7 @@ describe('datetimeTz', () => {
 
 describe('utc', () => {
   test('is a function', () => expect(utc).toBeInstanceOf(Function))
-  test('wrong type', () => expect(() => utc(123)).toThrow(TypeError))
+  test('throws on wrong date type', () => expect(() => utc(123)).toThrow(TypeError))
   test('()', () => expect(utc()).toBe(utc((new Date()))))
 
   // These ones can’t be tested providing an exact value as the output depends on client timezone.
