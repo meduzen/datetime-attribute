@@ -13,7 +13,7 @@
     "types": "tsc",
     "test": "vitest run",
     "test:types": "pnpm exec tsd",
-    "test:ui": "vitest --ui",
+    "test:ui": "vitest --ui --coverage.enabled --coverage.exclude=types",
     "coverage": "vitest run --coverage --coverage.exclude=types",
     "watch": "vitest watch",
     "build": "echo \"Nothing to build, this command is only here to please size-limit GitHub action\" && exit 0",
