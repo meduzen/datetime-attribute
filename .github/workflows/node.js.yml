@@ -26,5 +26,6 @@ jobs:
     - name: Use pnpm
       uses: pnpm/action-setup@v2
     - run: pnpm install --no-frozen-lockfile
+    - run: pnpm lint
     - run: pnpm test
     - run: pnpm test:types
