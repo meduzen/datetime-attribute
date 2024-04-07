@@ -24,6 +24,9 @@ devDependencies:
   eslint:
     specifier: ^9.0.0
     version: 9.0.0
+  eslint-plugin-vitest:
+    specifier: 0.4.2-beta.3
+    version: 0.4.2-beta.3(eslint@9.0.0)(typescript@5.4.4)(vitest@1.4.0)
   size-limit:
     specifier: ^11.1.2
     version: 11.1.2
@@ -1188,6 +1191,27 @@ packages:
       plur: 4.0.0
       string-width: 4.2.3
       supports-hyperlinks: 2.3.0
+    dev: true
+
+  /eslint-plugin-vitest@0.4.2-beta.3(eslint@9.0.0)(typescript@5.4.4)(vitest@1.4.0):
+    resolution: {integrity: sha512-3SrcEvVKEA0k8HkOpWkdU6zMlbt2fPG14LATAYvdvF9v5cuQ2Q2wWi7VcTcpV5QXMQYIyKmfBd2+lYu+OmEr2w==}
+    engines: {node: ^18.0.0 || >= 20.0.0}
+    peerDependencies:
+      '@typescript-eslint/eslint-plugin': '*'
+      eslint: ^8.57.0 || ^9.0.0
+      vitest: '*'
+    peerDependenciesMeta:
+      '@typescript-eslint/eslint-plugin':
+        optional: true
+      vitest:
+        optional: true
+    dependencies:
+      '@typescript-eslint/utils': 7.5.0(eslint@9.0.0)(typescript@5.4.4)
+      eslint: 9.0.0
+      vitest: 1.4.0(@vitest/ui@1.4.0)
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
     dev: true
 
   /eslint-rule-docs@1.1.235:

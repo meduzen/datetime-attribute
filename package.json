@@ -54,6 +54,7 @@
     "@vitest/coverage-v8": "^1.4.0",
     "@vitest/ui": "^1.4.0",
     "eslint": "^9.0.0",
+    "eslint-plugin-vitest": "0.4.2-beta.3",
     "size-limit": "^11.1.2",
     "tsd": "^0.31.0",
     "typescript": "^5.4.4",
