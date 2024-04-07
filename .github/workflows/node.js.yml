@@ -43,6 +43,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Use pnpm
       uses: pnpm/action-setup@v3
+    - run: pnpm install --no-frozen-lockfile
     - run: pnpm lint
 
   test:
@@ -62,6 +63,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Use pnpm
       uses: pnpm/action-setup@v3
+    - run: pnpm install --no-frozen-lockfile
     - run: pnpm test
 
   test-types:
@@ -81,4 +83,5 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Use pnpm
       uses: pnpm/action-setup@v3
+    - run: pnpm install --no-frozen-lockfile
     - run: pnpm test:types
