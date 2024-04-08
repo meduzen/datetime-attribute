@@ -1,9 +1,9 @@
 import tseslint from 'typescript-eslint'
 import js from '@eslint/js'
+import vitest from 'eslint-plugin-vitest'
 
 export default tseslint.config(
   js.configs.recommended,
-
   {
     files: ['**/*.js'],
     languageOptions: {
@@ -62,6 +62,23 @@ export default tseslint.config(
       }],
       'template-curly-spacing': [2, 'never'],
       'template-tag-spacing': [2, 'always'],
+    },
+  },
+  {
+    files: ['**/*.test.js'],
+    plugins: { vitest },
+    rules: {
+      ...vitest.configs.recommended.rules,
+      // ...vitest.configs.all.rules, // worth testing from time to time…
+      // 'vitest/consistent-test-it': 0,
+      'vitest/no-test-return-statement': 1,
+      // 'vitest/prefer-expect-assertions': 0, // when testing `vitest.configs.all.rules`
+      'vitest/require-to-throw-message': 1,
+    },
+    languageOptions: {
+      globals: {
+        ...vitest.environments.env.globals,
+      },
     },
   },
 )
