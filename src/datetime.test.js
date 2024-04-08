@@ -34,7 +34,6 @@ describe('datetime', () => {
   test('no precision', () => expect(datetime(date)).toBe('1960-04-27'))
   test('no precision before the 10th', () => expect(datetime(january1st2021)).toBe('2021-01-01'))
 
-
   describe('precision, no UTC', () => {
 
     test('day', () => {
