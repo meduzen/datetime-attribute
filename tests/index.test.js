@@ -257,7 +257,7 @@ describe('DateTime class', () => {
   test(".to('month')", () => expect(twoWeeksAfterSummer.to('month')).toBe('2021-07'))
   test('weeks is changed when day changes', () => {
     summer.setDate(summer.getDate() + 14)
-    return expect(summer.getWeek()).toBe(29)
+    expect(summer.getWeek()).toBe(29)
   })
 })
 

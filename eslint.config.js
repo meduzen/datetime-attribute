@@ -69,6 +69,7 @@ export default tseslint.config(
     plugins: { vitest },
     rules: {
       ...vitest.configs.recommended.rules,
+      'vitest/no-test-return-statement': 1,
     },
     languageOptions: {
       globals: {
