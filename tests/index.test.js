@@ -111,7 +111,7 @@ describe('duration', () => {
   const durationInDays = { d: 43 }
 
   test('is a function', () => expect(duration).toBeInstanceOf(Function))
-  test('(null)', () => expect(() => duration(null)).toThrow())
+  test('(null)', () => expect(() => duration(null)).toThrow(Error))
   test('()', () => expect(duration()).toBe('PT0S'))
   test('empty object {}', () => expect(duration({})).toBe('PT0S'))
   test('empty object {} and preserve excess value', () => expect(duration({}, false)).toBe('PT0S'))

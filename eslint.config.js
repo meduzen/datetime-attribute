@@ -70,6 +70,7 @@ export default tseslint.config(
     rules: {
       ...vitest.configs.recommended.rules,
       'vitest/no-test-return-statement': 1,
+      'vitest/require-to-throw-message': 1,
     },
     languageOptions: {
       globals: {
