@@ -17,7 +17,8 @@ Compare with [last published version](https://github.com/meduzen/datetime-attrib
 ### Under the hood
 
 - Enforce type definitions for optional properties of the internal config functions `setConfig` and `setTzConfig`: it was possible to use them by omitting the `separator` property, it’s not anymore.
-- Upgrade ESLint from 8 to [9](https://eslint.org/blog/2024/04/eslint-v9.0.0-released/).
+- Upgrade ESLint from 8 to [9](https://eslint.org/blog/2024/04/eslint-v9.0.0-released/) and lint tests using [`eslint-plugin-vitest`](https://github.com/veritem/eslint-plugin-vitest).
+- Split test file and move tests closer to the code.
 
 ## v1.3.3 (2024-02-23)
 
