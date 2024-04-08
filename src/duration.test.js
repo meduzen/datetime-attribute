@@ -13,7 +13,7 @@ describe('duration', () => {
   })
 
   test('duration(null) throws', () => {
-    expect(() => duration(null)).toThrow()
+    expect(() => duration(null)).toThrow(Error)
   })
 
   describe('empty or missing object', () => {
@@ -41,7 +41,7 @@ describe('duration', () => {
       expect(duration(durationObject)).toBe('P3W5DT10H43M2.61S')
     })
 
-    test(' with too high values', () => {
+    test('with too high values', () => {
       expect(duration(durationWithTooHighValues)).toBe('P5W6DT12H55M55.3S')
     })
   })
