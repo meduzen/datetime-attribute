@@ -111,10 +111,10 @@ describe('duration', () => {
   const durationInDays = { d: 43 }
 
   test('is a function', () => expect(duration).toBeInstanceOf(Function))
-  test('()', () => expect(() => duration(null)).toThrow())
+  test('(null)', () => expect(() => duration(null)).toThrow(Error))
   test('()', () => expect(duration()).toBe('PT0S'))
   test('empty object {}', () => expect(duration({})).toBe('PT0S'))
-  test('empty object {}', () => expect(duration({}, false)).toBe('PT0S'))
+  test('empty object {} and preserve excess value', () => expect(duration({}, false)).toBe('PT0S'))
 
   test('complete object', () => expect(duration(durationObject)).toBe('P3W5DT10H43M2.61S'))
   test('complete object with too high values', () => expect(duration(durationWithTooHighValues)).toBe('P5W6DT12H55M55.3S'))
@@ -257,7 +257,7 @@ describe('DateTime class', () => {
   test(".to('month')", () => expect(twoWeeksAfterSummer.to('month')).toBe('2021-07'))
   test('weeks is changed when day changes', () => {
     summer.setDate(summer.getDate() + 14)
-    return expect(summer.getWeek()).toBe(29)
+    expect(summer.getWeek()).toBe(29)
   })
 })
 
