@@ -69,7 +69,10 @@ export default tseslint.config(
     plugins: { vitest },
     rules: {
       ...vitest.configs.recommended.rules,
+      // ...vitest.configs.all.rules, // worth testing from time to time…
+      // 'vitest/consistent-test-it': 0,
       'vitest/no-test-return-statement': 1,
+      // 'vitest/prefer-expect-assertions': 0, // when testing `vitest.configs.all.rules`
       'vitest/require-to-throw-message': 1,
     },
     languageOptions: {
