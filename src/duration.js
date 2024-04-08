@@ -9,7 +9,9 @@ import { round } from './utils/math.js'
  * See also: https://www.brucelawson.co.uk/2012/best-of-time/
  *
  * @param {DurationObject} [duration={}]
- * @param {boolean} [convertExcess=true]
+ * @param {boolean} [convertExcess=true] Convert overflow values to their
+ *                                       higher unit (e.g. `{ m: 90 }`
+ *                                       equals `{ h: 1, m: 30 }`.
  * @returns {string}
  */
 export function duration(duration = {}, convertExcess = true) {
