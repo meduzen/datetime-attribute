@@ -70,9 +70,13 @@ export default tseslint.config(
     rules: {
       ...vitest.configs.recommended.rules,
       // ...vitest.configs.all.rules, // worth testing from time to time…
-      // 'vitest/consistent-test-it': 0,
+
+      // Additional rules below taken from `vitest.configs.all.rules`
+      'vitest/consistent-test-it': 0,
+      'vitest/no-hooks': 0, // when testing `vitest.configs.all.rules`
       'vitest/no-test-return-statement': 1,
-      // 'vitest/prefer-expect-assertions': 0, // when testing `vitest.configs.all.rules`
+      'vitest/prefer-expect-assertions': 0, // when testing `vitest.configs.all.rules`
+      'vitest/prefer-todo': 1,
       'vitest/require-to-throw-message': 1,
     },
     languageOptions: {

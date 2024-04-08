@@ -3,6 +3,9 @@ import { MILLISECONDS_PER_DAY } from './const.js'
 /**
  * Calculate the difference between 2 dates in days, discarding the time of day.
  *
+ * @todo Consider renaming it daysDiff when there’s a breaking change, since it
+ * can returns a negative number when date > furtherDate.
+ *
  * @param {Date} date The oldest of the two dates.
  * @param {Date} furtherDate Another date, greater than the first one.
  * @returns {number}
