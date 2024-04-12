@@ -35,8 +35,7 @@ export function datetime(date = (new Date()), precision = 'day') {
   if (year > 9999) {
     [bigYearDigits, year] = (year / 10000).toFixed(4).split('.')
 
-    // Clone date (to leave it untouched) and set a 4-digits year in the clone.
-    date = new Date(date)
+    // Set a 4-digits year.
     date.setFullYear(year)
   }
 
