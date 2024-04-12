@@ -34,14 +34,25 @@ export function datetime(date = (new Date()), precision = 'day') {
   // Cut last 4 digits of the year from the others to ease further computation.
   if (year > 9999) {
     [bigYearDigits, year] = (year / 10000).toFixed(4).split('.')
+    year = parseInt(year)
 
-    // Clone date (to leave it untouched) and set a 4-digits year in the clone.
-    date = new Date(date)
+    // Set a 4-digits year.
     date.setFullYear(year)
   }
 
+  /**
+   * If the week started the previous year (see `weekNumber` documentation) and
+   * the requested precision is 'week', we decrement the year by 1.
+   */
+
+  const weekNum = precision == 'week' ? weekNumber(date) : null
+
+  if (weekNum == 53 && date.getMonth() == 0) {
+    year--
+  }
+
   // Local datetime at milliseconds precision (1960-04-27T00:00:00.123)
-  const localMs = p(year.toString(), 4) // zero-pad years, as per spec
+  const localMs = p(year, 4) // zero-pad years, as per spec
     + '-' + p(date.getMonth() + 1) // `+ 1` because 0 is January and 11 is December
     + '-' + p(date.getDate())
     + 'T' + p(date.getHours())
@@ -49,23 +60,23 @@ export function datetime(date = (new Date()), precision = 'day') {
     + ':' + p(date.getSeconds())
     + '.' + p(date.getMilliseconds(), 3)
 
-  const addSignAndYearDigits = shouldAdd => shouldAdd ? sign + bigYearDigits : ''
+  const withSignAndYearDigits = shouldAdd => shouldAdd ? sign + bigYearDigits : ''
 
   /**
    * Extract substring from local date. When `start` is 0, the year is wanted:
    * its sign and missing digits (for years with 5+ digits) are prepended.
    */
 
-  const local = (start, length) => addSignAndYearDigits(!start) + localMs.substr(start, length)
-  const utc = (start, length) => addSignAndYearDigits(!start) + date.toJSON().substr(start, length) + 'Z'
+  const local = (start, length) => withSignAndYearDigits(!start) + localMs.substr(start, length)
+  const utc = (start, length) => withSignAndYearDigits(!start) + date.toJSON().substr(start, length) + 'Z'
 
   const formats = {
     'year': () => local(0, 4),   // 1960
     'month': () => local(0, 7),  // 1960-04
     'day': () => local(0, 10),   // 1960-04-27
 
-    'week': () => local(0, 5) + 'W' + p(weekNumber(date)), // 1960-W17
-    'yearless': () => local(5, 5),      // 04-27
+    'week': () => local(0, 5) + 'W' + p(weekNum), // 1960-W17
+    'yearless': () => local(5, 5), // 04-27
 
     'time': () => local(11, 5),   // 00:00
     'second': () => local(11, 8), // 00:00:00
