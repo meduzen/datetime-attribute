@@ -52,7 +52,7 @@ export function datetime(date = (new Date()), precision = 'day') {
   }
 
   // Local datetime at milliseconds precision (1960-04-27T00:00:00.123)
-  const localMs = p(year.toString(), 4) // zero-pad years, as per spec
+  const localMs = p(year, 4) // zero-pad years, as per spec
     + '-' + p(date.getMonth() + 1) // `+ 1` because 0 is January and 11 is December
     + '-' + p(date.getDate())
     + 'T' + p(date.getHours())
