@@ -44,12 +44,10 @@ export function datetime(date = (new Date()), precision = 'day') {
    * If the week started the previous year (see `weekNumber` documentation) and
    * the requested precision is 'week', we decrement the year by 1.
    */
-  if (
-    precision == 'week'
-    && date.getMonth() == 0 // January
-    && date.getDate() < 4 // month date: 1, 2 or 3
-    && (getNormalizeDay(date)) > 4 // Fri., Sat. or Sun. (normalized as Sun. == 0)
-  ) {
+
+  const weekNum = precision == 'week' ? weekNumber(date) : null
+
+  if (weekNum == 53 && date.getMonth() == 0) {
     year--
   }
 
@@ -77,7 +75,7 @@ export function datetime(date = (new Date()), precision = 'day') {
     'month': () => local(0, 7),  // 1960-04
     'day': () => local(0, 10),   // 1960-04-27
 
-    'week': () => local(0, 5) + 'W' + p(weekNumber(date)), // 1960-W17
+    'week': () => local(0, 5) + 'W' + p(weekNum), // 1960-W17
     'yearless': () => local(5, 5), // 04-27
 
     'time': () => local(11, 5),   // 00:00
