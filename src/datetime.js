@@ -62,15 +62,15 @@ export function datetime(date = (new Date()), precision = 'day') {
     + ':' + p(date.getSeconds())
     + '.' + p(date.getMilliseconds(), 3)
 
-  const addSignAndYearDigits = shouldAdd => shouldAdd ? sign + bigYearDigits : ''
+  const withSignAndYearDigits = shouldAdd => shouldAdd ? sign + bigYearDigits : ''
 
   /**
    * Extract substring from local date. When `start` is 0, the year is wanted:
    * its sign and missing digits (for years with 5+ digits) are prepended.
    */
 
-  const local = (start, length) => addSignAndYearDigits(!start) + localMs.substr(start, length)
-  const utc = (start, length) => addSignAndYearDigits(!start) + date.toJSON().substr(start, length) + 'Z'
+  const local = (start, length) => withSignAndYearDigits(!start) + localMs.substr(start, length)
+  const utc = (start, length) => withSignAndYearDigits(!start) + date.toJSON().substr(start, length) + 'Z'
 
   const formats = {
     'year': () => local(0, 4),   // 1960
@@ -78,7 +78,7 @@ export function datetime(date = (new Date()), precision = 'day') {
     'day': () => local(0, 10),   // 1960-04-27
 
     'week': () => local(0, 5) + 'W' + p(weekNumber(date)), // 1960-W17
-    'yearless': () => local(5, 5),      // 04-27
+    'yearless': () => local(5, 5), // 04-27
 
     'time': () => local(11, 5),   // 00:00
     'second': () => local(11, 8), // 00:00:00
