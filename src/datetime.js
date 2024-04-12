@@ -1,4 +1,4 @@
-import { getNormalizeDay, weekNumber } from './utils/date.js'
+import { weekNumber } from './utils/date.js'
 import { p } from './utils/string.js'
 import { tzOffset } from './timezone.js'
 import { config } from './config/datetime.js'
