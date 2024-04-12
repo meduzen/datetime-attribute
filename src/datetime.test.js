@@ -106,7 +106,7 @@ describe('datetime', () => {
       expect(datetime(january19th, 'week')).toBe('2021-W03')
     })
 
-    // 1st day of the month is after Thurdsay
+    // 1st day of the month is after Thurdsay, but it’s not in January
     test('week on 2021-03-01 is 2021-W17', () => {
       const march1st2021 = new Date(2021, 4, 1)
       expect(getNormalizeDay(march1st2021)).toBeGreaterThan(4)

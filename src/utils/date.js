@@ -35,7 +35,7 @@ export function daysBetween(date, furtherDate) {
  * @returns {number}
  */
 export function weekNumber(date) {
-  const dayIndex = getNormalizeDay(date) // normalize index because Sunday == 0
+  const dayIndex = getNormalizeDay(date)
 
   const sameWeekThursday = new Date(date)
   sameWeekThursday.setDate(date.getDate() + 4 - dayIndex)
@@ -47,7 +47,7 @@ export function weekNumber(date) {
 }
 
 /**
- * Get the day index of the week, except Sunday is 7 instead of 0.
+ * Get the day index of the week, but Sunday is now 7 instead of 0.
  *
  * @param {Date} date
  * @returns {number}
