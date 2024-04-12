@@ -1,4 +1,4 @@
-import { weekNumber } from './utils/date.js'
+import { getNormalizeDay, weekNumber } from './utils/date.js'
 import { p } from './utils/string.js'
 import { tzOffset } from './timezone.js'
 import { config } from './config/datetime.js'
@@ -34,9 +34,23 @@ export function datetime(date = (new Date()), precision = 'day') {
   // Cut last 4 digits of the year from the others to ease further computation.
   if (year > 9999) {
     [bigYearDigits, year] = (year / 10000).toFixed(4).split('.')
+    year = parseInt(year)
 
     // Set a 4-digits year.
     date.setFullYear(year)
+  }
+
+  /**
+   * If the week started the previous year (see `weekNumber` documentation) and
+   * the requested precision is 'week', we decrement the year by 1.
+   */
+  if (
+    precision == 'week'
+    && date.getMonth() == 0 // January
+    && date.getDate() < 4 // month date: 1, 2 or 3
+    && (getNormalizeDay(date)) > 4 // Fri., Sat. or Sun. (normalized as Sun. == 0)
+  ) {
+    year--
   }
 
   // Local datetime at milliseconds precision (1960-04-27T00:00:00.123)
