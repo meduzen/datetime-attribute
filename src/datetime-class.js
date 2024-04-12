@@ -11,12 +11,19 @@ export class DateTime extends Date {
    * - the first week of the year includes a Thursday;
    * - week numbers go from 1 to 53 (https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#week-number-of-the-last-day).
    *
+   * @todo: cache the result of weekNumber as long as date isn’t changed:
+   * compare the current object timestamp wuth a stored/cached one in
+   * order to decide if the cache is stale.
+   *
    * @returns {number}
    */
   getWeek = () => weekNumber(this)
 
   /**
    * Set the week number.
+   *
+   * If the week number is outside the year range, the `DateTime` object is
+   * updated accordingly.
    *
    * @param {number} weekNumber
    * @returns {number} Milliseconds since midnight on January 1, 1970, UTC

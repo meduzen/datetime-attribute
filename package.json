@@ -13,13 +13,13 @@
     "types": "tsc",
     "test": "vitest run",
     "test:types": "pnpm exec tsd",
-    "test:ui": "vitest --ui",
-    "coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui --coverage.enabled --coverage.exclude=types",
+    "coverage": "vitest run --coverage --coverage.exclude=types",
     "watch": "vitest watch",
     "build": "echo \"Nothing to build, this command is only here to please size-limit GitHub action\" && exit 0",
     "size": "size-limit",
-    "lint": "pnpm exec eslint src/**/*.js tests/index.test.js",
-    "lint-fix": "pnpm exec eslint src/**/*.js tests/index.test.js --fix"
+    "lint": "pnpm exec eslint",
+    "lint-fix": "pnpm exec eslint --fix"
   },
   "files": [
     "CHANGELOG.md",
@@ -49,14 +49,17 @@
     "access": "public"
   },
   "devDependencies": {
-    "@size-limit/preset-small-lib": "^11.0.2",
-    "@vitest/coverage-v8": "^1.3.1",
-    "@vitest/ui": "^1.3.1",
-    "eslint": "^8.57.0",
-    "size-limit": "^11.0.2",
+    "@eslint/js": "^9.0.0",
+    "@size-limit/preset-small-lib": "^11.1.2",
+    "@vitest/coverage-v8": "^1.4.0",
+    "@vitest/ui": "^1.4.0",
+    "eslint": "^9.0.0",
+    "eslint-plugin-vitest": "0.4.2-beta.5",
+    "size-limit": "^11.1.2",
     "tsd": "^0.31.0",
-    "typescript": "^5.3.3",
-    "vitest": "^1.3.1"
+    "typescript": "^5.4.4",
+    "typescript-eslint": "^7.6.0",
+    "vitest": "^1.4.0"
   },
   "pnpm": {
     "overrides": {

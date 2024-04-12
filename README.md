@@ -411,11 +411,11 @@ Calculate the difference between 2 dates in days, **discarding the time of day**
 ```js
 import { daysBetween } from 'datetime-attribute'
 
-const january1st = new Date(2021, 0, 1, 10, 10, 12)
+const january1st2021 = new Date(2021, 0, 1, 10, 10, 12)
 const january11th = new Date(2021, 0, 11, 10, 10, 12)
 const january19th = new Date(2021, 0, 19, 10, 10, 12)
 
-daysBetween(january1st, january11th) // 10
+daysBetween(january1st2021, january11th) // 10
 daysBetween(january19th, january11th) // -8
 ```
 
@@ -433,12 +433,12 @@ It accepts a `Date` object.
 ```js
 import { weekNumber } from 'datetime-attribute'
 
-const january1st = new Date(2021, 0, 1, 10, 10, 12)
+const january1st2021 = new Date(2021, 0, 1, 10, 10, 12)
 const january11th = new Date(2021, 0, 11, 10, 10, 12)
 const togoIndependanceDay = new Date(1960, 3, 27)
 
 weekNumber(togoIndependanceDay) // 17
-weekNumber(january1st) // 53: it’s a Friday!
+weekNumber(january1st2021) // 53: it’s a Friday!
 weekNumber(january11th) // 2
 ```
 

@@ -1,6 +1,6 @@
 /**
  * @typedef {Object} TimezoneOptions
- * @property {(':'|'')=} separator
+ * @property {(':'|'')} separator
  */
 
 /**
@@ -32,7 +32,7 @@ export const setTzConfig = options => {
 /**
  * Set timezone separator
  *
- * @param {(':'|'')=} separator
+ * @param {(':'|'')} [separator='']
  * @returns {TimezoneOptions}
  */
 export const setTzSeparator = (separator = '') => setTzConfig({ separator })

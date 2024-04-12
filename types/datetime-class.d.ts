@@ -13,6 +13,9 @@ export class DateTime extends Date {
     /**
      * Set the week number.
      *
+     * If the week number is outside the year range, the `DateTime` object is
+     * updated accordingly.
+     *
      * @param {number} weekNumber
      * @returns {number} Milliseconds since midnight on January 1, 1970, UTC
      */

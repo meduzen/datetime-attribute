@@ -8,6 +8,22 @@ Nothing for now.
 
 Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.3.3...main).
 
+### Fixed
+
+- Fix incorrect year for `datetime(date, 'week')` when the week started the previous year. For example, `2021-01-01` is a Friday and its week belongs to 2020 (as [per spec](./README.md#weeknumber)). In that case, the output was `2021-53` instead of `2020-53`.
+
+### Improved
+
+- Improve type definitions where `?` and `undefined` are redundant by removing `undefined`:
+  - for some signatures of optional parameters from `datetime(date?: Date | undefined` to `datetime(date?: Date`
+  - for some optional properties from `{ w?: number | undefined }` to `{ w?: number }`
+
+### Under the hood
+
+- Enforce type definitions for optional properties of the internal config functions `setConfig` and `setTzConfig`: it was possible to omit their `separator` property, it’s not anymore.
+- Upgrade ESLint from 8 to [9](https://eslint.org/blog/2024/04/eslint-v9.0.0-released/) and lint tests using [`eslint-plugin-vitest`](https://github.com/veritem/eslint-plugin-vitest).
+- Split test file and move tests closer to the code.
+
 ## v1.3.3 (2024-02-23)
 
 Compare with [previous version](https://github.com/meduzen/datetime-attribute/compare/1.3.2...1.3.3).

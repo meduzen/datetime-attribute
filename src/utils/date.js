@@ -3,6 +3,9 @@ import { MILLISECONDS_PER_DAY } from './const.js'
 /**
  * Calculate the difference between 2 dates in days, discarding the time of day.
  *
+ * @todo Consider renaming it daysDiff when there’s a breaking change, since it
+ * can returns a negative number when date > furtherDate.
+ *
  * @param {Date} date The oldest of the two dates.
  * @param {Date} furtherDate Another date, greater than the first one.
  * @returns {number}
@@ -32,7 +35,7 @@ export function daysBetween(date, furtherDate) {
  * @returns {number}
  */
 export function weekNumber(date) {
-  const dayIndex = date.getDay() || 7 // normalize index because Sunday == 0
+  const dayIndex = getNormalizeDay(date)
 
   const sameWeekThursday = new Date(date)
   sameWeekThursday.setDate(date.getDate() + 4 - dayIndex)
@@ -42,3 +45,11 @@ export function weekNumber(date) {
 
   return Math.ceil(daysDifference / 7)
 }
+
+/**
+ * Get the day index of the week, but Sunday is now 7 instead of 0.
+ *
+ * @param {Date} date
+ * @returns {number}
+ */
+export const getNormalizeDay = date => date.getDay() || 7
