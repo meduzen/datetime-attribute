@@ -3,16 +3,16 @@
 Get a [`datetime` attribute](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/datetime) for HTML `<time>` (and [other elements](#not-only-in-time)).
 
 It covers the [whole WHATWG specification](https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-time-datetime) in 4 functions:
-- [**`datetime()`**](#expressing-moments-with-datetime) for a specific moment ([645 B compressed](https://bundlejs.com/?q=datetime-attribute&treeshake=[{datetime}]&bundle));
-- [**`datetimeTz()`**](#adding-a-timezone-offset-to-a-moment-with-datetimetz) for a specific moment in a given timezone ([942 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{datetimeTz}]&bundle));
-- [**`duration()`**](#expressing-durations-with-duration) for a duration ([307 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{duration}]&bundle));
-- [**`tzOffset()`**](#expressing-timezone-offsets-with-tzoffset) for a timezone offset ([388 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{tzOffset}]&bundle)).
+- [**`datetime()`**](#expressing-moments-with-datetime) for a specific moment ([641 B compressed](https://bundlejs.com/?q=datetime-attribute&treeshake=[{datetime}]&config={"compression"%3A"brotli"}&bundle));
+- [**`datetimeTz()`**](#adding-a-timezone-offset-to-a-moment-with-datetimetz) for a specific moment in a given timezone ([903 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{datetimeTz}]&config={"compression"%3A"brotli"}&bundle));
+- [**`duration()`**](#expressing-durations-with-duration) for a duration ([284 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{duration}]&config={"compression"%3A"brotli"}&bundle));
+- [**`tzOffset()`**](#expressing-timezone-offsets-with-tzoffset) for a timezone offset ([332 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{tzOffset}]&config={"compression"%3A"brotli"}&bundle)).
 
-Additionally, a [`DateTime` class](#the-datetime-class) ([721 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{DateTime}]&bundle)) and some [other functions](#other-functions) are provided.
+Additionally, a [`DateTime` class](#the-datetime-class) ([710 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{DateTime}]&config={"compression"%3A"brotli"}&bundle)) and some [other functions](#other-functions) are provided.
 
 [![Node.js CI](https://github.com/meduzen/datetime-attribute/actions/workflows/node.js.yml/badge.svg)](https://github.com/meduzen/datetime-attribute/actions/workflows/node.js.yml)
 
-The package is lightweight ([~ 1.42 KB compressed](https://bundlejs.com/?q=datetime-attribute&bundle) for `import *`), tree-shakeable, typed and tested.
+The package is lightweight ([~ 1.37 KB compressed](https://bundlejs.com/?q=datetime-attribute&config={"compression"%3A"brotli"}&bundle) for `import *`), tree-shakeable, typed and tested.
 
 ## Table of contents
 
@@ -419,7 +419,7 @@ daysBetween(january1st2021, january11th) // 10
 daysBetween(january19th, january11th) // -8
 ```
 
-([134 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{daysBetween}]&bundle))
+([110 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{daysBetween}]&config={"compression"%3A"brotli"}&bundle))
 
 ### `weekNumber()`
 
@@ -442,7 +442,7 @@ weekNumber(january1st2021) // 53: it’s a Friday!
 weekNumber(january11th) // 2
 ```
 
-([201 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{weekNumber}]&bundle))
+([183 B](https://bundlejs.com/?q=datetime-attribute&treeshake=[{weekNumber}]&config={"compression"%3A"brotli"}&bundle))
 
 ## Changelog
 

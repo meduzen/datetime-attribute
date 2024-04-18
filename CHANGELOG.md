@@ -6,17 +6,25 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 Nothing for now.
 
-Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.3.3...main).
+Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.3.4...main).
+
+## v1.3.4 (2024-04-18)
+
+Compare with [previous version](https://github.com/meduzen/datetime-attribute/compare/1.3.3...1.3.4).
 
 ### Fixed
 
-- Fix incorrect year for `datetime(date, 'week')` when the week started the previous year. For example, `2021-01-01` is a Friday and its week belongs to 2020 (as [per spec](./README.md#weeknumber)). In that case, the output was `2021-53` instead of `2020-53`.
+- Fix incorrect year for `datetime(date, 'week')` when the week started the previous year. For example, `2021-01-01` is a Friday and its week belongs to 2020 (as [per spec](./README.md#weeknumber)). In that case, the output was `2021-W53` instead of `2020-W53`.
 
 ### Improved
 
 - Improve type definitions where `?` and `undefined` are redundant by removing `undefined`:
   - for some signatures of optional parameters from `datetime(date?: Date | undefined` to `datetime(date?: Date`
   - for some optional properties from `{ w?: number | undefined }` to `{ w?: number }`
+
+### Documentation
+
+- Use brotli compression instead of gzip one to express the module size.
 
 ### Under the hood
 
