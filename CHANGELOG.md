@@ -22,6 +22,10 @@ Compare with [previous version](https://github.com/meduzen/datetime-attribute/co
   - for some signatures of optional parameters from `datetime(date?: Date | undefined` to `datetime(date?: Date`
   - for some optional properties from `{ w?: number | undefined }` to `{ w?: number }`
 
+### Documentation
+
+- Use brotli compression instead of gzip one to express the module size.
+
 ### Under the hood
 
 - Enforce type definitions for optional properties of the internal config functions `setConfig` and `setTzConfig`: it was possible to omit their `separator` property, it’s not anymore.
