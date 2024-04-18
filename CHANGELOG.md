@@ -10,7 +10,7 @@ Compare with [last published version](https://github.com/meduzen/datetime-attrib
 
 ### Fixed
 
-- Fix incorrect year for `datetime(date, 'week')` when the week started the previous year. For example, `2021-01-01` is a Friday and its week belongs to 2020 (as [per spec](./README.md#weeknumber)). In that case, the output was `2021-53` instead of `2020-53`.
+- Fix incorrect year for `datetime(date, 'week')` when the week started the previous year. For example, `2021-01-01` is a Friday and its week belongs to 2020 (as [per spec](./README.md#weeknumber)). In that case, the output was `2021-W53` instead of `2020-W53`.
 
 ### Improved
 
