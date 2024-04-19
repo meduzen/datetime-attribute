@@ -16,7 +16,7 @@ import { config } from './config/datetime.js'
  * @param {Precision} [precision='day']
  * @returns {string}
  */
-export function datetime(date = (new Date()), precision = 'day') {
+export function datetime(date = new Date(), precision = 'day') {
   if (!(date instanceof Date)) {
     throw new TypeError('Input date should be of type `Date`')
   }
@@ -110,7 +110,7 @@ export function datetime(date = (new Date()), precision = 'day') {
  * @param {'datetime'|'datetime second'|'datetime ms'|'time'|'second'|'ms'} [precision=datetime]
  * @returns {string}
  */
-export const utc = (date = (new Date()), precision = 'datetime') => datetime(date, `${precision} utc`)
+export const utc = (date = new Date(), precision = 'datetime') => datetime(date, `${precision} utc`)
 
 /**
  * Create `datetime="2021-12-02T17:34-06:00"` attribute for `<time>`.
