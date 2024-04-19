@@ -1,4 +1,3 @@
-import { weekNumber } from './utils/date.js'
 import { p } from './utils/string.js'
 import { tzOffset } from './timezone.js'
 import { config } from './config/datetime'
@@ -53,7 +52,7 @@ export function datetime(date = new Date(), precision = 'day') {
     month: () => Temporal.PlainYearMonth.from(zoned), // 1960-04
     day: () => Temporal.PlainDate.from(zoned), // 1960-04-27
 
-    week: () => date.getFullYear() + '-W' + p(weekNumber(date)), // 1960-W17
+    week: () => zoned.yearOfWeek + '-W' + p(zoned.weekOfYear), // 1960-W17
     yearless: () => Temporal.PlainMonthDay.from(zoned), // 04-27
 
     time: () => Temporal.PlainTime.from(zoned).toString({ smallestUnit: 'minutes' }), // 00:00
