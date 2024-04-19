@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest'
 
 import { datetime, datetimeTz, tzOffset, utc } from './index.js'
-import { getNormalizeDay } from './utils/date.js'
+import { getTemporalDay } from './utils/date.js'
 
 const togoIndependanceDay = new Date(1960, 3, 27)
 const date = togoIndependanceDay // alias for the sake of brevity
@@ -90,7 +90,7 @@ describe('datetime', () => {
 
     // 1st day of the year is after Thurdsay
     test('week on 2021-01-01 is 2020-W53', () => {
-      expect(getNormalizeDay(january1st2021)).toBeGreaterThan(4)
+      expect(getTemporalDay(january1st2021)).toBeGreaterThan(4)
       expect(datetime(january1st2021, 'week')).toBe('2020-W53')
     })
 
@@ -109,7 +109,7 @@ describe('datetime', () => {
     // 1st day of the month is after Thurdsay, but it’s not in January
     test('week on 2021-03-01 is 2021-W17', () => {
       const march1st2021 = new Date(2021, 4, 1)
-      expect(getNormalizeDay(march1st2021)).toBeGreaterThan(4)
+      expect(getTemporalDay(march1st2021)).toBeGreaterThan(4)
       expect(datetime(march1st2021, 'week')).toBe('2021-W17')
     })
 

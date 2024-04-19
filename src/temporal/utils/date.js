@@ -35,4 +35,4 @@ export const weekNumber = date => dateToPlainDate(date).weekOfYear
  * @param {Date} date
  * @returns {number}
  */
-export const getNormalizeDay = date => date.getDay() || 7
+export const getTemporalDay = date => dateToPlainDate(date).dayOfWeek
