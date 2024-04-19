@@ -28,3 +28,11 @@ export const daysBetween = (date, furtherDate) => dateToPlainDate(date).until(da
  */
 export const weekNumber = date => dateToPlainDate(date).weekOfYear
 // export const weekNumber = date => date.toTemporalInstant().toZonedDateTimeISO('UTC').weekOfYear
+
+/**
+ * Get the day index of the week, but Sunday is now 7 instead of 0.
+ *
+ * @param {Date} date
+ * @returns {number}
+ */
+export const getNormalizeDay = date => date.getDay() || 7

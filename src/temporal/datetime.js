@@ -24,7 +24,7 @@ export function datetime(date = new Date(), precision = 'day') {
     throw new TypeError('Input date should be of type `Date`')
   }
 
-  const instant = date.toTemporalInstant();
+  const instant = date.toTemporalInstant()
   const zoned = instant.toZonedDateTimeISO(Temporal.Now.timeZoneId())
 
   const yearISO = y => {
