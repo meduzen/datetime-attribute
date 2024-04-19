@@ -6,7 +6,7 @@
 
 import { Temporal } from '@js-temporal/polyfill'
 // import { Temporal } from 'temporal-polyfill'
-import { round } from './utils/math'
+import { round } from './utils/math.js'
 
 /**
  * Create `datetime="P3DT2H8M32.541S"` duration attribute for `<time>`.

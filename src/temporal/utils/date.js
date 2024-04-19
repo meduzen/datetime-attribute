@@ -4,7 +4,7 @@
  * - make sur to understand zoned datetime (https://tc39.es/proposal-temporal/docs/zoneddatetime.html#weekOfYear)
  */
 
-import { dateToPlainDate } from './temporal'
+import { dateToPlainDate } from './temporal.js'
 
 /**
  * Calculate the difference between 2 dates in days, discarding the time of day.
