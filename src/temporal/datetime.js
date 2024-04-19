@@ -24,8 +24,10 @@ export function datetime(date = new Date(), precision = 'day') {
     throw new TypeError('Input date should be of type `Date`')
   }
 
+  const { Now, PlainDate, PlainDateTime, PlainMonthDay, PlainTime, PlainYearMonth, } = Temporal
+
   const instant = date.toTemporalInstant()
-  const zoned = instant.toZonedDateTimeISO(Temporal.Now.timeZoneId())
+  const zoned = instant.toZonedDateTimeISO(Now.timeZoneId())
 
   const yearISO = y => {
 
@@ -48,21 +50,21 @@ export function datetime(date = new Date(), precision = 'day') {
   // const iso = date.toISOString();
 
   const temporalFormat = {
-    year: () => yearISO(Temporal.PlainYearMonth.from(zoned).year), // 1960
+    year: () => yearISO(PlainYearMonth.from(zoned).year), // 1960
     // year: () => date.getFullYear(), // 1960
-    month: () => Temporal.PlainYearMonth.from(zoned), // 1960-04
-    day: () => Temporal.PlainDate.from(zoned), // 1960-04-27
+    month: () => PlainYearMonth.from(zoned), // 1960-04
+    day: () => PlainDate.from(zoned), // 1960-04-27
 
     week: () => zoned.yearOfWeek + '-W' + p(zoned.weekOfYear), // 1960-W17
-    yearless: () => Temporal.PlainMonthDay.from(zoned), // 04-27
+    yearless: () => PlainMonthDay.from(zoned), // 04-27
 
-    time: () => Temporal.PlainTime.from(zoned).toString({ smallestUnit: 'minutes' }), // 00:00
-    second: () => Temporal.PlainTime.from(zoned), // 00:00:00
-    ms: () => Temporal.PlainTime.from(zoned).toString({ smallestUnit: 'milliseconds' }), // 00:00:00.123
+    time: () => PlainTime.from(zoned).toString({ smallestUnit: 'minutes' }), // 00:00
+    second: () => PlainTime.from(zoned), // 00:00:00
+    ms: () => PlainTime.from(zoned).toString({ smallestUnit: 'milliseconds' }), // 00:00:00.123
 
-    datetime: () => Temporal.PlainDateTime.from(zoned).toString({ smallestUnit: 'minutes' }), // 1960-04-27T00:00
-    'datetime second': () => Temporal.PlainDateTime.from(zoned), // 1960-04-27T00:00:00
-    'datetime ms': () => Temporal.PlainDateTime.from(zoned).toString({ smallestUnit: 'milliseconds' }), // 1960-04-27T00:00:00.123
+    datetime: () => PlainDateTime.from(zoned).toString({ smallestUnit: 'minutes' }), // 1960-04-27T00:00
+    'datetime second': () => PlainDateTime.from(zoned), // 1960-04-27T00:00:00
+    'datetime ms': () => PlainDateTime.from(zoned).toString({ smallestUnit: 'milliseconds' }), // 1960-04-27T00:00:00.123
 
     'datetime utc': () => instant.toString({ smallestUnit: 'minute' }), // 1960-04-26T23:00Z
     'datetime second utc': () => instant, // 1960-04-26T23:00:00Z
