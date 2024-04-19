@@ -8,10 +8,8 @@ import {
 import { p } from './utils/string.js'
 import { tzConfig } from './config/tz.js'
 
-import { Temporal, toTemporalInstant } from '@js-temporal/polyfill'
-// import { Temporal, toTemporalInstant } from 'temporal-polyfill'
-
-Date.prototype.toTemporalInstant = toTemporalInstant
+import { Temporal } from '@js-temporal/polyfill'
+// import { Temporal } from 'temporal-polyfill'
 
 /**
  * Create `datetime="+04:00"` timezone attribute for `<time>`.

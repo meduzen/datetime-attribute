@@ -4,7 +4,6 @@
  * - add support for sub-second units (ms, mis, ns)
  */
 
-// Date.prototype.toTemporalInstant = toTemporalInstant
 import { Temporal } from '@js-temporal/polyfill'
 // import { Temporal } from 'temporal-polyfill'
 import { round } from './utils/math'
