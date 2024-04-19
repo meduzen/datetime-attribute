@@ -9,6 +9,7 @@ import { p } from './utils/string.js'
 import { tzConfig } from './config/tz.js'
 
 import { Temporal, toTemporalInstant } from '@js-temporal/polyfill'
+// import { Temporal, toTemporalInstant } from 'temporal-polyfill'
 
 Date.prototype.toTemporalInstant = toTemporalInstant
 

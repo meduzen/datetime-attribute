@@ -2,6 +2,7 @@ import { p } from './utils/string.js'
 import { tzOffset } from './timezone.js'
 import { config } from './config/datetime'
 import { Temporal, toTemporalInstant } from '@js-temporal/polyfill'
+// import { Temporal, toTemporalInstant } from 'temporal-polyfill'
 
 Date.prototype.toTemporalInstant = toTemporalInstant
 
