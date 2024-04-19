@@ -1,6 +1,6 @@
 import { MILLISECONDS_PER_WEEK } from './utils/const.js'
 import { datetime, weekNumber } from './index.js'
-import { Temporal } from '@js-temporal/polyfill'
+// import { Temporal } from '@js-temporal/polyfill'
 
 export class DateTime extends Date {
 
