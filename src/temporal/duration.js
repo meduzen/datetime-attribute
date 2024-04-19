@@ -16,8 +16,10 @@ import { round } from './utils/math.js'
  *
  * See also: https://www.brucelawson.co.uk/2012/best-of-time/
  *
- * @param {DurationObject} duration
- * @param {boolean} convertExcess
+ * @param {DurationObject} [duration={}]
+ * @param {boolean} [convertExcess=true] Convert overflow values to their
+ *                                       higher unit (e.g. `{ m: 90 }`
+ *                                       equals `{ h: 1, m: 30 }`.
  * @returns {string}
  */
 export function duration(duration = {}, convertExcess = true) {
@@ -71,16 +73,16 @@ export function duration(duration = {}, convertExcess = true) {
 /**
  * @typedef {Object} DurationObject
  *
- * @property {number=} y – Number of years
- * @property {number=} mo – Number of months
- * @property {number=} w – Number of weeks
- * @property {number=} d – Number of days
- * @property {number=} h – Number of hours
- * @property {number=} m – Number of minutes
- * @property {number=} s – Number of seconds
- * @property {number=} ms – Number of milliseconds
- * @property {number=} mis – Number of microseconds
- * @property {number=} ns – Number of nanoseconds
+ * @property {number} [y=0] – Number of years
+ * @property {number} [mo=0] – Number of months
+ * @property {number} [w=0] – Number of weeks
+ * @property {number} [d=0] – Number of days
+ * @property {number} [h=0] – Number of hours
+ * @property {number} [m=0] – Number of minutes
+ * @property {number} [s=0] – Number of seconds
+ * @property {number} [ms=0] – Number of milliseconds
+ * @property {number} [mis=0] – Number of microseconds
+ * @property {number} [ns=0] – Number of nanoseconds
 *
  * The chosen propertie abbreviations follow the spec algorithm:
  * https://tc39.es/proposal-temporal/#sec-temporal.duration

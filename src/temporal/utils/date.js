@@ -9,6 +9,9 @@ import { dateToPlainDate } from './temporal.js'
 /**
  * Calculate the difference between 2 dates in days, discarding the time of day.
  *
+ * @todo Consider renaming it daysDiff when there’s a breaking change, since it
+ * can returns a negative number when date > furtherDate.
+ *
  * @param {Date} date The oldest of the two dates.
  * @param {Date} furtherDate Another date, greater than the first one.
  * @returns {number}
@@ -30,7 +33,7 @@ export const weekNumber = date => dateToPlainDate(date).weekOfYear
 // export const weekNumber = date => date.toTemporalInstant().toZonedDateTimeISO('UTC').weekOfYear
 
 /**
- * Get the day index of the week, but Sunday is now 7 instead of 0.
+ * Get the day index of the week, Monday is 1 and Sunday is 7.
  *
  * @param {Date} date
  * @returns {number}

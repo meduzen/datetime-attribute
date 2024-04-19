@@ -1,6 +1,6 @@
 /**
  * @typedef {Object} DateTimeOptions
- * @property {('T'|' ')=} separator
+ * @property {('T'|' ')} separator
  */
 
 /**
@@ -32,7 +32,7 @@ export const setConfig = options => {
 /**
  * Set separator between date and time
  *
- * @param {('T'|' ')=} separator
+ * @param {('T'|' ')} [separator=T]
  * @returns {DateTimeOptions}
  */
 export const setTimeSeparator = (separator = 'T') => setConfig({ separator })
