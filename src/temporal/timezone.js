@@ -77,6 +77,8 @@ export function tzOffset(hours = 0, minutes = 0, inRealLifeBoundaries = false) {
    */
   let zonedTime = utcMidnight.add({ minutes })
 
+  if (!zonedTime.hour && !zonedTime.minute) { return 'Z' }
+
   /**
    * Offset sign: `+` (UTC > 0) or `-` (UTC < 0).
    * We don’t have condition when minutes is 0: `'Z'` was returned earlier.
