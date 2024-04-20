@@ -219,7 +219,7 @@ tzOffset(0)      //      'Z' (Ghana; 'Z' is equal to '+00:00')
 
 // in Belgium
 tzOffset()       // '+01:00'
-tzOffset()       // '+02:00' (under daylight time saving)
+tzOffset()       // '+02:00' (under daylight saving time)
 ```
 
 ### Hours-minutes separator
@@ -254,7 +254,7 @@ tzOffset(44) // '+20:00'
 tzOffset(44, 0, true) // '-04:00'
 ```
 
-Curious about timezones? Have a look at [the timezone map](https://fr.m.wikipedia.org/wiki/Fichier:World_Time_Zones_Map.png) and the [daylight time saving chaos](https://en.wikipedia.org/wiki/Daylight_saving_time_by_country).
+Curious about timezones? Have a look at [the timezone map](https://fr.m.wikipedia.org/wiki/Fichier:World_Time_Zones_Map.png) and the [daylight saving time chaos](https://en.wikipedia.org/wiki/Daylight_saving_time_by_country).
 
 ## Adding a timezone offset to a moment with `datetimeTz()`
 
@@ -299,7 +299,7 @@ datetimeTz(now, 'time', -3, 30) // '23:51-03:30'
 datetimeTz(now, 'time', -14, 0, true) // '23:51+10:00'
 ```
 
-`datetimeTz()` **does not convert** your moment to another timezone: it **only adds the wanted timezone** to the moment. Its purpose is to generate a valid `datetime` attribute saying “here’s a moment, it has this [hours, minutes] timezone offset”.
+`datetimeTz()` **does not convert** your moment to another timezone: it **only adds the wanted timezone** to the moment. Its purpose is to generate a valid `datetime` attribute saying “here’s a moment, it has this [hours, minutes and] timezone offset”.
 
 Let’s take this sentence and its  HTML:
 
