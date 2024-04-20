@@ -18,3 +18,4 @@ export function daysBetween(date: Date, furtherDate: Date): number;
  * @returns {number}
  */
 export function weekNumber(date: Date): number;
+export function getNormalizedDay(date: Date): number;
