@@ -58,7 +58,7 @@ datetime(now, 'time')           // '10:29'
 datetimeTz(now, 'datetime', -7) // '2021-03-14T10:29-07:00'
 utc(now, 'time')                // '09:29Z'
 
-tzOffset(-9, 30) // '-09:30' (Marquesas Islands)
+tzOffset(-9, -30) // '-09:30' (Marquesas Islands)
 duration({ d: 4, h: 3, m: 17 }) // 'P4DT3H17M'
 
 const importantMeeting = new DateTime(2021, 12, 17, 19, 00) // 17/11
@@ -209,8 +209,11 @@ import { tzOffset } from 'datetime-attribute'
 
 tzOffset(3)      // '+03:00' (Moscow)
 
-tzOffset(-9, 30) // '-09:30' (Marquesas Islands)
+tzOffset(-9, -30) // '-09:30' (Marquesas Islands)
 tzOffset(-9.5)   // '-09:30' (same with 1 parameter)
+
+tzOffset(5, -30) // '+04:30' (Afghanistan)
+tzOffset(5, 30)  // '+05:30' (India)
 
 tzOffset(0)      //      'Z' (Ghana; 'Z' is equal to '+00:00')
 
