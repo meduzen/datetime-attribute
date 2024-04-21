@@ -1,7 +1,7 @@
 import {
   MINUTES_PER_DAY,
-  REAL_LIFE_LOWER_TIMEZONE,
-  REAL_LIFE_UPPER_TIMEZONE,
+  IANA_LOWER_TIMEZONE,
+  IANA_UPPER_TIMEZONE,
   LOCAL_TZ_OFFSET,
 } from './utils/const.js'
 
@@ -48,14 +48,14 @@ export function tzOffset(hours = 0, minutes = 0, inRealLifeBoundaries = false) {
      */
 
     // Upper boundary
-    if (minutes > REAL_LIFE_UPPER_TIMEZONE) {
-      minutes -= suppressMinutesExcess(REAL_LIFE_UPPER_TIMEZONE)
+    if (minutes > IANA_UPPER_TIMEZONE) {
+      minutes -= suppressMinutesExcess(IANA_UPPER_TIMEZONE)
       return tzOffset(0, minutes, true)
     }
 
     // Lower boundary
-    if (minutes < REAL_LIFE_LOWER_TIMEZONE) {
-      minutes += suppressMinutesExcess(REAL_LIFE_LOWER_TIMEZONE)
+    if (minutes < IANA_LOWER_TIMEZONE) {
+      minutes += suppressMinutesExcess(IANA_LOWER_TIMEZONE)
       return tzOffset(0, minutes, true)
     }
   }
