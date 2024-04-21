@@ -183,7 +183,7 @@ datetime(now, 'datetime utc') // `2021-03-14T09:29Z`
 
 [Per spec](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#local-dates-and-times), the separator between date and time can be `T` (default) or ` ` (1 space).
 
-To change the separator, use `setTimeSeparator`:
+To change the separator globally, use `setTimeSeparator`:
 
 ```js
 import { setTimeSeparator } from 'datetime-attribute'
@@ -248,14 +248,14 @@ setTzSeparator(':')
 
 The timezone offset will always be adjusted to fit in the spec range (from `-23:59` to `+23:59`). This means `tzOffset(44)` will output `+20:00` instead of `+44:00`.
 
-However, timezone offsets of countries in the world are all between `-12:00` and `+14:00`. If you want `tzOffset(44)` to output `-04:00` so that it matches real-world boundaries, give it a third parameter (default: `false`):
+However, timezone offsets of countries in the world are all between `-12:00` and `+14:00`. If you want `tzOffset(44)` to output `-04:00` (instead of `+20:00`) so that it matches real-world boundaries, give it a third parameter (default: `false`):
 
 ```js
 tzOffset(44) // '+20:00'
 tzOffset(44, 0, true) // '-04:00'
 ```
 
-To change the behaviour globally, use `setTzInRealWorldRange`:
+To change the behaviour globally, use `setTzInRealWorldRange` (**unreleased**):
 
 ```js
 import { setTzInRealWorldRange } from 'datetime-attribute'
@@ -274,7 +274,7 @@ Curious about timezones? Have a look at [the timezone map](https://fr.m.wikipedi
 
 ### Timezone configuration
 
-If you need both timezone configuration functions described in the previous section (`setTzSeparator` for the [hours-minutes separator](#hours-minutes-separator) and `setTzInRealWorldRange` for [timezones boundaries](#real-world-timezone-offset)), you can directly use `tzConfig()`:
+If you need both timezone configuration functions described in the previous section (`setTzSeparator` for the [hours-minutes separator](#hours-minutes-separator) and `setTzInRealWorldRange` for [timezones boundaries](#real-world-timezone-offset)), you can directly use `tzConfig()` (**unreleased**):
 
 ```js
 import { setTzConfig } from 'datetime-attribute'
