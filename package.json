@@ -4,7 +4,13 @@
   "description": "Generate datetime attributes for the <time> HTML element, following WHATWG and ISO8601 specs.",
   "type": "module",
   "sideEffects": false,
-  "exports": "./src/index.js",
+  "exports": {
+    ".": {
+        "import": "./src/index.js",
+        "types": "./types/index.d.ts"
+    }
+  },
+  "types": "./types/index.d.ts",
   "engines": {
     "node": ">=12.8"
   },
@@ -24,9 +30,8 @@
   "files": [
     "CHANGELOG.md",
     "src/**/*.js",
-    "types/**/*.d.ts"
+    "types/index.d.ts"
   ],
-  "types": "./types/index.d.ts",
   "keywords": [
     "time",
     "datetime",
