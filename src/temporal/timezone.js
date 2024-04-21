@@ -19,10 +19,10 @@ import { Temporal } from '@js-temporal/polyfill'
  *
  * @param {number} [hours=0] The number of hours from UTC
  * @param {number} [minutes=0] The number of minutes from UTC
- * @param {boolean} [inRealLifeBoundaries=false] Make sure the timezone stays in spec boundaries.
+ * @param {import('./config/tz.js').TimezoneOptions['inRealWorldRange']} [inRealWorldRange=false] Make sure the timezone stays in spec boundaries.
  * @returns {string}
  */
-export function tzOffset(hours = 0, minutes = 0, inRealLifeBoundaries = false) {
+export function tzOffset(hours = 0, minutes = 0, inRealWorldRange = tzConfig.inRealWorldRange) {
 
   // No arguments received: the local timezone offset is returned.
   if (!('0' in arguments)) {
@@ -39,7 +39,7 @@ export function tzOffset(hours = 0, minutes = 0, inRealLifeBoundaries = false) {
   // Compute minutes to remove in order to suppress the excess of minutes.
   const suppressMinutesExcess = limit => Math.floor(minutes / limit) * MINUTES_PER_DAY
 
-  if (inRealLifeBoundaries) {
+  if (inRealWorldRange) {
 
     /**
      * Because lower and upper boundaries are not necessarily symetric,

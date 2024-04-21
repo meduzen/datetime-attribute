@@ -65,8 +65,18 @@
       "import": "{ setTzConfig }"
     },
     {
+      "name": "`setTzConfig` (Temporal)",
+      "path": "src/temporal/index.js",
+      "import": "{ setTzConfig }"
+    },
+    {
       "name": "`setTzInRealWorldRange`",
       "path": "src/index.js",
+      "import": "{ setTzInRealWorldRange }"
+    },
+    {
+      "name": "`setTzInRealWorldRange` (Temporal)",
+      "path": "src/temporal/index.js",
       "import": "{ setTzInRealWorldRange }"
     },
     {

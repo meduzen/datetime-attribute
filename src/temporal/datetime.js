@@ -1,6 +1,7 @@
 import { p } from './utils/string.js'
 import { tzOffset } from './timezone.js'
 import { config } from './config/datetime.js'
+import { tzConfig } from './config/tz.js'
 import { Temporal, toTemporalInstant } from '@js-temporal/polyfill'
 // import { Temporal, toTemporalInstant } from 'temporal-polyfill'
 
@@ -31,7 +32,7 @@ export function datetime(date = new Date(), precision = 'day') {
 
   const yearISO = y => {
 
-    // Year 0 doesn’t exists in real life, but does in the ISO-8601 spec.
+    // Year 0 doesn’t exists in real world, but does in the ISO-8601 spec.
     const sign = y < 0 ? '-' : '' // no sign if year is not negative
 
     // Remove sign (stored separately, see previous line).
@@ -87,7 +88,6 @@ export function datetime(date = new Date(), precision = 'day') {
  * - `datetime(someDate, 'somePrecision utc')`
  * - `utc(someDate, 'somePrecision')`
  *
- *
  * @param {Date} [date=new Date()] - default to now
  * @param {'datetime'|'datetime second'|'datetime ms'|'time'|'second'|'ms'} [precision=datetime]
  * @returns {string}
@@ -102,7 +102,7 @@ export const utc = (date = new Date(), precision = 'datetime') =>
  * @param {Precision} [precision=datetime]
  * @param {number} [offsetHours=0]
  * @param {number} [offsetMinutes=0]
- * @param {boolean} [inRealLifeBoundaries=false]
+ * @param {import('./config/tz.js').TimezoneOptions['inRealWorldRange']} [inRealWorldRange=false]
  * @returns {string}
  */
 export function datetimeTz(
@@ -110,7 +110,7 @@ export function datetimeTz(
   precision = 'datetime',
   offsetHours = 0,
   offsetMinutes = 0,
-  inRealLifeBoundaries = false,
+  inRealWorldRange = tzConfig.inRealWorldRange,
 ) {
   let timezoneOffset = ''
 
@@ -118,7 +118,7 @@ export function datetimeTz(
     // ignore request for UTC conversion
     timezoneOffset =
       '2' in arguments // see similar line in tzOffset()
-        ? tzOffset(offsetHours, offsetMinutes, inRealLifeBoundaries)
+        ? tzOffset(offsetHours, offsetMinutes, inRealWorldRange)
         : tzOffset()
   }
 
