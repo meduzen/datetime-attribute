@@ -1,7 +1,7 @@
 import {
   MINUTES_PER_DAY,
-  REAL_LIFE_LOWER_TIMEZONE,
-  REAL_LIFE_UPPER_TIMEZONE,
+  IANA_LOWER_TIMEZONE,
+  IANA_UPPER_TIMEZONE,
   LOCAL_TZ_OFFSET,
 } from './utils/const.js'
 
@@ -16,10 +16,10 @@ import { tzConfig } from './config/tz.js'
  *
  * @param {number} [hours=0] The number of hours from UTC
  * @param {number} [minutes=0] The number of minutes from UTC
- * @param {boolean} [inRealLifeBoundaries=false] Make sure the timezone stays in spec boundaries.
+ * @param {import('./config/tz.js').TimezoneOptions['inRealWorldRange']} [inRealWorldRange=false] Make sure the timezone stays in spec boundaries.
  * @returns {string}
  */
-export function tzOffset(hours = 0, minutes = 0, inRealLifeBoundaries = false) {
+export function tzOffset(hours = 0, minutes = 0, inRealWorldRange = tzConfig.inRealWorldRange) {
 
   // No arguments received: the local timezone offset is returned.
   if (!('0' in arguments)) {
@@ -36,7 +36,7 @@ export function tzOffset(hours = 0, minutes = 0, inRealLifeBoundaries = false) {
   // Compute minutes to remove in order to suppress the excess of minutes.
   const suppressMinutesExcess = limit => Math.floor(minutes / limit) * MINUTES_PER_DAY
 
-  if (inRealLifeBoundaries) {
+  if (inRealWorldRange) {
 
     /**
      * Because lower and upper boundaries are not necessarily symetric,
@@ -45,14 +45,14 @@ export function tzOffset(hours = 0, minutes = 0, inRealLifeBoundaries = false) {
      */
 
     // Upper boundary
-    if (minutes > REAL_LIFE_UPPER_TIMEZONE) {
-      minutes -= suppressMinutesExcess(REAL_LIFE_UPPER_TIMEZONE)
+    if (minutes > IANA_UPPER_TIMEZONE) {
+      minutes -= suppressMinutesExcess(IANA_UPPER_TIMEZONE)
       return tzOffset(0, minutes, true)
     }
 
     // Lower boundary
-    if (minutes < REAL_LIFE_LOWER_TIMEZONE) {
-      minutes += suppressMinutesExcess(REAL_LIFE_LOWER_TIMEZONE)
+    if (minutes < IANA_LOWER_TIMEZONE) {
+      minutes += suppressMinutesExcess(IANA_LOWER_TIMEZONE)
       return tzOffset(0, minutes, true)
     }
   }

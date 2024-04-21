@@ -27,7 +27,8 @@ The package is lightweight ([~ 1.37 KB compressed](https://bundlejs.com/?q=datet
     - [datetime separator](#datetime-separator)
   - [**`tzOffset()`**](#expressing-timezone-offsets-with-tzoffset) to express a **timezone offset**
     - [hours-minutes separator](#hours-minutes-separator)
-    - [real-life timezone offset](#real-life-timezone-offset)
+    - [real-world timezone offset](#real-world-timezone-offset)
+    - [timezone configuration](#timezone-configuration)
   - [**`datetimeTz()`**](#adding-a-timezone-offset-to-a-moment-with-datetimetz) to express a **moment with a specific timezone** offset
   - [**`duration()`**](#expressing-durations-with-duration) to expressing a **duration**
     - [units overflow](#units-overflow)
@@ -182,7 +183,7 @@ datetime(now, 'datetime utc') // `2021-03-14T09:29Z`
 
 [Per spec](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#local-dates-and-times), the separator between date and time can be `T` (default) or ` ` (1 space).
 
-To change the separator, use `setTimeSeparator`:
+To change the separator globally, use `setTimeSeparator`:
 
 ```js
 import { setTimeSeparator } from 'datetime-attribute'
@@ -202,7 +203,7 @@ Setting the separator to a space can be useful to deal with [MySQL](https://dev.
 
 Timezone offsets are a comparison against [UTC time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time). For example, `+01:00` means “one hour ahead of UTC time” and `-05:00` means “five hours behind UTC time”.
 
-`tzOffset()` accepts three optional arguments for hours, minutes, and [compliance to real-life boundaries](#real-life-timezone-offset). Without argument, the local timezone offset is returned (and may differ based on daylight saving time).
+`tzOffset()` accepts three optional arguments for hours, minutes, and [compliance to real-world boundaries](#real-world-timezone-offset). Without argument, the local timezone offset is returned (and may differ based on daylight saving time).
 
 ```js
 import { tzOffset } from 'datetime-attribute'
@@ -228,7 +229,7 @@ tzOffset()       // '+02:00' (under daylight saving time)
 - (default) a colon caracter (`:`);
 - an empty string.
 
-To change the separator, use `setTzSeparator`:
+To change the separator globally, use `setTzSeparator`:
 
 ```js
 import { setTzSeparator } from 'datetime-attribute'
@@ -237,24 +238,55 @@ setTzSeparator('')
 
 // All next timezone-related functions will follow the new setting.
 tzOffset(3)       // '+0300'
-tzOffset(-9, 30)  // '-0930'
+tzOffset(-9, -30)  // '-0930'
 
 // Switch back to the default.
 setTzSeparator(':')
 ```
 
-### Real-life timezone offset
+### Real-world timezone offset
 
-The timezone offset will be adjusted to fit in the spec range (from `-23:59` to `+23:59`). This means `tzOffset(44)` will output `+20:00` instead of `+44:00`.
+The timezone offset will always be adjusted to fit in the spec range (from `-23:59` to `+23:59`). This means `tzOffset(44)` will output `+20:00` instead of `+44:00`.
 
-However, timezone offsets of countries in the world are all between `-12:00` and `+14:00`. If you want `tzOffset(44)` to output `-04:00` so that it matches real-life boundaries, give it a third parameter (default: `false`):
+However, timezone offsets of countries in the world are all between `-12:00` and `+14:00`. If you want `tzOffset(44)` to output `-04:00` (instead of `+20:00`) so that it matches real-world boundaries, give it a third parameter (default: `false`):
 
 ```js
 tzOffset(44) // '+20:00'
 tzOffset(44, 0, true) // '-04:00'
 ```
 
+To change the behaviour globally, use `setTzInRealWorldRange` (**unreleased**):
+
+```js
+import { setTzInRealWorldRange } from 'datetime-attribute'
+
+setTzInRealWorldRange(true)
+
+// All next timezone-related functions will follow the new setting.
+tzOffset(20)       // '-04:00'
+tzOffset(-14, -30) // '+09:30'
+
+// Switch back to the default.
+setTzInRealWorldRange(false) // or setTzInRealWorldRange()
+```
+
 Curious about timezones? Have a look at [the timezone map](https://fr.m.wikipedia.org/wiki/Fichier:World_Time_Zones_Map.png) and the [daylight saving time chaos](https://en.wikipedia.org/wiki/Daylight_saving_time_by_country).
+
+### Timezone configuration
+
+If you need both timezone configuration functions described in the previous section (`setTzSeparator` for the [hours-minutes separator](#hours-minutes-separator) and `setTzInRealWorldRange` for [timezones boundaries](#real-world-timezone-offset)), you can directly use `tzConfig()` (**unreleased**):
+
+```js
+import { setTzConfig } from 'datetime-attribute'
+
+setTzConfig({
+  inRealWorldRange: false, // see `setTzInRealWorldRange`
+  separator: ':', // see `setTzSeparator`
+})
+
+// Switch back to the default.
+setTzConfig()
+```
 
 ## Adding a timezone offset to a moment with `datetimeTz()`
 
@@ -265,7 +297,7 @@ As `datetime()` doesn’t care about timezones, you can use `datetimeTz()` when 
 It accepts the same 5 parameters, all optional:
 
 ```js
-datetimeTz(date, precision, offsetHours, offsetMinutes, inRealLifeBoundaries)
+datetimeTz(date, precision, offsetHours, offsetMinutes, inRealWorldRange)
 ```
 
 1. A date object (default: `new Date()`)
@@ -278,7 +310,7 @@ datetimeTz(date, precision, offsetHours, offsetMinutes, inRealLifeBoundaries)
     - `datetime ms`
 3. Hours offset like in [`tzOffset()`](#expressing-timezone-offsets-with-tzoffset)
 4. Minutes offset like in [`tzOffset()`](#expressing-timezone-offsets-with-tzoffset)
-5. Boundaries of the timezone offset like in [`tzOffset()`](#real-life-timezone-offset)
+5. Boundaries of the timezone offset like in [`tzOffset()`](#real-world-timezone-offset)
 
 When hours and minutes are not specified, the local timezone offset is used.
 
