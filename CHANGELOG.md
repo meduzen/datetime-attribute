@@ -40,6 +40,7 @@ Despite these, documented functions were properly exposed but global typing disc
 - Update ESLint config to group `import` statements by source.
 - Change TypeScript `target` to `ESNExt`.
 - Rename some internals.
+- Remove test files from published package.
 
 ## v1.3.4 (2024-04-18)
 
