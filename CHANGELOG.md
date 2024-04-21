@@ -6,6 +6,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 <!-- Nothing for now. -->
 
+<!-- ⚠️ Before a new release, make sure the documentation doesn't contain any **unreleased** mention.  -->
+
 Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.3.4...main).
 
 ### New
