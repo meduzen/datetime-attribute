@@ -53,6 +53,7 @@
     "@size-limit/preset-small-lib": "^11.1.2",
     "@vitest/coverage-v8": "^1.4.0",
     "@vitest/ui": "^1.4.0",
+    "dts-bundle-generator": "^9.5.0",
     "eslint": "^9.0.0",
     "eslint-plugin-vitest": "0.4.2-beta.5",
     "size-limit": "^11.1.2",
