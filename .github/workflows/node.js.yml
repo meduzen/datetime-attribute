@@ -30,4 +30,5 @@ jobs:
     - run: pnpm test
       env:
         GITHUB_ACTIONS: true
+    - run: pnpm types
     - run: pnpm test:types
