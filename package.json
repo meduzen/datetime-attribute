@@ -10,7 +10,7 @@
   },
   "packageManager": "pnpm@8.6.11",
   "scripts": {
-    "types": "tsc && dts-bundle-generator -o types/index.d.ts types-transitive/index.d.ts",
+    "types": "tsc && dts-bundle-generator --no-banner=true -o types/index.d.ts types-transitive/index.d.ts",
     "test": "vitest run",
     "test:types": "pnpm exec tsd",
     "test:ui": "vitest --ui --coverage.enabled --coverage.exclude=types",
