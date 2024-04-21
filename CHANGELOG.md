@@ -4,17 +4,15 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## Unreleased
 
-<!-- Nothing for now. -->
+Nothing for now.
 
 <!-- ⚠️ Before a new release, make sure the documentation doesn't contain any **unreleased** mention.  -->
 
-Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.3.4...main).
+Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.4.0...main).
 
-## v1.4.0-rc.0
+## v1.4.0 (2024-04-21)
 
-This is a test release to see how typing resolution is working when installing the package from a remote registry.
-
-Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.3.4...1.4.0-rc.0).
+Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.3.4...1.4.0).
 
 ### New
 
@@ -27,7 +25,7 @@ Compare with [last published version](https://github.com/meduzen/datetime-attrib
   - types exported from subpath instead of root
   - unexported functions being exported as types
 
-Despite these, documented functions were properly exposed but global typing discoverability was a mess. See the [comment in the related pull requests](https://github.com/meduzen/datetime-attribute/pull/140#issuecomment-2068158358) for more. This is now (hopefully) fixed by cleaning and combining all `.d.ts` files into one thanks to [`dts-bundle-generator`](https://github.com/timocov/dts-bundle-generator).
+Despite these, documented functions were properly exposed but global typing discoverability was a mess. See the [comment in the related pull requests](https://github.com/meduzen/datetime-attribute/pull/140#issuecomment-2068158358) for more. This is now fixed by cleaning and combining all `.d.ts` files into one thanks to [`dts-bundle-generator`](https://github.com/timocov/dts-bundle-generator).
 
 ### Documentation
 
