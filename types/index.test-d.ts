@@ -1,5 +1,5 @@
 import { expectAssignable, expectError, expectType } from 'tsd'
-import { setConfig } from './config/datetime'
+import { setConfig } from '../types-transitive/config/datetime'
 import {
   DateTime,
   datetime,
