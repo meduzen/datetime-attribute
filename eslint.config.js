@@ -8,7 +8,7 @@ export default tseslint.config(
     files: ['**/*.js'],
     languageOptions: {
       sourceType: 'module',
-      ecmaVersion: 2024,
+      ecmaVersion: 'latest',
       parserOptions: {
         ecmaFeatures: {
           impliedStrict: true,
@@ -38,6 +38,7 @@ export default tseslint.config(
       'keyword-spacing': 2,
       'key-spacing': [2, { mode: 'minimum' }],
       'object-curly-spacing': [2, 'always'],
+      'no-duplicate-imports': 2,
       'no-irregular-whitespace': 2,
       'no-multi-spaces': [2, {
         ignoreEOLComments: true,
