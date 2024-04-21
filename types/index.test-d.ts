@@ -1,7 +1,5 @@
 import { expectAssignable, expectError, expectType } from 'tsd'
-import { DurationObject } from './duration'
-import { TimezoneOptions, setTzConfig } from './config/tz'
-import { DateTimeOptions, setConfig } from './config/datetime'
+import { setConfig } from './config/datetime'
 import {
   DateTime,
   datetime,
@@ -12,8 +10,14 @@ import {
   daysBetween,
   weekNumber,
   setTimeSeparator,
+  setTzConfig,
+  setTzInRealWorldRange,
   setTzSeparator,
 } from '.'
+
+import type { DateTimeOptions } from './config/datetime'
+import type { TimezoneOptions } from './config/tz'
+import type { DurationObject } from './duration'
 
 const togoIndependanceDay = new Date(1960, 3, 27)
 const date = togoIndependanceDay // alias for the sake of brevity
@@ -90,16 +94,28 @@ expectType<string>(datetimeTz(date, 'datetime', 12, 45))
 expectType<string>(datetimeTz(date, 'datetime', 17, 30, true))
 expectError(() => datetimeTz(123))
 
-// setTzSeparator and setTzConfig
+// setTzConfig, setTzInRealWorldRange and setTzSeparator
+
+expectType<TimezoneOptions>(setTzConfig({ separator: ':' }))
+expectType<TimezoneOptions>(setTzConfig({ separator: '' }))
+expectError(() => setTzConfig({ separator: 123 }))
+
+expectType<TimezoneOptions>(setTzConfig({ inRealWorldRange: true }))
+expectType<TimezoneOptions>(setTzConfig({ inRealWorldRange: false }))
+expectError(() => setTzConfig({ inRealWorldRange: 123 }))
+
+expectType<TimezoneOptions>(setTzConfig())
+expectType<TimezoneOptions>(setTzConfig({})) // tolerated, same as `setTzConfig()`
 
 expectType<TimezoneOptions>(setTzSeparator(':'))
 expectType<TimezoneOptions>(setTzSeparator(''))
 expectType<TimezoneOptions>(setTzSeparator())
 expectError(() => setTzSeparator(123))
 
-expectType<TimezoneOptions>(setTzConfig({ separator: ':' }))
-expectType<TimezoneOptions>(setTzConfig({ separator: '' }))
-expectError(() => setTzConfig({ separator: 123 }))
+expectType<TimezoneOptions>(setTzInRealWorldRange(true))
+expectType<TimezoneOptions>(setTzInRealWorldRange(false))
+expectType<TimezoneOptions>(setTzInRealWorldRange())
+expectError(() => setTzInRealWorldRange(123))
 
 // weekNumber, daysBetween
 

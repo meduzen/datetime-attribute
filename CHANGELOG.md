@@ -2,11 +2,16 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## Unreleased (will be 1.4)
 
-Nothing for now.
+<!-- Nothing for now. -->
 
 Compare with [last published version](https://github.com/meduzen/datetime-attribute/compare/1.3.4...main).
+
+### New
+
+- Add [`setTzInRealWorldRange()`](https://github.com/meduzen/datetime-attribute#real-world-timezone-offset) allowing to shift timezones to be inside the real-world (IANA) range.
+- Add [`setTzConfig()`](https://github.com/meduzen/datetime-attribute#timezone-configuration) to set the timezone related configuration: pass it an object to set the timezone separator and enforce the IANA range at the same time.
 
 ## v1.3.4 (2024-04-18)
 
@@ -191,7 +196,7 @@ Compare with [previous version](https://github.com/meduzen/datetime-attribute/co
 
 ### New
 
-- `tzOffset()` now accepts a [third parameter](https://github.com/meduzen/datetime-attribute#real-life-timezone-offset). When set to `true`, it enforce the provided timezone to stay in real-life boundaries (from `-12:00` to `+14:00`).
+- `tzOffset()` now accepts a [third parameter](https://github.com/meduzen/datetime-attribute#real-world-timezone-offset). When set to `true`, it enforce the provided timezone to stay in real-world boundaries (from `-12:00` to `+14:00`).
 - This also applies to `datetimeTz()`, which now accepts a fifth parameter to be on par with how `tzOffset()` works.
 
 ## v0.4.2 (2021-05-02)
