@@ -1,11 +1,11 @@
 /**
  * @typedef {Object} DateTimeOptions
- * @property {('T'|' ')} separator
+ * @property {('T'|' ')} separator The separator between date and time
+ *                                 (`'2024-04-21T10:34'`) can be a
+ *                                 'T' (default) or a space.
  */
 
-/**
- * @type DateTimeOptions
- */
+/** @type DateTimeOptions */
 export const config = {
   separator: 'T',
 }
@@ -32,7 +32,7 @@ export const setConfig = options => {
 /**
  * Set separator between date and time
  *
- * @param {('T'|' ')} [separator=T]
+ * @param {DateTimeOptions['separator']} [separator='T']
  * @returns {DateTimeOptions}
  */
 export const setTimeSeparator = (separator = 'T') => setConfig({ separator })

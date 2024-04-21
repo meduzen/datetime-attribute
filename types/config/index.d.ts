@@ -1,2 +1,2 @@
 export { setTimeSeparator } from "./datetime.js";
-export { setTzSeparator } from "./tz.js";
+export { setTzConfig, setTzInRealWorldRange, setTzSeparator } from "./tz.js";

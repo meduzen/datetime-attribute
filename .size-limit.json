@@ -30,6 +30,16 @@
       "import": "{ setTimeSeparator }"
     },
     {
+      "name": "`setTzConfig`",
+      "path": "src/index.js",
+      "import": "{ setTzConfig }"
+    },
+    {
+      "name": "`setTzInRealWorldRange`",
+      "path": "src/index.js",
+      "import": "{ setTzInRealWorldRange }"
+    },
+    {
       "name": "`setTzSeparator`",
       "path": "src/index.js",
       "import": "{ setTzSeparator }"

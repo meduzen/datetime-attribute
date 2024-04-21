@@ -19,10 +19,10 @@ export function datetime(date?: Date, precision?: Precision): string;
  * @param {Precision} [precision=datetime]
  * @param {number} [offsetHours=0]
  * @param {number} [offsetMinutes=0]
- * @param {boolean} [inRealLifeBoundaries=false]
+ * @param {import('./config/tz.js').TimezoneOptions['inRealWorldRange']} [inRealWorldRange=false]
  * @returns {string}
  */
-export function datetimeTz(date?: Date, precision?: Precision, offsetHours?: number, offsetMinutes?: number, inRealLifeBoundaries?: boolean, ...args: any[]): string;
+export function datetimeTz(date?: Date, precision?: Precision, offsetHours?: number, offsetMinutes?: number, inRealWorldRange?: import('./config/tz.js').TimezoneOptions['inRealWorldRange'], ...args: any[]): string;
 export function utc(date?: Date, precision?: 'datetime' | 'datetime second' | 'datetime ms' | 'time' | 'second' | 'ms'): string;
 /**
  * Supported precision keywords.

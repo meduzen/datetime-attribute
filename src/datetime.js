@@ -2,6 +2,7 @@ import { weekNumber } from './utils/date.js'
 import { p } from './utils/string.js'
 import { tzOffset } from './timezone.js'
 import { config } from './config/datetime.js'
+import { tzConfig } from './config/tz.js'
 
 /**
  * Create `datetime="2021-12-02"` attribute for `<time>`.
@@ -23,7 +24,7 @@ export function datetime(date = new Date(), precision = 'day') {
 
   let year = date.getFullYear()
 
-  // Year 0 doesn’t exists in real life, but does in the ISO-8601 spec.
+  // Year 0 doesn’t exists in the real world, but does in the ISO-8601 spec.
   const sign = year < 0 ? '-' : '' // no sign if year is not negative
 
   // Remove sign (stored separately, see previous line).
@@ -119,7 +120,7 @@ export const utc = (date = new Date(), precision = 'datetime') => datetime(date,
  * @param {Precision} [precision=datetime]
  * @param {number} [offsetHours=0]
  * @param {number} [offsetMinutes=0]
- * @param {boolean} [inRealLifeBoundaries=false]
+ * @param {import('./config/tz.js').TimezoneOptions['inRealWorldRange']} [inRealWorldRange=false]
  * @returns {string}
  */
 export function datetimeTz(
@@ -127,13 +128,13 @@ export function datetimeTz(
   precision = 'datetime',
   offsetHours = 0,
   offsetMinutes = 0,
-  inRealLifeBoundaries = false,
+  inRealWorldRange = tzConfig.inRealWorldRange,
 ) {
   let timezoneOffset = ''
 
   if (!precision.includes('utc')) { // ignore request for UTC conversion
     timezoneOffset = ('2' in arguments) // see similar line in tzOffset()
-      ? tzOffset(offsetHours, offsetMinutes, inRealLifeBoundaries)
+      ? tzOffset(offsetHours, offsetMinutes, inRealWorldRange)
       : tzOffset()
   }
 

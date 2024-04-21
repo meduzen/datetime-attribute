@@ -6,7 +6,7 @@
  *
  * @param {number} [hours=0] The number of hours from UTC
  * @param {number} [minutes=0] The number of minutes from UTC
- * @param {boolean} [inRealLifeBoundaries=false] Make sure the timezone stays in spec boundaries.
+ * @param {import('./config/tz.js').TimezoneOptions['inRealWorldRange']} [inRealWorldRange=false] Make sure the timezone stays in spec boundaries.
  * @returns {string}
  */
-export function tzOffset(hours?: number, minutes?: number, inRealLifeBoundaries?: boolean, ...args: any[]): string;
+export function tzOffset(hours?: number, minutes?: number, inRealWorldRange?: import('./config/tz.js').TimezoneOptions['inRealWorldRange'], ...args: any[]): string;
