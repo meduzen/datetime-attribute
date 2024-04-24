@@ -255,7 +255,7 @@ tzOffset(44) // '+20:00'
 tzOffset(44, 0, true) // '-04:00'
 ```
 
-To change the behaviour globally, use `setTzInRealWorldRange` (**unreleased**):
+To change the behaviour globally, use `setTzInRealWorldRange`:
 
 ```js
 import { setTzInRealWorldRange } from 'datetime-attribute'
@@ -274,7 +274,7 @@ Curious about timezones? Have a look at [the timezone map](https://fr.m.wikipedi
 
 ### Timezone configuration
 
-If you need both timezone configuration functions described in the previous section (`setTzSeparator` for the [hours-minutes separator](#hours-minutes-separator) and `setTzInRealWorldRange` for [timezones boundaries](#real-world-timezone-offset)), you can directly use `tzConfig()` (**unreleased**):
+If you need both timezone configuration functions described in the previous section (`setTzSeparator` for the [hours-minutes separator](#hours-minutes-separator) and `setTzInRealWorldRange` for [timezones boundaries](#real-world-timezone-offset)), you can directly use `tzConfig()`:
 
 ```js
 import { setTzConfig } from 'datetime-attribute'

@@ -1,5 +1,5 @@
 import { expectAssignable, expectError, expectType } from 'tsd'
-import { setConfig } from './config/datetime'
+import { setConfig } from '../types-transitive/config/datetime'
 import {
   DateTime,
   datetime,
@@ -15,9 +15,7 @@ import {
   setTzSeparator,
 } from '.'
 
-import type { DateTimeOptions } from './config/datetime'
-import type { TimezoneOptions } from './config/tz'
-import type { DurationObject } from './duration'
+import type { DateTimeOptions, DurationObject, TimezoneOptions } from '.'
 
 const togoIndependanceDay = new Date(1960, 3, 27)
 const date = togoIndependanceDay // alias for the sake of brevity
