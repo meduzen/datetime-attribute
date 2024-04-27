@@ -1,13 +1,5 @@
 import { describe, expect, test } from 'vitest'
-
 import { tzOffset } from './index.js'
-
-// import { Temporal } from '@js-temporal/polyfill'
-
-// const tz = new Temporal.TimeZone('-23:59:59.999999999')
-// console.log(tz.id)
-// console.log(tz.toJSON())
-// console.log(tz.toString())
 
 const tzOffsetInMinutes = (new Date()).getTimezoneOffset() * -1
 
@@ -141,6 +133,3 @@ describe('tzOffset', () => {
 
     test('tzOffset(62.75, 0, true) is -09:15', () => {
       expect(tzOffset(62.75, 0, true)).toBe('-09:15')
-    })
-  })
-})
