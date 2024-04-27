@@ -106,7 +106,6 @@ export function datetime(date = new Date(), precision = 'day') {
  * - `datetime(someDate, 'somePrecision utc')`
  * - `utc(someDate, 'somePrecision')`
  *
- *
  * @param {Date} [date=new Date()] - default to now
  * @param {'datetime'|'datetime second'|'datetime ms'|'time'|'second'|'ms'} [precision=datetime]
  * @returns {string}
