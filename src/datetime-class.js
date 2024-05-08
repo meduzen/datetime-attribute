@@ -1,7 +1,15 @@
 import { MILLISECONDS_PER_WEEK } from './utils/const.js'
 import { datetime, weekNumber } from './index.js'
+import { getNormalizeDay } from './utils/date.js'
 
 export class DateTime extends Date {
+
+  /**
+   * Get the day index of the week, except Sunday is 7 instead of 0.
+   *
+   * @returns {number}
+   */
+  getNormalisedDay = () => getNormalizeDay(this)
 
   /**
    * Returns the week of the year (`1`–`53`) of the specified date according to

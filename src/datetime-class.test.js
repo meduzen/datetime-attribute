@@ -45,6 +45,8 @@ describe('DateTime class', () => {
     })
   })
 
+  describe.todo('.getNormalisedDay()', () => {})
+
   describe('.getWeek()', () => {
 
     test('returns the week number', () => {
