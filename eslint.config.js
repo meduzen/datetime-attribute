@@ -1,6 +1,6 @@
 import tseslint from 'typescript-eslint'
 import js from '@eslint/js'
-import vitest from 'eslint-plugin-vitest-2' // https://github.com/veritem/eslint-plugin-vitest/issues/466#issuecomment-2280771140
+import vitest from '@vitest/eslint-plugin'
 
 export default tseslint.config(
   js.configs.recommended,
