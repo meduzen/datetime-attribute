@@ -274,7 +274,7 @@ Curious about timezones? Have a look at [the timezone map](https://fr.m.wikipedi
 
 ### Timezone configuration
 
-If you need both timezone configuration functions described in the previous section (`setTzSeparator` for the [hours-minutes separator](#hours-minutes-separator) and `setTzInRealWorldRange` for [timezones boundaries](#real-world-timezone-offset)), you can directly use `tzConfig()`:
+If you need both timezone configuration functions described in the previous section (`setTzSeparator` for the [hours-minutes separator](#hours-minutes-separator) and `setTzInRealWorldRange` for [timezones boundaries](#real-world-timezone-offset)), you can directly use `setTzConfig()`:
 
 ```js
 import { setTzConfig } from 'datetime-attribute'
