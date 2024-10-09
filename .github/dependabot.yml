@@ -19,4 +19,6 @@ updates:
     schedule:
       interval: 'monthly'
     groups:
-      patterns: '*'
+      github-actions:
+        patterns:
+        - '*'
