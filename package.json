@@ -73,5 +73,9 @@
       "has": "npm:@nolyfill/has@latest",
       "hasown": "npm:@nolyfill/hasown@latest"
     }
+  },
+  "peerDependencies": {
+    "@js-temporal/polyfill": "^0.4.4",
+    "temporal-polyfill": "^0.2.4"
   }
 }
